@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhigyan 25 – Sustainable Synergy</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Satisfy&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #00ff88;
+      --secondary: #ff6b6b;
+      --accent: #4ecdc4;
+      --dark: #0a0a0a;
+      --darker: #050505;
+      --light: #ffffff;
+      --glass: rgba(255, 255, 255, 0.1);
+      --glow: 0 0 30px rgba(0, 255, 136, 0.3);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--darker);
+      color: var(--light);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom Cursor */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: all 0.1s ease;
+    }
+
+    .cursor-follower {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* 3D Background */
+    #three-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Page Container */
+    .page {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Glassmorphism Navigation */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      padding: 15px 30px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: var(--glow);
+    }
+
+    .navbar:hover {
+      background: rgba(10, 10, 10, 0.8);
+      transform: translateX(-50%) translateY(-2px);
+      box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: none;
+      opacity: 1;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+      opacity: 1;
+    }
+
+    .nav-links a:hover::before, .nav-links a.active::before {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at center, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(76, 201, 240, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(255, 107, 107, 0.15) 0%, transparent 50%);
+      animation: gradientShift 20s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(3rem, 12vw, 8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+      background-size: 400% 400%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 8s ease-in-out infinite;
+      letter-spacing: -2px;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    @keyframes gradientFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-family: 'Satisfy', cursive;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      color: var(--light);
+      margin-top: 20px;
+      opacity: 1;
+      letter-spacing: 2px;
+    }
+
+    .hero-year {
+      position: absolute;
+      top: 50%;
+      right: -10%;
+      font-family: 'Orbitron', monospace;
+      font-size: 20rem;
+      font-weight: 100;
+      color: rgba(255, 255, 255, 0.03);
+      transform: translateY(-50%) rotate(90deg);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Floating Elements */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .floating-element {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 100px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, var(--light), var(--primary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      opacity: 1;
+    }
+
+    /* Countdown with Neomorphism */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+      border-radius: 20px;
+      padding: 30px 25px;
+      min-width: 120px;
+      box-shadow: 
+        20px 20px 60px #050505,
+        -20px -20px 60px #1f1f1f,
+        inset 2px 2px 5px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .countdown-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .countdown-item:hover::before {
+      left: 100%;
+    }
+
+    .countdown-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 
+        25px 25px 75px #050505,
+        -25px -25px 75px #1f1f1f,
+        0 0 30px rgba(0, 255, 136, 0.3);
+    }
+
+    .countdown-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+      font-family: 'Orbitron', monospace;
+      opacity: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      color: var(--light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      opacity: 1;
+    }
+
+    /* Events Grid - FIXED OPACITY ISSUES */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .event-card {
+      background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      cursor: pointer;
+      height: 675px;
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-card:hover {
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 136, 0.3);
+      cursor: default;
+      border-color: var(--primary);
+      opacity: 1;
+    }
+
+    .event-image {
+      height: 285px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+      filter: grayscale(20%);
+      opacity: 1;
+    }
+
+    .event-card:hover .event-image img {
+      transform: scale(1.1);
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    .event-content {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      position: relative;
+      height: 100%;
+      text-align: center;
+    }
+
+    .event-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      align-self: flex-start;
+      width: 100%;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--light), var(--primary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 1;
+    }
+
+    .event-description {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 4.8rem;
+      opacity: 1;
+      align-self: flex-start;
+      width: 100%;
+    }
+
+    .event-date {
+      display: inline-block;
+      background: rgba(0, 255, 136, 0.15);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      margin-top: 10px;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+      transition: all 0.3s ease;
+      opacity: 1;
+      align-self: flex-start;
+    }
+    
+    .event-card:hover .event-date {
+      background: rgba(0, 255, 136, 0.25);
+      border-color: rgba(0, 255, 136, 0.5);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+      opacity: 1;
+    }
+
+    /* Team Cards - FIXED OPACITY ISSUES */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .team-card {
+      background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: none;
+      opacity: 1;
+    }
+
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 136, 0.3);
+      border-color: var(--primary);
+      opacity: 1;
+    }
+
+    .team-card:hover::before {
+      opacity: 1;
+    }
+
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--dark);
+      transition: all 0.4s ease;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .team-card:hover .team-avatar {
+      transform: scale(1.05);
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+
+    .team-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--light);
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, var(--light), var(--primary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 1;
+    }
+
+    .team-role {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      opacity: 1;
+    }
+
+    .team-bio {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 1;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 60px auto 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--primary), var(--primary), transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 80px;
+      width: 100%;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: 52%;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 52%;
+      text-align: left;
+    }
+
+    .timeline-content {
+      background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      transition: all 0.3s ease;
+      opacity: 1;
+    }
+
+    .timeline-content:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 136, 0.1);
+      border-color: var(--primary);
+    }
+    
+    /* Event venue styling */
+    .event-venue {
+      display: inline-block;
+      background: rgba(79, 70, 229, 0.15);
+      color: #6366f1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      margin-top: 10px;
+      box-shadow: 0 0 10px rgba(79, 70, 229, 0.1);
+      transition: all 0.3s ease;
+      opacity: 1;
+      align-self: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    /* Enhanced register button styling */
+    button[onclick*="registerEvent"], 
+    button[onclick*="window.open"],
+    .register-button {
+      background: linear-gradient(135deg, #4f46e5, #3b82f6) !important;
+      color: white !important;
+      font-family: Poppins, sans-serif !important;
+      font-size: 10px !important;
+      font-weight: 600 !important;
+      padding: 16px 36px !important;
+      border: none !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.4) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border-top: 4px solid white !important;
+      margin-top: 15px !important;
+      margin-bottom: 10px !important;
+      transform: translateY(0) !important;
+      transition: all 0.3s ease !important;
+      width: 100% !important;
+      display: block !important;
+      z-index: 10 !important;
+      letter-spacing: 0.5px !important;
+      text-align: center !important;
+    }
+    
+    button[onclick*="registerEvent"]:hover,
+    button[onclick*="window.open"]:hover,
+    .register-button:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0px 12px 25px rgba(0,0,0,0.5) !important;
+      background: linear-gradient(135deg, #3b33ca, #2563eb) !important;
+      filter: brightness(120%) !important;
+    }
+    
+    button[onclick*="registerEvent"]::after,
+    button[onclick*="window.open"]::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    button[onclick*="registerEvent"]:hover::after,
+    button[onclick*="window.open"]:hover::after {
+      opacity: 1;
+    }
+    
+    /* Mobile optimization */
+    @media screen and (max-width: 768px) {
+      .event-card {
+        height: auto;
+        min-height: 550px;
+      }
+      
+      button[onclick*="registerEvent"],
+      button[onclick*="window.open"] {
+        position: static !important;
+        margin-top: 30px !important;
+        margin-bottom: 20px !important;
+      }
+      
+      .event-content {
+        padding-bottom: 30px;
+      }
+    }
+    
+    /* Force override any inline styling */
+    button[onclick*="registerEvent"],
+    button[onclick*="window.open"] {
+      background: linear-gradient(135deg, #4f46e5, #3b82f6) !important;
+      color: white !important;
+      font-family: Poppins, sans-serif !important;
+      font-size: 20px !important; 
+      font-weight: 700 !important;
+      padding: 18px 36px !important;
+      border: none !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.4) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border-top: 4px solid white !important;
+      margin: 25px auto 10px auto !important;
+      transform: translateY(0) !important;
+      transition: all 0.3s ease !important;
+      width: 100% !important;
+      max-width: 300px !important;
+      display: block !important;
+      z-index: 10 !important;
+      letter-spacing: 0.5px !important;
+      text-align: center !important;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+      z-index: 2;
+    }
+
+    .timeline-year {
+      display: inline-block;
+      background: rgba(0, 255, 136, 0.15);
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-family: 'Orbitron', monospace;
+      opacity: 1;
+    }
+
+    .timeline-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      margin-bottom: 15px;
+      opacity: 1;
+    }
+
+    .timeline-description {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      opacity: 1;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 60px auto 0;
+      background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 40px;
+      opacity: 1;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-label {
+      display: block;
+      color: var(--light);
+      font-weight: 500;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 1;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      color: var(--light);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      opacity: 1;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border: none;
+      border-radius: 15px;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 1;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+    }
+
+    /* Success Message */
+    .success-message {
+      background: linear-gradient(45deg, #00ff88, #4ecdc4);
+      color: var(--dark);
+      padding: 15px 20px;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .success-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      transform: scale(0.8);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 2rem;
+      color: var(--light);
+      cursor: none;
+      z-index: 10001;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      opacity: 1;
+    }
+
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    /* Advanced Button Styles */
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: none;
+      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+      opacity: 1;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+    }
+
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--darker);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-text {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-top: 20px;
+      animation: pulse 2s ease-in-out infinite;
+      opacity: 1;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .loader-circle {
+      width: 100px;
+      height: 100px;
+      border: 3px solid rgba(0, 255, 136, 0.1);
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      body {
+        cursor: auto;
+      }
+
+      .cursor, .cursor-follower {
+        display: none;
+      }
+
+      .navbar {
+        top: 10px;
+        padding: 10px 20px;
+        border-radius: 25px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .hero-year {
+        display: none;
+      }
+
+      .countdown {
+        gap: 20px;
+      }
+
+      .countdown-item {
+        padding: 20px 15px;
+        min-width: 100px;
+      }
+
+      .countdown-number {
+        font-size: 2rem;
+      }
+
+      .events-grid, .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .event-card, .cta-button, .close-modal, .submit-btn {
+        cursor: pointer;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50px;
+        margin-right: 0;
+        text-align: left;
+      }
+
+      .timeline-dot {
+        left: 20px;
+        transform: translateX(-50%);
+      }
+
+      .contact-form {
+        margin: 40px 20px 0;
+        padding: 30px 20px;
+      }
+    }
+
+    /* Content Animation Classes */
+    .content-section {
+      opacity: 1;
+      transform: translateY(0px);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .content-section.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Description Section */
+    .description-section {
+      padding: 80px 20px;
+    }
+    
+    .section-description {
+      color: var(--light);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      opacity: 1;
+    }
+    
+    /* Past Editions Section */
+    .past-editions-section {
+      padding: 80px 20px;
+    }
+    
+    .past-edition-item {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 600px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      opacity: 1;
+    }
+    
+    .past-edition-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+    }
+
+    /* Additional fixes for better visibility */
+    .page {
+      opacity: 1;
+    }
+
+    .section {
+      opacity: 1;
+    }
+
+    /* Ensure all text elements are visible */
+    h1, h2, h3, h4, h5, h6, p, span, div, a, button {
+      opacity: 1;
+    }
+
+    /* Make sure backgrounds are more opaque for better contrast */
+    .event-card, .team-card, .timeline-content, .contact-form {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* Enhanced hover states for better interaction feedback */
+    .event-card:hover, .team-card:hover, .timeline-content:hover {
+      background: linear-gradient(145deg, rgba(35, 35, 35, 0.98), rgba(20, 20, 20, 0.98));
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- 3D Background -->
+  <div id="three-bg"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-circle"></div>
+      <div class="loader-text">Loading Experience...</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-page="home">Home</a>
+      <a href="#" class="nav-link" data-page="events">Events</a>
+      <a href="#" class="nav-link" data-page="about">About</a>
+      <a href="#" class="nav-link" data-page="team">Team</a>
+      <a href="#" class="nav-link" data-page="past-events">Past Events</a>
+      <a href="#" class="nav-link" data-page="contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="home">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="floating-elements" id="floating-elements"></div>
+      <h1 class="hero-title">Abhigyan '25</h1>
+            <p class="hero-subtitle">Sustainable Synergy</p>
+<p style="font-family: 'Poppins', sans-serif; font-size:20px; font-weight:500; line-height:1.6; color:#ffffff; opacity:1; margin-top:10px; text-align:center; letter-spacing:0.5px;">
+  By Electronics and Communication Department, SRMIST VDP Campus
+</p>
+
+
+
+      <div class="hero-year">2025</div>
+      <div style="margin-top: 50px;">
+        <a href="#" class="cta-button" data-page="events">Explore Events</a>
+      </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section content-section">
+      <h2 class="section-title">Event Countdown</h2>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="countdown-number" id="days">00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="abhigyan-poster">
+      <div class="poster-container">
+      <img src="images/Abhigyan '25 poster.jpg" alt="Abhigyan Poster" class="abhigyan-poster-img" />
+      </div>
+    </section>
+    <style>
+      .abhigyan-poster {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 0 40px 0;
+      background: none;
+      }
+      .poster-container {
+      background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(79,70,229,0.08));
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,255,136,0.10), 0 2px 8px rgba(0,0,0,0.10);
+      padding: 18px;
+      max-width: 800px;
+      width: 100%;
+      transition: box-shadow 0.3s;
+      }
+      .poster-container:hover {
+      box-shadow: 0 16px 48px rgba(0,255,136,0.18), 0 4px 16px rgba(0,0,0,0.15);
+      }
+      .abhigyan-poster-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,255,136,0.10);
+      background: #18181b;
+      }
+      @media (max-width: 600px) {
+      .poster-container {
+        max-width: 98vw;
+        padding: 6px;
+      }
+      .abhigyan-poster {
+        padding: 30px 0 20px 0;
+      }
+      .abhigyan-poster-img {
+        border-radius: 10px;
+      }
+      }
+    </style>
+  
+
+    <!-- More Featured Events -->
+    <section class="section content-section">
+  <h2 class="section-title">Featured Events</h2>
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-image">
+        <img src="images/1.jpg" alt="Paper Presentation">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">Paper Presentation</h3>
+        <p class="event-description">Share your research and innovative ideas with peers and faculty in this academic showcase.</p>
+        <span class="event-date">September 9, 2025</span>
+        <span class="event-venue">📍 SRM Campus</span>
+        <button class="register-button" onclick="registerEvent('Paper Presentation')" style="margin-top: auto;">
+          Register Now
+        </button>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-image">
+        <img src="images/4.jpg" alt="Mindspark">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">Mindspark</h3>
+        <p class="event-description">Test your mental agility and quick thinking in a series of challenging puzzles and quizzes.</p>
+        <span class="event-date">September 9, 2025</span>
+        <span class="event-venue">📍 SRM Campus</span>
+        <button class="register-button" onclick="registerEvent('Mindspark')" style="margin-top: auto;">
+          Register Now
+        </button>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-image">
+        <img src="images/2.jpg" alt="Vision X">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">Vision X</h3>
+        <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
+        <span class="event-date">September 9, 2025</span>
+        <span class="event-venue">📍 SRM Campus</span>
+        <button class="register-button" onclick="registerEvent('Vision X')" style="margin-top: auto;">
+          Register Now
+        </button>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" alt="IPL Auction">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">IPL Auction</h3>
+        <p class="event-description">Step into the shoes of a team owner and build your dream team in this strategic mock auction.</p>
+        <span class="event-date">September 9, 2025</span>
+        <span class="event-venue">📍 SRM Campus</span>
+        <button class="register-button" onclick="registerEvent('IPL Auction')" style="margin-top: auto;">
+          Register Now
+        </button>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop" alt="Free Fire">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">Free Fire</h3>
+        <p class="event-description">A high-stakes gaming tournament for all Free Fire enthusiasts to showcase their skills.</p>
+        <span class="event-date">September 9, 2025</span>
+        <span class="event-venue">📍 SRM Campus</span>
+        <button class="register-button" onclick="registerEvent('Free Fire')" style="margin-top: auto;">
+          Register Now
+        </button>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=400&h=300&fit=crop" alt="Beat Odyssey">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">Beat Odyssey</h3>
+        <p class="event-description">Unleash your inner rhythm in this thrilling music and technology-focused event.</p>
+        <span class="event-date">September 9, 2025</span>
+        <span class="event-venue">📍 SRM Campus</span>
+        <button class="register-button" onclick="registerEvent('Beat Odyssey')" style="margin-top: auto;">
+          Register Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
+    <a href="#" class="cta-button" data-page="events">View All Events</a>
+  </div>
+</section>
+  </div>
+
+  <!-- EVENTS PAGE -->
+  <div class="page" id="events">
+    <section class="section" style="padding-top: 120px;">
+      <h2 class="section-title">All Events</h2>
+      <div class="events-grid">
+        <div class="event-card" data-image="images/1.jpg">
+  <div class="event-image">
+    <img src="images/1.jpg" alt="Paper Presentation">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Paper Presentation</h3>
+    <p class="event-description">Share your research and innovative ideas with peers and faculty in this academic showcase.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Paper Presentation')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="images/5.jpg">
+  <div class="event-image">
+    <img src="images/5.jpg" alt="Poster Pulse">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Poster Pulse</h3>
+    <p class="event-description">Display your research findings and projects on posters and engage in one-on-one discussions with experts.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Poster Pulse')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="images/3.jpg">
+  <div class="event-image">
+    <img src="images/3.jpg" alt="Mindspark">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Mindspark</h3>
+    <p class="event-description">Test your mental agility and quick thinking in a series of challenging puzzles and quizzes.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Mindspark')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="images/2.jpg">
+  <div class="event-image">
+    <img src="images/2.jpg" alt="Scrap Battle">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Scrap Battle</h3>
+    <p class="event-description">An ultimate robotics competition where creativity meets engineering excellence.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Scrap Battle')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="images/5.jpg">
+  <div class="event-image">
+    <img src="images/5.jpg" alt="Vision X">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Vision X</h3>
+    <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Vision X')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=400&h=300&fit=crop">
+  <div class="event-image">
+    <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=400&h=300&fit=crop" alt="Treasure Hunt">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Treasure Hunt</h3>
+    <p class="event-description">Put your wits to the test as you follow clues and solve puzzles to find the hidden treasure.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Treasure Hunt')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop">
+  <div class="event-image">
+    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop" alt="Doodlescape">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Doodlescape</h3>
+    <p class="event-description">Unleash your creativity and artistic flair in a live doodling competition.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="registerEvent('Doodlescape')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop">
+  <div class="event-image">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Legends & Timelines">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Legends & Timelines</h3>
+    <p class="event-description">A competition testing your knowledge of history, mythology, and legendary tales.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <button onclick="registerEvent('Legends & Timelines')" style="margin-top: auto;">
+      Register Now
+    </button>
+  </div>
+</div>
+
+<div class="event-card" data-image="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop">
+  <div class="event-image">
+    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop" alt="IPL Auction">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">IPL Auction</h3>
+    <p class="event-description">Step into the shoes of a team owner and build your dream team in this strategic mock auction.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <button class="register-button" onclick="window.open('https://forms.gle/your-google-form-link','_blank')">
+        Register Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="event-card" data-image="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop">
+  <div class="event-image">
+    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop" alt="Free Fire">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Free Fire</h3>
+    <p class="event-description">A high-stakes gaming tournament for all Free Fire enthusiasts to showcase their skills.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <button onclick="registerEvent('Free Fire')" style="margin-top: auto;">
+      Register Now
+    </button>
+  </div>
+</div>
+
+<div class="event-card" data-image="https://images.unsplash.com/photo-1581092921461-39b9d08a9b31?w=400&h=300&fit=crop">
+  <div class="event-image">
+    <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b31?w=400&h=300&fit=crop" alt="Beat Odyssey">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Beat Odyssey</h3>
+    <p class="event-description">Unleash your inner rhythm in this thrilling music and technology-focused event.</p>
+    <span class="event-date">September 9, 2025</span>
+    <span class="event-venue">📍 SRM Campus</span>
+    <button onclick="registerEvent('Beat Odyssey')" style="margin-top: auto;">
+      Register Now
+    </button>
+  </div>
+</div>
+    </section>
+  </div>
+
+  <!-- Registration Modal -->
+  <div id="registration-modal" class="modal hidden">
+    <div class="modal-content registration-modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>Event Registration</h2>
+      <form id="registration-form">
+        <div class="form-group">
+          <label for="event-name">Event:</label>
+          <input type="text" id="event-name" name="event-name" readonly>
+        </div>
+        <div class="form-group">
+          <label for="participant-name">Full Name:</label>
+          <input type="text" id="participant-name" name="participant-name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="college">College/Institution:</label>
+          <input type="text" id="college" name="college" required>
+        </div>
+        <div class="form-group">
+          <label for="year">Year of Study:</label>
+          <select id="year" name="year" required>
+            <option value="">Select Year</option>
+            <option value="1st">1st Year</option>
+            <option value="2nd">2nd Year</option>
+            <option value="3rd">3rd Year</option>
+            <option value="4th">4th Year</option>
+            <option value="postgrad">Post Graduate</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Complete Registration</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div class="page" id="about">
+    <section class="section" style="padding-top: 120px;">
+      <h2 class="section-title">About Abhigyan 25</h2>
+      
+      <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 80px;">
+        <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; opacity: 1;">
+          Abhigyan 25 represents the pinnacle of sustainable innovation and technological excellence. Our theme "Sustainable Synergy" embodies the perfect harmony between cutting-edge technology and environmental responsibility.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.8); opacity: 1;">
+          SRMIST Vadapalani's Department of Electronics & Communication Engineering presents this grand symposium showcasing the future of green technology, sustainable engineering practices, and innovative solutions for global challenges.
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-content" style="text-align: center; padding: 40px 30px;">
+            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🌱</div>
+            <h3 class="event-title">Sustainability Focus</h3>
+            <p class="event-description">Every event and competition is designed with environmental consciousness, promoting green technology and sustainable engineering practices.</p>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-content" style="text-align: center; padding: 40px 30px;">
+            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🚀</div>
+            <h3 class="event-title">Innovation Hub</h3>
+            <p class="event-description">Cutting-edge research presentations, breakthrough technology showcases, and revolutionary ideas that shape the future of engineering.</p>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-content" style="text-align: center; padding: 40px 30px;">
+            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🤝</div>
+            <h3 class="event-title">Collaborative Learning</h3>
+            <p class="event-description">Fostering collaboration between students, researchers, and industry experts to create synergistic solutions for global challenges.</p>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-content" style="text-align: center; padding: 40px 30px;">
+            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🎯</div>
+            <h3 class="event-title">Future Ready</h3>
+            <p class="event-description">Preparing the next generation of engineers with skills and knowledge essential for sustainable technological advancement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width: 1000px; margin: 80px auto 0; background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 25px; padding: 40px;">
+        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 30px; text-align: center; opacity: 1;">Our Mission</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); text-align: center; opacity: 1;">
+          To create a platform where sustainable technology meets innovative engineering, fostering the development of eco-friendly solutions that address real-world challenges while inspiring the next generation of environmentally conscious engineers and technologists.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- TEAM PAGE -->
+  <div class="page" id="team">
+    <section class="section" style="padding-top: 120px;">
+      <h2 class="section-title">Our Team</h2>
+      
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">SE</div>
+          <h3 class="team-name">Dr. Shirly Edward </h3>
+          <p class="team-role">Faculty Coordinator</p>
+          <p class="team-bio">Leading expert in sustainable electronics and green technology with over 15 years of research experience.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">PR</div>
+          <h3 class="team-name">Dr. Priti Rishi</h3>
+          <p class="team-role">Faculty Coordinator</p>
+          <p class="team-bio">Final year ECE student passionate about renewable energy systems and environmental technology.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SR</div>
+          <h3 class="team-name">Dr. Sathiya </h3>
+          <p class="team-role">Faculty Coordinator</p>
+          <p class="team-bio">Specializes in IoT solutions for environmental monitoring and sustainable smart city technologies.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">VS</div>
+          <h3 class="team-name">Dr. Vasuki </h3>
+          <p class="team-role">Faculty Coordinator</p>
+          <p class="team-bio">Expert in event management with focus on sustainable event practices and green logistics.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AK</div>
+          <h3 class="team-name">Arjun Kumar</h3>
+          <p class="team-role">Marketing Head</p>
+          <p class="team-bio">Creative strategist promoting awareness about sustainable technology through innovative campaigns.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">PT</div>
+          <h3 class="team-name">Priya Tandon</h3>
+          <p class="team-role">Design Lead</p>
+          <p class="team-bio">UI/UX designer and visual artist creating eco-friendly designs and sustainable branding solutions.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">VR</div>
+          <h3 class="team-name">Vikash Reddy</h3>
+          <p class="team-role">Logistics Manager</p>
+          <p class="team-bio">Operations expert ensuring smooth execution of events with minimal environmental impact.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">NS</div>
+          <h3 class="team-name">Nisha Singh</h3>
+          <p class="team-role">Social Media Manager</p>
+          <p class="team-bio">Digital communication specialist spreading awareness about sustainable technology trends.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAST EVENTS PAGE -->
+  <div class="page" id="past-events">
+    <section class="section" style="padding-top: 120px;">
+      <h2 class="section-title">Past Editions</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2024</span>
+            <h3 class="timeline-title">Abhigyan 2024: "Bendable Innovation"</h3>
+            <p class="timeline-description">
+              A groundbreaking symposium focused on flexible electronics and adaptive technologies. Featured over 500 participants, 15 competitions, and showcased revolutionary developments in bendable displays, flexible solar panels, and wearable technology. The event established new standards for innovation in adaptive electronics.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3 class="timeline-title">Abhigyan 2023: "AI Renaissance"</h3>
+            <p class="timeline-description">
+              The renaissance of artificial intelligence took center stage with cutting-edge AI demonstrations, machine learning competitions, and deep learning workshops. Over 800 participants explored the transformative power of AI in various domains including healthcare, environmental monitoring, and smart infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2022</span>
+            <h3 class="timeline-title">Abhigyan 2022: "Digital Transformation"</h3>
+            <p class="timeline-description">
+              Embracing the digital revolution with focus on IoT, cloud computing, and digital twin technologies. The event featured industry partnerships with leading tech companies and provided hands-on experience with emerging digital technologies that are reshaping industries.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2021</span>
+            <h3 class="timeline-title">Abhigyan 2021: "Connected Future"</h3>
+            <p class="timeline-description">
+              A virtual symposium that brought together minds from across the globe during challenging times. Focused on 5G technologies, edge computing, and the future of connectivity. Despite being online, it achieved record participation with attendees from over 20 countries.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2020</span>
+            <h3 class="timeline-title">Abhigyan 2020: "Smart Systems"</h3>
+            <p class="timeline-description">
+              The inaugural edition that laid the foundation for all future events. Focused on smart city technologies, automation, and intelligent systems. Though smaller in scale, it established the tradition of excellence and innovation that continues to define Abhigyan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div class="page" id="contact">
+    <section class="section" style="padding-top: 120px;">
+      <h2 class="section-title">Contact Us</h2>
+      
+      <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 60px;">
+        <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); opacity: 1;">
+          Have questions about Abhigyan 25? Want to participate or collaborate? We'd love to hear from you!
+        </p>
+      </div>
+
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="institution">Institution/Organization</label>
+            <input type="text" id="institution" name="institution" class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-textarea" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">Send Message</button>
+          
+          <div class="success-message" id="successMessage">
+            Thank you for your message! We'll get back to you within 24 hours.
+          </div>
+        </form>
+      </div>
+
+      <div style="max-width: 600px; margin: 60px auto 0; text-align: center;">
+        <div class="events-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+          <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 30px;">
+            <h4 style="color: var(--primary); margin-bottom: 15px;">📧 Email</h4>
+            <p style="color: rgba(255, 255, 255, 0.9);">abhigyan2025@srmist.edu.in</p>
+          </div>
+          
+          <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 30px;">
+            <h4 style="color: var(--primary); margin-bottom: 15px;">📱 Phone</h4>
+            <p style="color: rgba(255, 255, 255, 0.9);">+91 98765 43210</p>
+          </div>
+          
+          <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 30px;">
+            <h4 style="color: var(--primary); margin-bottom: 15px;">📍 Location</h4>
+            <p style="color: rgba(255, 255, 255, 0.9);">SRMIST Vadapalani, Chennai</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="close-modal" id="close-modal">×</div>
+    <div class="modal-content">
+      <img id="modal-image" src="" alt="Event Poster">
+    </div>
+  </div>
+
+  <script>
+    // Initialize Three.js background
+    let scene, camera, renderer, particles;
+
+    function initThree() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById('three-bg').appendChild(renderer.domElement);
+
+      // Create particles
+      const geometry = new THREE.BufferGeometry();
+      const particlesCount = 1500;
+      const positions = new Float32Array(particlesCount * 3);
+      const colors = new Float32Array(particlesCount * 3);
+
+      for (let i = 0; i < particlesCount * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 50;
+        positions[i + 1] = (Math.random() - 0.5) * 50;
+        positions[i + 2] = (Math.random() - 0.5) * 50;
+
+        colors[i] = Math.random() * 0.5 + 0.5;
+        colors[i + 1] = 1;
+        colors[i + 2] = Math.random() * 0.5 + 0.5;
+      }
+
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const material = new THREE.PointsMaterial({
+        size: 0.02,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.7
+      });
+
+      particles = new THREE.Points(geometry, material);
+      scene.add(particles);
+
+      camera.position.z = 5;
+      animate();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      particles.rotation.x += 0.0005;
+      particles.rotation.y += 0.001;
+      
+      renderer.render(scene, camera);
+    }
+
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      setTimeout(() => {
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+      }, 100);
+    });
+
+    // Hover effects for cursor
+    document.querySelectorAll('a, button, .event-card, .team-card, .submit-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'scale(1.5)';
+        cursor.style.borderColor = '#00ff88';
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'scale(1)';
+        cursor.style.borderColor = '#00ff88';
+      });
+    });
+
+    // Page Navigation
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function showPage(pageId) {
+      pages.forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      document.getElementById(pageId).classList.add('active');
+      document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      setTimeout(() => {
+        initPageAnimations();
+      }, 100);
+    }
+
+    // Navigation event listeners
+    document.querySelectorAll('[data-page]').forEach(element => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = element.getAttribute('data-page');
+        showPage(pageId);
+      });
+    });
+
+    // Countdown functionality
+    function updateCountdown() {
+      const eventDate = new Date('2025-09-09T00:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-item"><span class="countdown-number">Event</span><span class="countdown-label">Started!</span></div>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Floating elements
+    function createFloatingElements() {
+      const container = document.getElementById('floating-elements');
+      if (!container) return;
+      
+      for (let i = 0; i < 30; i++) {
+        const element = document.createElement('div');
+        element.className = 'floating-element';
+        element.style.left = Math.random() * 100 + '%';
+        element.style.animationDelay = Math.random() * 20 + 's';
+        element.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        container.appendChild(element);
+      }
+    }
+
+    // GSAP Animations
+    function initPageAnimations() {
+      if (typeof gsap === 'undefined') return;
+      
+      gsap.registerPlugin(ScrollTrigger);
+
+      const activeEventCards = document.querySelectorAll('.page.active .event-card');
+      if (activeEventCards.length > 0) {
+        gsap.from(activeEventCards, {
+          duration: 0.8,
+          y: 50,
+          opacity: 0.7,
+          stagger: 0.1,
+          ease: 'power3.out'
+        });
+      }
+
+      const activeTeamCards = document.querySelectorAll('.page.active .team-card');
+      if (activeTeamCards.length > 0) {
+        gsap.from(activeTeamCards, {
+          duration: 0.8,
+          scale: 0.9,
+          opacity: 0.7,
+          stagger: 0.1,
+          ease: 'back.out(1.7)'
+        });
+      }
+
+      const timelineItems = document.querySelectorAll('.page.active .timeline-item');
+      if (timelineItems.length > 0) {
+        gsap.from(timelineItems, {
+          duration: 0.8,
+          x: -30,
+          opacity: 0.7,
+          stagger: 0.15,
+          ease: 'power3.out'
+        });
+      }
+
+      const contactForm = document.querySelector('.page.active .contact-form');
+      if (contactForm) {
+        gsap.from(contactForm, {
+          duration: 1,
+          y: 30,
+          opacity: 0.8,
+          ease: 'power3.out'
+        });
+      }
+    }
+
+    // Contact Form Functionality
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      const submitBtn = this.querySelector('.submit-btn');
+      const successMessage = document.getElementById('successMessage');
+      
+      submitBtn.textContent = 'Sending...';
+      submitBtn.style.opacity = '0.7';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.style.opacity = '1';
+        submitBtn.disabled = false;
+        
+        successMessage.classList.add('show');
+        this.reset();
+        
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+        
+        console.log('Form submitted:', data);
+      }, 2000);
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const closeModal = document.getElementById('close-modal');
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.event-card')) {
+        const card = e.target.closest('.event-card');
+        const imageSrc = card.dataset.image;
+        if (imageSrc) {
+          modalImage.src = imageSrc;
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalFunc();
+    });
+
+    function closeModalFunc() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModalFunc();
+      }
+      
+      const pageKeys = {
+        '1': 'home',
+        '2': 'events', 
+        '3': 'about',
+        '4': 'team',
+        '5': 'past-events',
+        '6': 'contact'
+      };
+      
+      if (pageKeys[e.key]) {
+        showPage(pageKeys[e.key]);
+      }
+    });
+
+    // Window resize handler
+    window.addEventListener('resize', () => {
+      if (camera && renderer) {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+    });
+
+    // Form validation
+    const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+    formInputs.forEach(input => {
+      input.addEventListener('blur', validateField);
+      input.addEventListener('input', clearValidation);
+    });
+
+    function validateField(e) {
+      const field = e.target;
+      const value = field.value.trim();
+      
+      field.style.borderColor = '';
+      
+      if (field.hasAttribute('required') && !value) {
+        field.style.borderColor = '#ff6b6b';
+        return false;
+      }
+      
+      if (field.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          field.style.borderColor = '#ff6b6b';
+          return false;
+        }
+      }
+      
+      field.style.borderColor = 'var(--primary)';
+      return true;
+    }
+
+    function clearValidation(e) {
+      const field = e.target;
+      field.style.borderColor = '';
+    }
+
+    // Page load sequence
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 2000);
+
+      initThree();
+      createFloatingElements();
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      setTimeout(() => {
+        initPageAnimations();
+      }, 2200);
+
+      document.body.classList.add('loaded');
+    });
+
+    // Touch gesture support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        const pages = ['home', 'events', 'about', 'team', 'past-events', 'contact'];
+        const currentPage = document.querySelector('.page.active').id;
+        const currentIndex = pages.indexOf(currentPage);
+        
+        if (diff > 0 && currentIndex < pages.length - 1) {
+          showPage(pages[currentIndex + 1]);
+        } else if (diff < 0 && currentIndex > 0) {
+          showPage(pages[currentIndex - 1]);
+        }
+      }
+    }
+
+    // Error handling
+    window.addEventListener('error', (e) => {
+      console.error('JavaScript error:', e.error);
+    });
+
+    console.log(`
+    🎯 Abhigyan 25 - Keyboard Shortcuts:
+    1 - Home
+    2 - Events  
+    3 - About
+    4 - Team
+    5 - Past Events
+    6 - Contact
+    ESC - Close Modal
+    Swipe left/right on mobile for navigation
+    `);
+  </script>
+</body>
+</html>

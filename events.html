@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events - Abhigyan 25</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Allura&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Leaves Background -->
+  <div class="leaves-background">
+    <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:0;">
+    <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:1;">
+    <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:2;">
+    <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:3;">
+    <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:4;">
+    <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:5;">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <svg viewBox="0 0 500 100" class="logo-svg">
+        <path d="M10,80 C50,10 150,10 200,80 S300,150 400,80" />
+      </svg>
+      <span class="dot"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="past-editions.html">Past Editions</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Events Header -->
+  <section class="page-header fade-in-down">
+    <h1>Abhigyan '25 Events</h1>
+    <p>Explore our exciting lineup of technical and cultural events</p>
+  </section>
+
+  <!-- Events Grid -->
+  <section class="events-section">
+    <div class="events-grid">
+      
+      <!-- Flextronics Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/POSTER_FLEXTRONICS.png" alt="Flextronics Event">
+        </div>
+        <div class="event-content">
+          <h3>Flextronics</h3>
+          <p class="event-description">
+            A cutting-edge electronics design competition where participants showcase their innovation in flexible electronics and circuit design. Teams will compete to create the most efficient and creative electronic solutions using modern components and sustainable practices.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 15, 2025</span>
+            <span class="event-time">⏰ 10:00 AM - 4:00 PM</span>
+            <span class="event-venue">📍 ECE Lab Block</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Flextronics')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Paper Presentation Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/PAPER_PRESENTATION_POSTER.jpg" alt="Paper Presentation">
+        </div>
+        <div class="event-content">
+          <h3>Paper Presentation</h3>
+          <p class="event-description">
+            Present your research and innovative ideas in this academic competition. Participants will showcase their technical papers on sustainable technology, AI, IoT, and emerging electronics trends. Expert judges will evaluate presentations based on innovation, technical depth, and presentation skills.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 16, 2025</span> <br>
+            <span class="event-time">⏰ 9:00 AM - 5:00 PM</span> <br>
+            <span class="event-venue">📍 Main Auditorium</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Paper Presentation')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Beat Odyssey Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/BEAT_ODASSY.png" alt="Beat Odyssey">
+        </div>
+        <div class="event-content">
+          <h3>Beat Odyssey</h3>
+          <p class="event-description">
+            A musical extravaganza combining technology and rhythm! Participants create electronic music using digital audio workstations, synthesizers, and innovative sound engineering techniques. Show off your creativity in music production and sound design.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 17, 2025</span> <br>
+            <span class="event-time">⏰ 2:00 PM - 8:00 PM</span> <br>
+            <span class="event-venue">📍 Cultural Hall</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Beat Odyssey')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Scrap Battle Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/SCRAP_BATTLE.png" alt="Scrap Battle">
+        </div>
+        <div class="event-content">
+          <h3>Scrap Battle</h3>
+          <p class="event-description">
+            The ultimate recycling and innovation challenge! Teams must create functional electronic devices using only recycled and scrap materials. This event promotes sustainability while testing your engineering creativity and problem-solving skills.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 18, 2025</span> <br>
+            <span class="event-time">⏰ 10:00 AM - 6:00 PM</span> <br>
+            <span class="event-venue">📍 Workshop Area</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Scrap Battle')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Pulse Plus Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/PULSE _PLUS.png" alt="Pulse Plus">
+        </div>
+        <div class="event-content">
+          <h3>Pulse Plus</h3>
+          <p class="event-description">
+            A biomedical electronics competition focusing on health monitoring systems. Participants design and develop innovative medical devices, health sensors, and monitoring systems that can improve healthcare delivery and patient outcomes.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 19, 2025</span><br>
+            <span class="event-time">⏰ 9:00 AM - 4:00 PM</span><br>
+            <span class="event-venue">📍 Biomedical Lab</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Pulse Plus')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Vision X Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/VISION_QUEST_POSTER.jpg" alt="Vision X">
+        </div>
+        <div class="event-content">
+          <h3>Vision X</h3>
+          <p class="event-description">
+            Computer vision and AI challenge where participants develop intelligent systems for image processing, object detection, and machine learning applications. Showcase your skills in artificial intelligence and computer vision technologies.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 20, 2025</span><br>
+            <span class="event-time">⏰ 10:00 AM - 5:00 PM</span><br>
+            <span class="event-venue">📍 AI Research Lab</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Vision X')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Green Circuit Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/POSTER_FLEXTRONICS.png" alt="Green Circuit">
+        </div>
+        <div class="event-content">
+          <h3>Green Circuit</h3>
+          <p class="event-description">
+            Electronic circuit design competition focused on energy-efficient and environmentally friendly circuit solutions. Participants will design circuits that minimize power consumption while maximizing performance for sustainable technology applications.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 21, 2025</span><br>
+            <span class="event-time">⏰ 9:00 AM - 5:00 PM</span><br>
+            <span class="event-venue">📍 ECE Design Lab</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Green Circuit')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Code Green Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/VISION_QUEST_POSTER.jpg" alt="Code Green">
+        </div>
+        <div class="event-content">
+          <h3>Code Green</h3>
+          <p class="event-description">
+            A programming hackathon dedicated to developing software solutions for environmental challenges. Teams will code applications addressing issues like climate monitoring, resource management, and sustainable living practices.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 22, 2025</span><br>
+            <span class="event-time">⏰ 8:00 AM - 8:00 PM</span><br>
+            <span class="event-venue">📍 CS Department</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Code Green')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Smart Grid Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/PULSE _PLUS.png" alt="Smart Grid">
+        </div>
+        <div class="event-content">
+          <h3>Smart Grid</h3>
+          <p class="event-description">
+            Design and simulate intelligent power grid systems incorporating renewable energy sources. Participants will create models of smart distribution networks that optimize energy flow while integrating solar, wind, and other sustainable power sources.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 23, 2025</span><br>
+            <span class="event-time">⏰ 1:00 PM - 6:00 PM</span><br>
+            <span class="event-venue">📍 Power Systems Lab</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Smart Grid')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Robo Wars Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/BEAT_ODASSY.png" alt="Robo Wars">
+        </div>
+        <div class="event-content">
+          <h3>Robo Wars</h3>
+          <p class="event-description">
+            Battle of autonomous robots designed to navigate obstacle courses and compete in challenges. Teams will build and program robots to demonstrate speed, agility, and artificial intelligence in a series of competitive tasks.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 24, 2025</span><br>
+            <span class="event-time">⏰ 11:00 AM - 7:00 PM</span><br>
+            <span class="event-venue">📍 Robotics Arena</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Robo Wars')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Eco Innovate Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/SCRAP_BATTLE.png" alt="Eco Innovate">
+        </div>
+        <div class="event-content">
+          <h3>Eco Innovate</h3>
+          <p class="event-description">
+            Showcase green technology solutions and eco-friendly innovations addressing real-world environmental challenges. Projects will be judged on creativity, feasibility, environmental impact, and technical implementation.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 25, 2025</span><br>
+            <span class="event-time">⏰ 9:30 AM - 4:30 PM</span><br>
+            <span class="event-venue">📍 Innovation Center</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Eco Innovate')">Register Now</button>
+        </div>
+      </div>
+
+      <!-- Cyber Quest Event -->
+      <div class="event-card fade-in-down">
+        <div class="event-image">
+          <img src="images/PAPER_PRESENTATION_POSTER.jpg" alt="Cyber Quest">
+        </div>
+        <div class="event-content">
+          <h3>Cyber Quest</h3>
+          <p class="event-description">
+            Test your cybersecurity skills in this ethical hacking competition featuring challenges in network security, cryptography, and digital forensics. Participants will work to identify and solve security vulnerabilities in simulated environments.
+          </p>
+          <div class="event-details">
+            <span class="event-date">📅 March 26, 2025</span><br>
+            <span class="event-time">⏰ 10:00 AM - 6:00 PM</span><br>
+            <span class="event-venue">📍 Cyber Security Lab</span>
+          </div>
+          <button class="register-btn" onclick="registerEvent('Cyber Quest')">Register Now</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Registration Modal -->
+  <div id="registration-modal" class="modal hidden">
+    <div class="modal-content registration-modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>Event Registration</h2>
+      <form id="registration-form">
+        <div class="form-group">
+          <label for="event-name">Event:</label>
+          <input type="text" id="event-name" name="event-name" readonly>
+        </div>
+        <div class="form-group">
+          <label for="participant-name">Full Name:</label>
+          <input type="text" id="participant-name" name="participant-name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="college">College/Institution:</label>
+          <input type="text" id="college" name="college" required>
+        </div>
+        <div class="form-group">
+          <label for="year">Year of Study:</label>
+          <select id="year" name="year" required>
+            <option value="">Select Year</option>
+            <option value="1st">1st Year</option>
+            <option value="2nd">2nd Year</option>
+            <option value="3rd">3rd Year</option>
+            <option value="4th">4th Year</option>
+            <option value="postgrad">Post Graduate</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Complete Registration</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="fade-in-down">
+    <p>© 2025 SRMIST Vadapalani – Department of ECE. All rights reserved.</p>
+  </footer>
+
+  <a href="#" id="back-to-top" title="Back to Top">↑</a>
+
+  <script src="events.js"></script>
+</body>
+</html>
