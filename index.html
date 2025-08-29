@@ -25,6 +25,34 @@
   
   <!-- EmailJS Library -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <!-- Image Loading Debug Script -->
+  <script>
+    // Image loading debug for deployment
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const images = document.querySelectorAll('img');
+        const brokenImages = Array.from(images).filter(img => !img.complete || img.naturalWidth === 0);
+        
+        if (brokenImages.length > 0) {
+          console.warn('🚨 Images not loading:', brokenImages.map(img => ({
+            src: img.src,
+            alt: img.alt,
+            naturalWidth: img.naturalWidth
+          })));
+        } else {
+          console.log('✅ All images loaded successfully');
+        }
+        
+        // Check images directory accessibility
+        fetch('./images/Abhigyan_25.gif', { method: 'HEAD' })
+          .then(response => {
+            console.log(response.ok ? '✅ Images directory accessible' : '❌ Images directory not accessible');
+          })
+          .catch(error => console.error('❌ Images directory error:', error));
+      }, 3000);
+    });
+  </script>
   <style>
     * {
       margin: 0;
@@ -2084,6 +2112,58 @@
       filter: brightness(1.2) contrast(1.2);
     }
     
+    /* Mobile Corner Logos - Fixed to viewport corners */
+    .mobile-nav-logo-left,
+    .mobile-nav-logo-right {
+      display: none;
+      position: fixed;
+      top: 25px;
+      width: 50px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      box-sizing: border-box;
+      z-index: 1002;
+      overflow: visible;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mobile-nav-logo-left {
+      left: 15px;
+    }
+    
+    .mobile-nav-logo-right {
+      right: 15px;
+    }
+    
+    .mobile-club-logo,
+    .mobile-srm-logo {
+      height: 150%;
+      width: 750%;
+      max-width: 200px;
+      object-fit: contain;
+      object-position: center;
+      border: none !important;
+      border-radius: 0 !important;
+      outline: none !important;
+      opacity: 1;
+      filter: brightness(1.3) contrast(1.3) saturate(1.1);
+      flex-shrink: 0;
+    }
+    
+    /* Normal sizing for SRM logo in mobile nav */
+    .mobile-srm-logo {
+      width: 750% !important;
+      height: 150% !important;
+      max-width: 42px !important;
+      position: relative;
+      transform-origin: center;
+    }
+    
     /* Responsive adjustments - PROPER SIZING FOR RIGHT LOGO */
     @media (max-width: 1024px) {
       .corner-logo {
@@ -2115,60 +2195,60 @@
     }
     
     @media (max-width: 768px) {
-      .corner-logo {
-        width: 80px;
-        height: 80px;
-        border-radius: 16px;
+      /* Hide corner logos on mobile */
+      .corner-logos {
+        display: none !important;
       }
       
-      .corner-logo.top-right {
-        width: 100px !important;
-        height: 100px !important;
-        border-radius: 20px !important;
-        padding: 5px !important;
-        overflow: visible !important;
+      /* Show mobile nav logos */
+      .mobile-nav-logo-left,
+      .mobile-nav-logo-right {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
       }
       
-      .corner-logo.top-left,
-      .corner-logo.top-right {
-        top: 12px;
+      .navbar {
+        position: fixed;
+        justify-content: space-between;
+        align-items: center;
       }
       
-      .corner-logo.top-left {
-        left: 12px;
+      .nav-links {
+        display: flex;
+        align-items: center;
       }
       
-      .corner-logo.top-right {
-        right: 12px;
+      /* Ensure no duplicate logos in nav-links */
+      .nav-links img,
+      .nav-links .corner-logo,
+      .nav-links .corner-logo-img {
+        display: none !important;
       }
     }
     
     @media (max-width: 480px) {
-      .corner-logo {
-        width: 70px;
-        height: 70px;
-        border-radius: 14px;
+      .mobile-nav-logo-left,
+      .mobile-nav-logo-right {
+        top: 15px;
+        width: 45px;
+        height: 35px;
+        border-radius: 10px;
+        padding: 3px;
       }
       
-      .corner-logo.top-right {
-        width: 90px !important;
-        height: 90px !important;
-        border-radius: 18px !important;
-        padding: 4px !important;
-        overflow: visible !important;
-      }
-      
-      .corner-logo.top-left,
-      .corner-logo.top-right {
-        top: 10px;
-      }
-      
-      .corner-logo.top-left {
+      .mobile-nav-logo-left {
         left: 10px;
       }
       
-      .corner-logo.top-right {
+      .mobile-nav-logo-right {
         right: 10px;
+      }
+      
+      .mobile-club-logo,
+      .mobile-srm-logo {
+        max-width: 38px;
+        height: 85%;
       }
     }
   </style>
@@ -2184,7 +2264,7 @@
   <!-- Loader -->
   <div class="loader" id="loader">
     <div class="loader-content">
-      <img src="images/Abhigyan_25.gif" alt="Abhigyan 25 Loading" class="loader-gif">
+      <img src="images/Abhigyan_25.gif" alt="Abhigyan 25 Loading" class="loader-gif" loading="eager" onerror="console.warn('Loader GIF failed to load');">
       <div class="loader-text">Loading Experience...</div>
     </div>
   </div>
@@ -2223,6 +2303,14 @@
     </div>
   </nav>
 
+  <!-- Mobile Nav Logos - Positioned as overlays -->
+  <div class="mobile-nav-logo-left">
+    <img src="images/club_logo.png" alt="ECE Department Logo" class="mobile-club-logo" loading="eager" onerror="console.warn('Mobile ECE logo failed to load');">
+  </div>
+  <div class="mobile-nav-logo-right">
+    <img src="images/srm_logo.png" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager" onerror="console.warn('Mobile SRM logo failed to load');">
+  </div>
+
 
   <!-- HOME PAGE -->
   <div class="page active" id="home">
@@ -2231,10 +2319,10 @@
       <!-- Corner Logos -->
       <div class="corner-logos">
         <div class="corner-logo top-left">
-          <img src="images/club_logo.png" alt="ECE Department Logo" class="corner-logo-img">
+          <img src="images/club_logo.png" alt="ECE Department Logo" class="corner-logo-img" loading="eager" onerror="console.warn('ECE logo failed to load');">
         </div>
         <div class="corner-logo top-right">
-          <img src="images/srm_logo.png" alt="SRM Vadapalani Logo" class="corner-logo-img">
+          <img src="images/srm_logo.png" alt="SRM Vadapalani Logo" class="corner-logo-img" loading="eager" onerror="console.warn('SRM logo failed to load');">
         </div>
       </div>
       
@@ -2248,7 +2336,7 @@ Department of Electronics and Communication Engineering, SRMIST VDP Campus</p>
       <div class="hero-year">2025</div>
       
       <div style="margin-top: 5px; text-align: center;">
-        <img src="images/unstop.png" alt="Untop Logo" style="max-width: 120px; height: auto; margin-bottom: 8px; opacity: 0.9; border-radius: 15px;">
+        <img src="images/unstop.png" alt="Unstop Logo" style="max-width: 120px; height: auto; margin-bottom: 8px; opacity: 0.9; border-radius: 15px;" loading="lazy" onerror="console.warn('Unstop logo failed to load');">
       </div>
       
       <div style="margin-top: 5px;">
@@ -2281,7 +2369,7 @@ Department of Electronics and Communication Engineering, SRMIST VDP Campus</p>
 
     <section class="abhigyan-poster">
       <div class="poster-container">
-      <img src="images/Abhigyan '25 poster.jpg" alt="Abhigyan Poster" class="abhigyan-poster-img" />
+      <img src="images/Abhigyan '25 poster.jpg" alt="Abhigyan Poster" class="abhigyan-poster-img" loading="lazy" onerror="console.warn('Main poster failed to load');" />
       </div>
     </section>
     <style>

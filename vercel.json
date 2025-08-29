@@ -3,13 +3,26 @@
   "name": "abhigyan-25",
   "builds": [
     {
-      "src": "index.html",
+      "src": "**/*",
       "use": "@vercel/static"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(html|js|css|png|jpg|jpeg|gif|webp|svg|ico))",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -22,26 +35,13 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/(?!images/.*)",
       "destination": "/index.html"
     }
   ]
