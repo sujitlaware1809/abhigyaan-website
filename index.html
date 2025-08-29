@@ -1891,17 +1891,40 @@
 
       .navbar {
         top: 10px;
-        padding: 10px 20px;
+        padding: 12px 20px;
         border-radius: 25px;
+        width: auto;
+        max-width: 85vw;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       .nav-links {
         gap: 15px;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
       }
 
       .nav-links a {
-        font-size: 12px;
+        font-size: 15px;
         cursor: pointer;
+        font-weight: 600;
+        padding: 6px 10px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-links a:hover,
+      .nav-links a.active {
+        background: rgba(55, 253, 18, 0.2);
+        color: var(--primary);
+        transform: scale(1.05);
+        border-color: rgba(55, 253, 18, 0.3);
       }
 
       .hero-year {
@@ -2112,47 +2135,56 @@
       filter: brightness(1.2) contrast(1.2);
     }
     
-    /* Mobile Corner Logos - Fixed to viewport corners */
+    /* Mobile Corner Logos - Positioned below navigation menu */
     .mobile-nav-logo-left,
     .mobile-nav-logo-right {
       display: none;
       position: fixed;
-      top: 25px;
-      width: 50px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.05);
+      top: 65px;
+      width: 55px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
       padding: 4px;
       box-sizing: border-box;
       z-index: 1002;
       overflow: visible;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease;
     }
     
     .mobile-nav-logo-left {
-      left: 15px;
+      left: 8px;
     }
     
     .mobile-nav-logo-right {
-      right: 15px;
+      right: 8px;
+    }
+    
+    .mobile-nav-logo-left:hover,
+    .mobile-nav-logo-right:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.05);
+      border-color: rgba(55, 253, 18, 0.3);
     }
     
     .mobile-club-logo,
     .mobile-srm-logo {
-      height: 150%;
-      width: 750%;
-      max-width: 250px;
+      height: 90%;
+      width: auto;
+      max-width: 45px;
       object-fit: contain;
       object-position: center;
       border: none !important;
       border-radius: 0 !important;
       outline: none !important;
       opacity: 1;
-      filter: brightness(1.3) contrast(1.3) saturate(1.1);
+      filter: brightness(1.2) contrast(1.2) saturate(1.1);
       flex-shrink: 0;
+      transition: all 0.3s ease;
     }
     
     /* Normal sizing for SRM logo in mobile nav */
@@ -2230,25 +2262,41 @@
     @media (max-width: 480px) {
       .mobile-nav-logo-left,
       .mobile-nav-logo-right {
-        top: 15px;
-        width: 45px;
-        height: 35px;
-        border-radius: 10px;
+        top: 75px;
+        width: 50px;
+        height: 40px;
+        border-radius: 12px;
         padding: 3px;
       }
       
       .mobile-nav-logo-left {
-        left: 10px;
+        left: 6px;
       }
       
       .mobile-nav-logo-right {
-        right: 10px;
+        right: 6px;
       }
       
       .mobile-club-logo,
       .mobile-srm-logo {
-        max-width: 38px;
+        max-width: 40px;
         height: 85%;
+      }
+      
+      .navbar {
+        padding: 8px 12px;
+        max-width: 90vw;
+        border-radius: 20px;
+      }
+      
+      .nav-links {
+        gap: 8px;
+      }
+      
+      .nav-links a {
+        font-size: 13px;
+        padding: 5px 8px;
+        border-radius: 15px;
       }
     }
   </style>
