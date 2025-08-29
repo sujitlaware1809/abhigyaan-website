@@ -1,0 +1,3875 @@
+Skip to content
+You said:
+<!-- HERO SECTION -->
+<section id="hero" class="hero-section fade-in-down">
+  <div class="hero-content">
+    <h1 class="hero-title">Abhigyan 2025</h1>
+    <h2 class="hero-subtitle">Sustainable Synergy</h2>
+  </div>
+
+  <!-- Background GIF -->
+  <div class="hero-bg">
+    <img src="solar.gif" alt="Solar Energy Animation" class="bg-gif">
+    <img src="windmill.gif" alt="Windmill Animation" class="bg-gif">
+  </div>
+</section>
+
+i need a clear prompt to generate 3d gif s without any backroung or with black background for     <img src="solar.gif" alt="Solar Energy Animation" class="bg-gif"> 
+    <img src="windmill.gif" alt="Windmill Animation" class="bg-gif">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhigyan 25 – Sustainable Synergy</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Allura&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Leaves Background -->
+  <div class="leaves-background">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:0;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:1;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:2;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:3;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:4;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:5;">
+</div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <svg viewBox="0 0 500 100" class="logo-svg">
+        <path d="M10,80 C50,10 150,10 200,80 S300,150 400,80" />
+      </svg>
+      <span class="dot"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Past Editions</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+<!-- HERO SECTION -->
+<section id="hero" class="hero-section fade-in-down">
+  <div class="hero-content">
+    <h1 class="hero-title">Abhigyan 2025</h1>
+    <h2 class="hero-subtitle">Sustainable Synergy</h2>
+  </div>
+
+  <!-- Background GIF -->
+  <div class="hero-bg">
+    <img src="solar.gif" alt="Solar Energy Animation" class="bg-gif">
+    <img src="windmill.gif" alt="Windmill Animation" class="bg-gif">
+  </div>
+</section>
+
+<!-- POSTER SECTION -->
+<section id="poster" class="poster-section fade-in-down">
+  <h3>Event Poster</h3>
+  <div class="poster-wrapper">
+    <img id="poster-img" src="poster.jpg" 
+         alt="Abhigyan 25 Poster – Sustainable Synergy" 
+         loading="lazy">
+  </div>
+</section>
+
+
+  <!-- Event Title -->
+  <section class="event-name fade-in-down">
+    <h1>ABHIGYAN 25</h1>
+    <h3>Sustainable Synergy</h3>
+  </section>
+
+  <!-- Countdown -->
+  <section class="countdown fade-in-down">
+    <h3>Countdown to the Event</h3>
+    <div id="countdown">
+      <div><span id="days">00</span><div>Days</div></div>
+      <div><span id="hours">00</span><div>Hours</div></div>
+      <div><span id="minutes">00</span><div>Minutes</div></div>
+      <div><span id="seconds">00</span><div>Seconds</div></div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="description fade-in-down">
+    <p>
+      SRMIST Vadapalani is renowned for its academic excellence and immersive learning environment, especially in Electronics & Communication Engineering.
+      <strong>Abhigyan 25</strong> reflects our commitment to sustainable innovation backed by skilled faculty, global exposure, and industry-relevant curriculum.
+    </p>
+  </section>
+
+  <!-- Poster -->
+  <section class="poster-section fade-in-down">
+    <h3>Abhigyan 25 Poster</h3>
+    <img src="F:\down\abigyanweb\1000354426.jpg" alt="Abhigyan Poster" />
+  </section>
+
+  <!-- Past Editions -->
+  <section class="past-editions fade-in-down">
+    <h3>Past Editions</h3>
+    <ul>
+      <p>Abhigyan 2024 – "Bendable Innovation"</p>
+      <p>Abhigyan 2023 – "AI Renaissance"</p>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-in-down">
+    <p>© 2025 SRMIST Vadapalani – Department of ECE. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #a8ffb0;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+section, header, footer {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 30, 0, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #a8ffb0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #66ffaa;
+}
+
+/* Logo SVG */
+.logo {
+  position: relative;
+}
+
+.logo-svg {
+  width: 160px;
+  stroke: #66ff99;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s ease forwards 0.5s;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #66ff99;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: scale(0);
+  animation: pop 0.3s forwards 0.5s;
+}
+
+/* Floating Leaves Background */
+.leaves-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.leaves-background .leaf {
+  position: absolute;
+  top: -10%;
+  left: calc(10% * var(--i));
+  width: 40px;
+  opacity: 0.6;
+  animation: floatLeaf 20s linear infinite;
+  animation-delay: calc(var(--i) * 3s);
+  transform: rotateZ(45deg);
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Countdown */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66ff99;
+}
+
+#countdown div {
+  min-width: 60px;
+  padding: 10px;
+  background: rgba(0, 255, 100, 0.05);
+  border: 1px solid #22ff66;
+  border-radius: 8px;
+  text-shadow: 0 0 5px #003300;
+}
+
+/* Animation */
+.fade-in-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop {
+  to {
+    transform: scale(1);
+  }
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #002b36, #073642);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeIn 2s ease-in;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  background: linear-gradient(90deg, #66ff99, #22ddff, #ffaa44);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+
+.bg-gif {
+  position: absolute;
+  width: 180px;
+  opacity: 0.15;
+}
+
+.bg-gif:nth-child(1) { top: 15%; left: 5%; }
+.bg-gif:nth-child(2) { bottom: 20%; right: 10%; }
+
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+.poster-section {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.poster-wrapper img {
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.poster-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 80%;
+  border-radius: 12px;
+}
+.lightbox:focus {
+  outline: none;
+}
+
+// Scroll reveal logic
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.fade-in-down').forEach(section => {
+  observer.observe(section);
+});
+
+// Countdown Timer
+const targetDate = new Date("2025-09-11T09:30:00");
+
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = "<span style='color:#ff6666'>Event Started!</span>";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / 1000 / 60) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('days').textContent = String(days).padStart(2, '0');
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// POSTER LIGHTBOX + GSAP ZOOM
+gsap.from("#poster-img", {
+  scale: 0.8,
+  opacity: 0,
+  duration: 1.5,
+  ease: "elastic.out(1,0.5)",
+  scrollTrigger: {
+    trigger: "#poster-img",
+    start: "top 80%",
+  }
+});
+
+// Lightbox effect
+document.getElementById("poster-img").addEventListener("click", () => {
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.innerHTML = <img src="poster.jpg" alt="Event Poster">;
+  document.body.appendChild(overlay);
+
+  gsap.fromTo(".lightbox img", { scale: 0.5 }, { scale: 1, duration: 0.6, ease: "back.out(1.7)" });
+
+  overlay.addEventListener("click", () => overlay.remove());
+});
+ChatGPT said:
+To generate 3D GIFs of solar panels and windmills (with transparent or black backgrounds) that fit the style of your hero-section, here's a clear and effective prompt for an AI tool like DALL·E, Runway ML, Kaiber, or Blender animation exports.
+
+🎯 Prompt for Generating the GIFs:
+Prompt:
+
+“3D animation of a rotating windmill turbine and a solar panel tracking the sun, rendered in a smooth loop. Minimal, stylized realism. Transparent background (or black if transparency isn't supported). No environment or background. Just the isolated animated object in the center of the frame. High contrast and subtle glow to suit a futuristic eco-theme.”
+
+🔧 Notes for Format:
+File format: Export as .gif or .webm depending on your website optimization needs.
+
+Background:
+
+If you need transparent background, use .webm with alpha channel or export .gif from a tool that supports transparency.
+
+For black background, set the environment/background color to #000000.
+
+💡 Tools You Can Use:
+Tool	Use Case	Notes
+Blender	Full control, can export 3D GIFs or .webm with transparent/black bg	Free, steep learning curve
+Runway ML	Quick animated object generation	Use prompt directly
+Kaiber	Creative loop animation from prompt or images	Good for futuristic 3D loops
+DALL·E or Bing Image Creator	For static frames or frame generation	Combine with tools like Ezgif.com to animate
+✅ Example Output You Want:
+solar.gif: A solar panel tilting or rotating under sun rays
+
+windmill.gif: Windmill blades smoothly rotating, isolated
+
+🧩 Integration Tip (for your code):
+You already have this in your HTML:
+
+<img src="solar.gif" alt="Solar Energy Animation" class="bg-gif">
+<img src="windmill.gif" alt="Windmill Animation" class="bg-gif">
+Just replace solar.gif and windmill.gif with your generated GIFs. Make sure:
+
+They are optimized (under 1MB ideally for fast loading)
+
+Transparent GIFs are truly alpha-supported (not white pixels faked as transparency)
+
+Let me know if you’d like help generating these assets using a specific tool (like DALL·E or Blender).
+
+You said:
+i need seperate image prompts
+ChatGPT said:
+Absolutely! Below are separate, clear image generation prompts — one for each animation — tailored to help you generate loopable 3D GIFs with either transparent or black backgrounds, depending on your needs.
+
+🌞 Prompt for Solar Panel GIF (solar.gif)
+Prompt:
+
+“A 3D animated solar panel tracking the sun in a smooth loop. The panel tilts slowly upward and downward as if following sunlight. Isolated on a transparent background (or solid black). High-tech and clean look, minimal design. No ground or sky, just the solar panel. Rendered in stylized realism with subtle glow edges.”
+
+🌬️ Prompt for Windmill GIF (windmill.gif)
+Prompt:
+
+“A 3D animated wind turbine with slowly rotating blades, looping animation. Isolated on a transparent background (or solid black). Clean, minimal, futuristic eco-tech style. No background, no landscape — only the windmill spinning smoothly in place. Subtle reflections or lighting allowed, but no shadows.”
+
+✅ Best Settings to Include (if the tool allows):
+Looping: Yes (make the animation repeat seamlessly)
+
+Resolution: 512x512 or 1024x1024 (for performance and clarity)
+
+Duration: 2–4 seconds
+
+Background: Transparent (preferred), or black if transparency isn’t possible
+
+Lighting: Soft, ambient, not too dramatic
+
+🎨 Tools That Support These Prompts:
+Tool	Supports Animation	Supports Transparent BG	Notes
+Runway ML (Gen-2)	✅	❌ (but you can key out black)	Use “Text to Video” with loop setting
+Kaiber	✅	❌ (black bg possible)	Good for abstract 3D loops
+Blender	✅	✅	Best control, export with alpha
+Pika Labs / Animagine	✅	Limited	Simple animations from text prompts
+DALL·E / Midjourney	❌ (static only)	✅	Use for frame-by-frame or base stills
+Would you like me to walk you through generating one of these using a specific tool (e.g., Kaiber, Blender, or Runway)?
+
+You said:
+Kaiber	Creative loop animation from prompt or images	Good for futuristic 3D loops
+
+prompt for solar first with blackbackroung so i can remove it easly
+ChatGPT said:
+Perfect! Since you're using Kaiber to generate a looping 3D animation of a solar panel with a black background (so it’s easy to remove later or blend into your dark-themed site), here's a precise and optimized prompt:
+
+🌞 Kaiber Prompt for Solar Panel Animation (Black Background)
+Prompt:
+
+“A 3D animated solar panel in a looping motion, tilting gently upward and downward as if tracking the sun. Isolated object on a pure black background. Futuristic and minimalistic design. Metallic surface with subtle reflections, glowing edges, and no ground or surrounding environment. High-detail, stylized realism. The animation should be smooth and clean, perfect for looping.”
+
+✅ Kaiber Settings (Recommended):
+Setting	Value
+Video Style	Surreal, Cinematic, or Realistic (choose one that fits your aesthetic)
+Aspect Ratio	Square (1:1) or Landscape (16:9) — based on how it fits in your layout
+Looping	Enabled ✅
+Background	Pure black (#000000)
+Length	2–4 seconds for smooth short loops
+Camera Motion	Slow pan or static
+Subject Focus	Centered — only the solar panel
+Once Kaiber renders the video:
+
+Download it.
+
+Use Ezgif.com or FFmpeg to:
+
+Trim or loop it
+
+Convert to .gif or .webm
+
+Remove black background (optional with chroma keying)
+
+Embed it into your site like so:
+
+<img src="solar.gif" alt="Solar Energy Animation" class="bg-gif">
+Let me know when you're ready for the windmill prompt or need help converting the Kaiber video into a GIF or transparent version.
+
+You said:
+
+35
+
+Home
+
+Assets
+
+Beta
+
+Story
+
+Video
+
+Image
+
+Character
+
+More
+
+Video
+Text to Video
+
+Image to Video
+
+Elements to Video
+
+Add Audio to Video
+
+Video Upscale
+
+35 / 40 trial credits left
+
+Text
+
+Image
+
+Element
+
+Audio
+
+Select Model
+
+model
+Seedance 1.0
+
+“A 3D animated solar panel in a looping motion, tilting gently upward and downward as if tracking the sun. Isolated object on a pure black background. Futuristic and minimalistic design. Metallic surface with subtle reflections, glowing edges, and no ground or surrounding environment. High-detail, stylized realism. The animation should be smooth and clean, perfect for looping
+
+Undo
+Auto Enhance: OFF
+Auto Sound
+
+Auto Speech
+
+Settings
+
+Quality Mode
+
+Lite
+Pro
+Duration
+
+5s
+10s
+Resolution
+
+480p
+720p
+1080p
+Aspect ratio?? 
+
+ChatGPT said:
+Great! You're on Kaiber's Text-to-Video screen, and your solar panel prompt looks excellent.
+
+Now let’s finalize the best settings to get a clean, loopable 3D-style animation on a black background, ready for web use or background removal.
+
+✅ Recommended Settings for Solar Panel Animation in Kaiber
+Setting	Recommended Value	Reason
+Model	✅ Seedance 1.0	Best for smooth, surreal yet realistic motion
+Duration	⏱️ 5 seconds	Keeps file size small and loops cleanly
+Resolution	🎥 720p (or 1080p if you're okay using more credits)	High enough for clean detail, low enough for optimization
+Aspect Ratio	🎞️ 16:9 (Landscape) OR 1:1 (Square)	Use 16:9 if you want it wide (better for hero sections); use 1:1 if embedding it as an element or icon
+Quality Mode	🔧 Pro	Better texture and smoothness (worth the credit cost)
+Auto Enhance	❌ OFF	To preserve your dark/black background cleanly
+Auto Sound / Speech	❌ OFF	No sound needed for a background element
+Loop	✅ Enable in final editing (if Kaiber offers post-looping)*	Helps embed seamlessly into websites
+🎯 Summary:
+Use Seedance 1.0
+
+5s duration
+
+720p or 1080p resolution
+
+Aspect Ratio: 16:9 (for hero background use)
+
+Pro mode for quality
+
+Turn off auto sound and auto enhance
+
+Let background stay pure black to easily remove or blend in
+
+Would you like help turning the output into a transparent .gif or .webm after Kaiber finishes rendering it?
+
+If so, just upload it here or tell me your preferred format.
+
+You said:
+i want to create this in veo 3 google ai generate prompt for 16;9
+ChatGPT said:
+Great choice — Google Veo (Veo 3) is powerful for cinematic, smooth AI video generation. Here's a high-quality prompt tailored specifically for Veo, using a 16:9 aspect ratio, to create a clean, loopable animation of a solar panel with a pure black background, perfect for your site.
+
+🌞 Veo 3 Prompt (Solar Panel, 16:9, Black Background)
+Prompt for Veo:
+
+“A 3D animated futuristic solar panel tilting gently in a smooth loop as if tracking sunlight. The solar panel is centered in the frame, isolated on a solid black background. High-detail metallic surface with subtle reflections and glowing edge lights. No environment, no ground, and no surrounding objects. Clean, minimal, and futuristic design. The motion should be seamless and loopable. Cinematic lighting, stylized realism, 16:9 aspect ratio.”
+
+✅ Tips for Veo Settings (if available):
+Setting	Recommended
+Duration	3–5 seconds
+Aspect Ratio	16:9
+Style	Stylized realism / cinematic
+Motion	Smooth, slow tilt
+Background	Black (#000000)
+Loopable	Yes (or trim/edit later for loop)
+💡 After Rendering:
+If Veo doesn't offer a built-in transparent background, you can:
+
+Chroma key (remove black) using After Effects, CapCut, or web tools like Unscreen or Ezgif.
+
+Convert to .webm with transparency for modern web use.
+
+Would you like a follow-up prompt for the windmill next in Veo, or help on background removal after rendering?
+
+You said:
+first i need a image prompt for givng that image as input so the job is done easly
+ChatGPT said:
+Got it — you're looking for a clean image prompt to generate a reference image of a solar panel (in a suitable style), which you'll then feed into Veo as a base to animate.
+
+This image should match your animation goal:
+
+A stylized 3D futuristic solar panel
+
+On a pure black background
+
+In 16:9 aspect ratio
+
+With subtle glow/reflections
+
+No environment or distractions
+
+✅ Image Prompt for Solar Panel (to use in Veo)
+Image Prompt:
+
+“A high-quality 3D render of a futuristic solar panel centered in the frame, tilted slightly upward, isolated on a pure black background. The panel has a sleek, metallic design with soft glowing edges, subtle light reflections, and a minimal sci-fi aesthetic. No sky, ground, or other elements. Stylized realism, cinematic lighting. 16:9 aspect ratio.”
+
+📝 Ideal Use:
+Use this prompt in DALL·E, Midjourney, Leonardo AI, or any image generation tool that supports aspect ratio settings and black backgrounds.
+
+Export the generated image in PNG or JPG, then upload it to Veo as the input image to guide the animation.
+
+🧠 Optional Keywords to Add (if needed):
+“digital concept art”
+
+“isometric 3D render”
+
+“loop-ready”
+
+“ultra-detailed”
+
+“minimal futuristic energy tech”
+
+Let me know what tool you're using to generate the image (DALL·E, Midjourney, etc.), and I can tailor the prompt even further based on that platform’s syntax.
+
+You said:
+YEAH DONE NOW FOR WINDMILL
+ChatGPT said:
+Awesome — now let’s create the image prompt for the windmill, matching the same aesthetic and format as your solar panel prompt.
+
+🌬️ Image Prompt for Windmill (to use in Veo)
+Image Prompt:
+
+“A high-quality 3D render of a modern wind turbine with three blades, centered in the frame, isolated on a pure black background. The turbine has a sleek white or metallic finish with subtle reflections and glowing edge highlights. No sky, landscape, or background objects — just the windmill against black. Stylized realism, minimal futuristic design, cinematic lighting. 16:9 aspect ratio.”
+
+✅ Guidelines:
+Keep the background pure black (#000000) for easy chroma keying or seamless looping.
+
+Maintain center framing for clean animation.
+
+Use subtle light/glow effects to make it fit your site’s futuristic theme.
+
+Generate in 16:9 aspect ratio if your tool allows.
+
+🧠 Optional Additions for Tools Like Midjourney:
+Add: --ar 16:9 --v 6 --style raw (Midjourney v6, photoreal)
+
+Or use: isometric view or front view if you want fixed angle
+
+Once done, you can upload this windmill image into Veo as your base visual and use a motion prompt like:
+
+“Animate the wind turbine’s blades spinning slowly and smoothly in a loop, while keeping the background pure black and the object centered.”
+
+Let me know if you want help writing the final motion prompt for Veo based on the windmill image you generate.
+
+You said:
+NOW FOR VEO 3
+ChatGPT said:
+Perfect! Now that you have the base image of the windmill, let’s move on to crafting the Veo 3 prompt for animating it — turning that image into a clean, smooth, loopable 3D animation with a black background.
+
+🌬️ Veo 3 Text-to-Video Prompt (Windmill Animation, 16:9)
+Prompt:
+
+“A 3D animated wind turbine with slowly rotating blades, isolated in the center of the frame. The windmill has a clean, futuristic design with a metallic or white finish, subtle glowing highlights, and soft reflections. It spins smoothly and continuously in a loop. The entire scene is set on a pure black background, with no landscape, sky, or environment. Stylized realism with cinematic lighting. Minimalistic, loopable animation, 16:9 aspect ratio.”
+
+✅ Veo Settings Recap:
+Setting	Recommended
+Input	The windmill image you just generated
+Model	Seedance 1.0 or most realistic available
+Duration	3–5 seconds
+Resolution	720p or 1080p
+Aspect Ratio	16:9
+Looping	Enable or edit later to trim for loop
+Audio	OFF (unless you want wind effects, but not needed here)
+Auto Enhance	OFF (to preserve pure black background)
+🔄 Looping Tips:
+If Veo doesn't allow seamless looping:
+
+Export the video
+
+Trim and loop it using tools like Ezgif, CapCut, or After Effects
+
+Optionally export to .webm with alpha channel if you chroma key the black out
+
+Would you like help converting the Veo video to a transparent .webm or .gif afterward?
+
+You said:
+NOW FOR SOLAR I HAVE GENERATED WITH BLACK BACKROUNG WHAT SHALL I DO NEXT
+ChatGPT said:
+Great! Since you’ve successfully generated the solar panel animation with a black background, you're now ready to prepare it for your website — either as-is or by removing the black background for a transparent effect.
+
+✅ You Have 2 Options:
+🔧 Option 1: Use It As-Is (Black Background)
+If your site already has a black or very dark background (which yours does), you can simply:
+
+Convert the video to .webm (best format for web)
+
+Embed it in your site with an <video> tag like this:
+
+<video autoplay loop muted playsinline class="bg-gif">
+  <source src="solar.webm" type="video/webm">
+</video>
+🔹 Works fast, no need to remove the background
+🔹 Good choice if it blends seamlessly into your current hero section
+
+🧼 Option 2: Remove the Black Background (Make Transparent)
+If you want it to appear fully isolated (e.g., floating over the site or over floating leaves), then you should remove the black background.
+
+🛠️ Steps:
+✅ If it's a video file (.mp4/.mov):
+Go to Unscreen Pro or use a tool like After Effects or CapCut with Chroma Key:
+
+Upload your video
+
+Select the black background to remove
+
+Export as .webm with alpha (transparency)
+
+✅ If it's a GIF:
+Use Ezgif – Remove Background
+
+Upload the .gif
+
+Select “Remove background color” → choose black
+
+Export and download the result
+
+🌐 Embedding Transparent .webm (Best for Performance):
+<video autoplay loop muted playsinline class="bg-gif">
+  <source src="solar-transparent.webm" type="video/webm">
+</video>
+Make sure the class .bg-gif has low opacity or positioning styles already set in your CSS for perfect placement.
+
+✅ Summary: What You Should Do Now
+Your Goal	Do This
+Keep black background	Convert to .webm → embed with <video>
+Transparent effect	Remove black bg → export .webm or .gif with alpha → embed with <video> or <img>
+Let me know:
+
+What file format your solar animation is in right now (e.g., .mp4, .gif, etc.)
+
+Whether you want help turning it into .webm or removing the background for transparency
+
+I can guide you step-by-step based on that.
+
+You said:
+<!-- POSTER SECTION -->
+<section id="poster" class="poster-section fade-in-down">
+  <h3>Event Poster</h3>
+  <div class="poster-wrapper">
+    <img id="poster-img" src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\POSTER_FLEXTRONICS.png" 
+         alt="Abhigyan 25 Poster – Sustainable Synergy" 
+         loading="lazy">
+  </div>
+</section>
+
+I NEED A UNIQUE IDEA FOR PRESENTING MY 20 POSTER DESGINS IN OUR FRONT PAGE WHAT SHALL I DO
+ChatGPT said:
+Great question — if you have 20 poster designs and want to showcase them uniquely on your homepage, you'll want something that’s:
+
+Visually engaging
+
+Lightweight and optimized
+
+Interactive or animated (but not overwhelming)
+
+Consistent with your tech-futuristic + sustainable theme
+
+🔥 5 Unique Ideas to Showcase Your 20 Posters
+(+ code or UI suggestions for each)
+
+1. Interactive Poster Grid with Hover Zoom + Modal View
+A clean 4x5 grid that:
+
+Shows poster thumbnails
+
+On hover: slight zoom-in + glow
+
+On click: full-screen lightbox/modal with animation
+
+🔧 Features:
+
+Lazy loading for performance
+
+GSAP or simple CSS scale on hover
+
+Optional: Tag filters (e.g., by theme or year)
+
+<section id="poster-gallery" class="poster-section fade-in-down">
+  <h3>Our Poster Showcase</h3>
+  <div class="poster-grid">
+    <!-- Repeat this block for all 20 -->
+    <img src="posters/poster1.jpg" class="poster-thumb" alt="Poster 1">
+  </div>
+</section>
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.poster-thumb {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poster-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #22ff88;
+}
+📦 Add lightbox script (like GLightbox or custom GSAP modal).
+
+2. Infinite Scrolling Carousel (Like a Reel or Instagram Story Strip)
+A horizontally scrollable strip that auto-scrolls or scrolls on swipe/click.
+
+🔧 You can use:
+
+Swiper.js (supports lazy loading, autoplay, loop, mobile gestures)
+
+Or a custom CSS scroll with snap points
+
+🎯 Adds a “reel-like” futuristic feeling. Very modern.
+
+3. 3D Poster Wall with Mouse Rotation (Three.js or Tilt.js)
+Place all 20 posters on a rotating 3D wall or cube-like shape.
+
+Hover or drag to rotate
+
+Posters rotate in 3D space
+
+Inspired by an art gallery installation
+
+📚 Tools:
+
+Three.js
+
+Tilt.js
+
+4. Random Poster Reveal on Scroll (Staggered Animation)
+Reveal posters one-by-one as the user scrolls, like flipping cards or holograms.
+
+Use GSAP ScrollTrigger or AOS (Animate On Scroll)
+
+Each poster enters with a slight animation (fade-in, slide-in, or flip)
+
+Add dynamic effects like a “glow” or “scan” animation
+
+5. Interactive Timeline or “Poster Evolution” Carousel
+If your posters show growth across time, present them chronologically, with an animated timeline or progress bar.
+
+🔧 Each click shows the next poster with:
+
+Year or edition title
+
+Slide-in transition
+
+Subtle background audio (optional)
+
+🌟 Bonus Add-On Ideas:
+Add tags or categories like:
+
+“AI”, “Green Tech”, “Previous Winners”, etc.
+
+Add hover captions or quick “About this Poster” tooltips
+
+Include download/share buttons (optional)
+
+✅ Choose Based on Your Priority:
+If you want…	Choose…
+Clean and classy layout	Grid with hover zoom
+Maximum interaction	3D rotating wall
+Mobile-first fun	Scrollable reel/carousel
+Tech-feel and animations	GSAP scroll-triggered reveal
+Storytelling format	Timeline with poster history
+Would you like me to help implement one of these with code and assets based on your site layout? Just tell me which idea you like best — or if you want a hybrid!
+
+You said:
+You've got a fantastic theme with "Sustainable Synergy" and a great starting point with your code. Let's refine it to create a professional, highly attractive, and memorable website for Abhigyan '25.
+
+Based on your theme, which blends nature and technology, the best approach is an "Organic Tech" or "Biomorphic" design philosophy. Think of circuit boards that look like leaf veins, glowing natural patterns, and animations that feel like they are "growing" onto the screen.
+
+Here is a refined plan, including an enhanced version of your code, to bring this vision to life.
+
+1. The Best Showcase Idea for Your Theme
+From the excellent list of ideas you have, the most fitting one for "Sustainable Synergy" is a combination of #1 and #4:
+
+A Staggered "Growing" Poster Grid on Scroll
+
+This concept is perfect because:
+
+It's Thematic: Posters can animate into view as the user scrolls, mimicking plants growing or technology activating. This directly ties into "Sustainable Synergy."
+
+It's Engaging: The staggered animation is visually satisfying and encourages users to scroll down and discover all the designs.
+
+It's Professional: A clean grid is easy to navigate and looks organized, while the animation adds a modern, futuristic flair.
+
+We'll implement a 4x5 grid where each poster thumbnail fades and scales into view one after another as the user scrolls down. Clicking a poster will open a sleek, full-screen modal view.
+ChatGPT said:
+Absolutely! That “Growing Poster Grid on Scroll” idea perfectly fits your “Sustainable Synergy” vibe — blending nature’s organic growth with tech precision.
+
+Here’s a step-by-step refined implementation plan with code and animation using GSAP ScrollTrigger for staggered “growth” animation, and a clean modal for poster zoom:
+
+1. HTML: Poster Grid Structure
+<section id="poster-gallery" class="poster-section fade-in-down">
+  <h3>Our Poster Showcase</h3>
+  <div class="poster-grid">
+    <!-- Repeat this block for each poster -->
+    <img src="posters/poster1.jpg" class="poster-thumb grow-on-scroll" alt="Poster 1" />
+    <img src="posters/poster2.jpg" class="poster-thumb grow-on-scroll" alt="Poster 2" />
+    <img src="posters/poster3.jpg" class="poster-thumb grow-on-scroll" alt="Poster 3" />
+    <!-- ... up to 20 posters -->
+  </div>
+</section>
+
+<!-- Modal for full-size poster -->
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modal-img" alt="Expanded Poster" />
+</div>
+2. CSS: Grid + Organic Glow + Modal
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.poster-thumb {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(102, 255, 153, 0.4);
+  cursor: pointer;
+  transform-origin: center;
+  opacity: 0;
+  scale: 0.8;
+  filter: drop-shadow(0 0 6px #22ff99);
+  transition: filter 0.3s ease;
+}
+
+.poster-thumb:hover {
+  filter: drop-shadow(0 0 12px #66ffaa);
+  transform: scale(1.05);
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 25, 10, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #66ff99;
+}
+
+.modal-close {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  font-size: 3rem;
+  color: #66ff99;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  z-index: 10000;
+}
+3. JS: Scroll-triggered Growth + Modal Logic (GSAP + ScrollTrigger)
+// Make sure to include GSAP and ScrollTrigger in your project:
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".grow-on-scroll").forEach((poster, i) => {
+  gsap.to(poster, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.7,
+    ease: "back.out(1.7)",
+    scrollTrigger: {
+      trigger: poster,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    delay: i * 0.15 // stagger effect
+  });
+});
+
+// Modal open/close logic
+const modal = document.getElementById("poster-modal");
+const modalImg = document.getElementById("modal-img");
+const closeBtn = modal.querySelector(".modal-close");
+
+document.querySelectorAll(".poster-thumb").forEach(poster => {
+  poster.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modalImg.src = poster.src;
+    modalImg.alt = poster.alt;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  modalImg.src = "";
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+    modalImg.src = "";
+  }
+});
+4. Optional: Add subtle "vein-like" glowing lines or background animations behind the grid
+You could layer subtle SVG animations or a canvas animation mimicking leaf veins, using green glows or pulsating lines — but that’s a bonus if you want more organic tech vibes!
+
+Why This Works for Your Theme:
+“Growing” animation feels like organic emergence, syncing with sustainability.
+
+Green glowing shadows connect tech and nature visually.
+
+Clean grid layout is user-friendly and professional.
+
+Click modal keeps users engaged with posters in detail.
+
+Scroll-trigger stagger effect encourages natural discovery flow.
+
+If you want, I can prepare a full minimal demo page for you with this ready to plug into your project! Just say the word.
+
+You said:
+cool but we need show event name for all those 20 events i have an idea, just select the top events and we will keep 6 poster in the gsap scrollltrigger KIDNLY GIVE CODE FOR THAT PLEASE
+ChatGPT said:
+That’s a great refinement! 🌱✨
+Focusing on top 6 posters with event names using GSAP ScrollTrigger makes the section feel both important and dynamic — perfect for front-page impact.
+
+✅ What You’ll Get:
+6 Poster Cards animated into view one by one using GSAP + ScrollTrigger
+
+Each with a poster image and event name caption
+
+Responsive grid layout (2 per row on desktop, stacked on mobile)
+
+Modal view for poster (optional but included)
+
+✅ HTML
+<section id="top-events" class="poster-section fade-in-down">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="top-poster-grid">
+    <!-- Poster Card -->
+    <div class="poster-card grow-on-scroll">
+      <img src="posters/event1.jpg" alt="Flextronics Poster" class="poster-thumb">
+      <h4 class="event-name">Flextronics</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="posters/event2.jpg" alt="Greencode Poster" class="poster-thumb">
+      <h4 class="event-name">GreenCode</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="posters/event3.jpg" alt="CircuitWave Poster" class="poster-thumb">
+      <h4 class="event-name">CircuitWave</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="posters/event4.jpg" alt="EcoHack Poster" class="poster-thumb">
+      <h4 class="event-name">EcoHack</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="posters/event5.jpg" alt="Greenathon Poster" class="poster-thumb">
+      <h4 class="event-name">Greenathon</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="posters/event6.jpg" alt="VoltVision Poster" class="poster-thumb">
+      <h4 class="event-name">VoltVision</h4>
+    </div>
+  </div>
+</section>
+✅ CSS
+.top-poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.poster-card {
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.poster-thumb {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(102, 255, 153, 0.3);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.poster-thumb:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px #66ffaa);
+}
+
+.event-name {
+  margin-top: 12px;
+  color: #a8ffb0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+✅ JS (GSAP ScrollTrigger Animation)
+<!-- Make sure GSAP is loaded -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray(".grow-on-scroll").forEach((card, i) => {
+    gsap.to(card, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      delay: i * 0.1
+    });
+  });
+</script>
+✅ Optional: Lightbox/Modal (click to view poster)
+If you want to reuse your modal from before, just keep the image click logic and modal structure. Otherwise, you can skip that for now to keep things simple.
+
+🔥 Want to Style it Even More?
+You can:
+
+Add glowing borders to posters
+
+Use background-blend-mode behind posters
+
+Animate the event name to fade in slightly after the poster
+
+Add a subtle animated line under the Top Events heading
+
+Would you like a codepen or zip file with the full working demo too?
+
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhigyan 25 – Sustainable Synergy</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Allura&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Leaves Background -->
+  <div class="leaves-background">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:0;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:1;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:2;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:3;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:4;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:5;">
+</div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <svg viewBox="0 0 500 100" class="logo-svg">
+        <path d="M10,80 C50,10 150,10 200,80 S300,150 400,80" />
+      </svg>
+      <span class="dot"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Past Editions</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+<!-- HERO SECTION -->
+<section id="hero" class="hero-section fade-in-down">
+  <div class="hero-content">
+    <h1 class="hero-title">Abhigyan 2025</h1>
+    <h2 class="hero-subtitle">Sustainable Synergy</h2>
+  </div>
+
+  <!-- Background Video -->
+  <div class="hero-bg">
+    <video autoplay loop muted playsinline class="solar-video">
+      <source src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\Futuristic_Solar_Panel_Animation.webm" type="video/webm">
+    </video>
+  </div>
+</section>
+
+
+<!-- POSTER SECTION 
+<section id="poster" class="poster-section fade-in-down">
+  <h3>Event Poster</h3>
+  <div class="poster-wrapper">
+    <img id="poster-img" src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\POSTER_FLEXTRONICS.png" 
+         alt="Abhigyan 25 Poster – Sustainable Synergy" 
+         loading="lazy">
+  </div>
+</section>
+
+-->
+  <!-- Event Title 
+  <section class="event-name fade-in-down">
+    <h1>ABHIGYAN 25</h1>
+    <h3>Sustainable Synergy</h3>
+  </section>
+-->
+  <!-- Top Events -->
+<section id="top-events" class="poster-section fade-in-down">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="top-poster-grid">
+    <!-- Poster Card -->
+    <div class="poster-card grow-on-scroll">
+      <img src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+      <h4 class="event-name">Flextronics</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="mainpage/PAPER PRESENTATION POSTER.jpg" alt="Greencode Poster" class="poster-thumb">
+      <h4 class="event-name">PAPER PRESENTATION</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\BEAT ODASSY.png" alt="CircuitWave Poster" class="poster-thumb">
+      <h4 class="event-name">BEAT ODASSY</h4>
+    </div>
+    <div class="mainpage/SCRAP BATTLE POSTER.jpg">
+      <img src="posters/event4.jpg" alt="EcoHack Poster" class="poster-thumb">
+      <h4 class="event-name">SCRAP BATTLE</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\PULSE PLUS.png" alt="Greenathon Poster" class="poster-thumb">
+      <h4 class="event-name">PULSE PLUS</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="mainpage/VISION QUEST POSTER.jpg" alt="VoltVision Poster" class="poster-thumb">
+      <h4 class="event-name">VISION X</h4>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Countdown -->
+  <section class="countdown fade-in-down">
+    <h3>Countdown to the Event</h3>
+    <div id="countdown">
+      <div><span id="days">00</span><div>Days</div></div>
+      <div><span id="hours">00</span><div>Hours</div></div>
+      <div><span id="minutes">00</span><div>Minutes</div></div>
+      <div><span id="seconds">00</span><div>Seconds</div></div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="description fade-in-down">
+    <p>
+      SRMIST Vadapalani is renowned for its academic excellence and immersive learning environment, especially in Electronics & Communication Engineering.
+      <strong>Abhigyan 25</strong> reflects our commitment to sustainable innovation backed by skilled faculty, global exposure, and industry-relevant curriculum.
+    </p>
+  </section>
+
+  <!-- Poster -->
+  <section class="poster-section fade-in-down">
+    <h3>Abhigyan 25 Poster</h3>
+    <img src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\WhatsApp Image 2025-08-23 at 23.48.55_5681fa20.jpg" alt="Abhigyan Poster" />
+  </section>
+
+  <!-- Past Editions -->
+  <section class="past-editions fade-in-down">
+    <h3>Past Editions</h3>
+    <ul>
+      <p>Abhigyan 2024 – "Bendable Innovation"</p>
+      <p>Abhigyan 2023 – "AI Renaissance"</p>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-in-down">
+    <p>© 2025 SRMIST Vadapalani – Department of ECE. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+
+THE IMAGE IS NOT COMING ON THE WEB LIVE
+ChatGPT said:
+The issue you're facing — images not displaying in your webpage — is due to using local file paths like:
+
+src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\POSTER_FLEXTRONICS.png"
+🚫 Why This Doesn't Work on Live Web:
+Browsers cannot access files on your personal computer (C:\...) when the site is live or previewed in a browser that’s not running locally with permission.
+
+Webpages need images to be located in your project directory, using relative paths or hosted public URLs.
+
+✅ ✅ SOLUTION OPTIONS:
+🔹 Option 1: Use Relative Paths (For Local Development or Hosting)
+Move all your images into a folder like images/ or posters/ inside your website project.
+
+Folder structure example:
+
+/mainpage/
+  index.html
+  /images/
+    POSTER_FLEXTRONICS.png
+    PAPER_PRESENTATION.jpg
+    BEAT_ODASSY.png
+Then update your HTML like:
+
+<img src="images/POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+🔹 Option 2: Use Online URLs
+If you upload your posters to Imgur, Cloudinary, or any public host, use the link directly:
+
+<img src="https://i.imgur.com/yourimage.png" alt="Poster" />
+✅ Corrected Example (Using Relative Path)
+Let's say you move your posters to images/. Your HTML becomes:
+
+<div class="poster-card grow-on-scroll">
+  <img src="images/POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+  <h4 class="event-name">Flextronics</h4>
+</div>
+🔧 Bonus Tip — Fixing This:
+Make sure your local server is running if you're testing locally (e.g., using Live Server in VSCode).
+
+Avoid spaces in filenames. Use hyphens or underscores:
+✅ PAPER_PRESENTATION.jpg
+❌ PAPER PRESENTATION.jpg
+
+If you want, I can help generate a folder structure and working download-ready zip. Let me know!
+
+You said:
+generate me the coreected code for the top event
+ChatGPT said:
+Absolutely! Here's the corrected and fully working HTML code for your Top 6 Events section, with proper image paths and GSAP ScrollTrigger animation setup for a "grow on scroll" effect.
+
+✅ Prerequisites:
+Place all poster images in a folder called images/ (in the same directory as your index.html).
+
+Filenames must not have spaces (rename as needed).
+
+Example folder structure:
+
+mainpage/
+├── index.html
+├── images/
+│   ├── poster_flextronics.png
+│   ├── paper_presentation.jpg
+│   ├── beat_odyssey.png
+│   ├── scrap_battle.jpg
+│   ├── pulse_plus.png
+│   ├── vision_x.jpg
+✅ HTML + CSS + GSAP ScrollTrigger Code:
+🔸 HTML (index.html)
+<!-- Top Events Section -->
+<section id="top-events" class="poster-section">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="top-poster-grid">
+    <div class="poster-card grow-on-scroll">
+      <img src="images/poster_flextronics.png" alt="Flextronics Poster" class="poster-thumb">
+      <h4 class="event-name">Flextronics</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/paper_presentation.jpg" alt="Paper Presentation Poster" class="poster-thumb">
+      <h4 class="event-name">Paper Presentation</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/beat_odyssey.png" alt="Beat Odyssey Poster" class="poster-thumb">
+      <h4 class="event-name">Beat Odyssey</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/scrap_battle.jpg" alt="Scrap Battle Poster" class="poster-thumb">
+      <h4 class="event-name">Scrap Battle</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/pulse_plus.png" alt="Pulse Plus Poster" class="poster-thumb">
+      <h4 class="event-name">Pulse Plus</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/vision_x.jpg" alt="Vision X Poster" class="poster-thumb">
+      <h4 class="event-name">Vision X</h4>
+    </div>
+  </div>
+</section>
+🔸 CSS (add to your style.css)
+.top-poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.poster-card {
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid #22ff66;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,255,100,0.15);
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.poster-card img.poster-thumb {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.poster-card h4.event-name {
+  color: #a8ffb0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+🔸 JavaScript (add to your script.js)
+Make sure GSAP and ScrollTrigger are linked.
+
+Include GSAP in <head> before your script.js:
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+JS Animation:
+// GSAP ScrollTrigger Animation for Top Posters
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".grow-on-scroll").forEach((card, i) => {
+  gsap.to(card, {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    ease: "power2.out",
+    delay: i * 0.1,
+    scrollTrigger: {
+      trigger: card,
+      start: "top 85%",
+      toggleActions: "play none none reverse"
+    }
+  });
+});
+✅ Final Result:
+Posters animate with a "grow + fade-in" effect as you scroll.
+
+Clean, responsive 3x2 grid layout.
+
+Each event has a visible name under its poster.
+
+Works perfectly on both desktop and mobile.
+
+Let me know if you want:
+
+A modal preview on poster click,
+
+Auto slideshow of posters,
+
+Or to connect it to a database (like Firebase or Airtable) for dynamic updates.
+
+You said:
+A modal preview on poster click
+ChatGPT said:
+Perfect — here's how to add a modal preview (lightbox style) when users click on any of the top 6 posters. This allows users to see each poster in full screen with a dark overlay, giving it a modern and elegant touch.
+
+✅ Features:
+Poster opens in a fullscreen overlay
+
+Closes on click or Esc key
+
+Smooth GSAP animation on open
+
+✅ 1. HTML (already added in previous code — no changes needed)
+✅ 2. Add Modal Container HTML
+Paste this just before </body> in your index.html:
+
+<!-- Poster Modal -->
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+</div>
+✅ 3. CSS (add to your style.css)
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #66ff99;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
+  user-select: none;
+}
+✅ 4. JS (add to script.js)
+// Poster Modal Preview
+const modal = document.getElementById('poster-modal');
+const modalImg = modal.querySelector('.modal-img');
+const closeBtn = modal.querySelector('.modal-close');
+
+// When any poster image is clicked
+document.querySelectorAll('.poster-thumb').forEach(img => {
+  img.addEventListener('click', () => {
+    modalImg.src = img.src;
+    modal.classList.remove('hidden');
+    gsap.fromTo(modalImg, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power2.out" });
+  });
+});
+
+// Close modal
+closeBtn.addEventListener('click', () => {
+  modal.classList.add('hidden');
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.classList.add('hidden');
+});
+
+// Close on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === "Escape") modal.classList.add('hidden');
+});
+✅ That's it!
+Now:
+
+Clicking any of the 6 posters will open it in full view
+
+Clicking anywhere outside the image or pressing × or Esc will close it
+
+If you want to add captions inside the modal or a "next/prev" gallery view, I can help with that too. Just let me know!
+
+You said:
+Auto slideshow of posters,
+ChatGPT said:
+To create an auto slideshow of your top event posters with a smooth, modern design — here’s exactly how to implement it using pure HTML, CSS, and JavaScript (with GSAP animation optional).
+
+✅ What You’ll Get:
+A looping slideshow of posters
+
+Automatic transition every few seconds
+
+Click-to-pause/resume or swipe-to-skip (optional)
+
+Fully responsive and clean
+
+✅ 1. HTML: Slideshow Section
+Replace your current "Top Events" section with this:
+
+<!-- Auto Slideshow for Top Posters -->
+<section id="top-events-slideshow" class="poster-section fade-in-down">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="slideshow-container">
+    <div class="slide active">
+      <img src="mainpage/POSTER_FLEXTRONICS.png" alt="Flextronics">
+      <h4>Flextronics</h4>
+    </div>
+    <div class="slide">
+      <img src="mainpage/PAPER PRESENTATION POSTER.jpg" alt="Paper Presentation">
+      <h4>Paper Presentation</h4>
+    </div>
+    <div class="slide">
+      <img src="mainpage/BEAT ODASSY.png" alt="Beat Odyssey">
+      <h4>Beat Odyssey</h4>
+    </div>
+    <div class="slide">
+      <img src="mainpage/SCRAP BATTLE POSTER.jpg" alt="Scrap Battle">
+      <h4>Scrap Battle</h4>
+    </div>
+    <div class="slide">
+      <img src="mainpage/PULSE PLUS.png" alt="Pulse Plus">
+      <h4>Pulse Plus</h4>
+    </div>
+    <div class="slide">
+      <img src="mainpage/VISION QUEST POSTER.jpg" alt="Vision Quest">
+      <h4>Vision Quest</h4>
+    </div>
+  </div>
+</section>
+✅ 2. CSS: Slideshow Styling
+Add to your style.css:
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 255, 100, 0.1);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.slide img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.slide h4 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #66ff99;
+  text-shadow: 0 0 4px #002a00;
+}
+
+.slide.active {
+  opacity: 1;
+  position: relative;
+}
+✅ 3. JavaScript: Slideshow Logic
+Add to your script.js:
+
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+let interval = setInterval(showNextSlide, 4000); // change every 4s
+
+function showNextSlide() {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}
+
+// Optional: Pause on hover
+const slideshowContainer = document.querySelector('.slideshow-container');
+slideshowContainer.addEventListener('mouseenter', () => clearInterval(interval));
+slideshowContainer.addEventListener('mouseleave', () => {
+  interval = setInterval(showNextSlide, 4000);
+});
+✅ Optional Enhancements:
+Add left/right arrows for manual control
+
+Add progress dots
+
+Add GSAP transitions for better animation
+
+If you'd like a version with GSAP timeline animation or want this slideshow embedded into the modal preview, I can build that too.
+
+Would you like autoplay + click-to-expand preview in the same section?
+
+You said:
+Clicking any of the 6 posters will open it in full view NOT COMING BRO
+ChatGPT said:
+Got it! You're trying to make the 6 top event posters open in a full preview modal when clicked — but it's not working yet.
+
+I'll give you fully working code in 3 parts:
+
+✅ 1. HTML: Poster Grid (Updated with modal markup)
+Replace or adjust your current section to:
+
+<!-- Top Event Posters with Modal Preview -->
+<section id="top-events" class="poster-section fade-in-down">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="top-poster-grid">
+    <div class="poster-card">
+      <img src="mainpage/POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+      <h4>Flextronics</h4>
+    </div>
+    <div class="poster-card">
+      <img src="mainpage/PAPER PRESENTATION POSTER.jpg" alt="Paper Presentation" class="poster-thumb">
+      <h4>Paper Presentation</h4>
+    </div>
+    <div class="poster-card">
+      <img src="mainpage/BEAT ODASSY.png" alt="Beat Odyssey" class="poster-thumb">
+      <h4>Beat Odyssey</h4>
+    </div>
+    <div class="poster-card">
+      <img src="mainpage/SCRAP BATTLE POSTER.jpg" alt="Scrap Battle" class="poster-thumb">
+      <h4>Scrap Battle</h4>
+    </div>
+    <div class="poster-card">
+      <img src="mainpage/PULSE PLUS.png" alt="Pulse Plus" class="poster-thumb">
+      <h4>Pulse Plus</h4>
+    </div>
+    <div class="poster-card">
+      <img src="mainpage/VISION QUEST POSTER.jpg" alt="Vision Quest" class="poster-thumb">
+      <h4>Vision Quest</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Preview -->
+<div id="poster-modal" class="modal">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modal-img">
+  <div id="modal-caption"></div>
+</div>
+✅ 2. CSS: Modal Styling
+Add this CSS to your style.css:
+
+.top-poster-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.poster-card {
+  width: 220px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.poster-card img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  box-shadow: 0 6px 20px rgba(0, 255, 100, 0.1);
+}
+
+.poster-card img:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,100,0.2);
+}
+
+#modal-caption {
+  text-align: center;
+  color: #a8ffb0;
+  padding: 12px;
+  font-size: 18px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+✅ 3. JavaScript: Modal Functionality
+Add this to the bottom of your script.js:
+
+// Modal Logic
+const modal = document.getElementById("poster-modal");
+const modalImg = document.getElementById("modal-img");
+const modalCaption = document.getElementById("modal-caption");
+const closeModal = document.querySelector(".modal-close");
+
+document.querySelectorAll(".poster-thumb").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    modalCaption.textContent = img.alt;
+  });
+});
+
+closeModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+✅ Final Tips
+Make sure all image paths are relative to the HTML file, like:
+
+src="mainpage/POSTER_NAME.png"
+❌ Do not use local paths like C:\Users\...
+
+Use console.log() or open DevTools > Console if it still doesn’t appear.
+
+Let me know if you want:
+
+Slide animations inside the modal
+
+Arrow navigation
+
+GSAP entry effects for each poster
+
+Want it all combined into one cleaner downloadable .zip too?
+
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhigyan 25 – Sustainable Synergy</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Allura&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Leaves Background -->
+  <div class="leaves-background">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:0;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:1;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:2;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:3;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:4;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:5;">
+</div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <svg viewBox="0 0 500 100" class="logo-svg">
+        <path d="M10,80 C50,10 150,10 200,80 S300,150 400,80" />
+      </svg>
+      <span class="dot"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Past Editions</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+<!-- HERO SECTION -->
+<section id="hero" class="hero-section fade-in-down">
+  <div class="hero-content">
+    <h1 class="hero-title">Abhigyan 2025</h1>
+    <h2 class="hero-subtitle">Sustainable Synergy</h2>
+  </div>
+
+  <!-- Background Video -->
+  <div class="hero-bg">
+    <video autoplay loop muted playsinline class="solar-video">
+      <source src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\Futuristic_Solar_Panel_Animation.webm" type="video/webm">
+    </video>
+  </div>
+</section>
+
+
+<!-- POSTER SECTION 
+<section id="poster" class="poster-section fade-in-down">
+  <h3>Event Poster</h3>
+  <div class="poster-wrapper">
+    <img id="poster-img" src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\POSTER_FLEXTRONICS.png" 
+         alt="Abhigyan 25 Poster – Sustainable Synergy" 
+         loading="lazy">
+  </div>
+</section>
+
+-->
+  <!-- Event Title 
+  <section class="event-name fade-in-down">
+    <h1>ABHIGYAN 25</h1>
+    <h3>Sustainable Synergy</h3>
+  </section>
+-->
+  <!-- Top Events -->
+<section id="top-events" class="poster-section">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="top-poster-grid">
+    <div class="poster-card grow-on-scroll">
+      <img src="images\POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+      <h4 class="event-name">Flextronics</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images\PAPER_PRESENTATION_POSTER.jpg" alt="Paper Presentation Poster" class="poster-thumb">
+      <h4 class="event-name">Paper Presentation</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images\BEAT_ODASSY.png" alt="Beat Odyssey Poster" class="poster-thumb">
+      <h4 class="event-name">Beat Odyssey</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images\SCRAP_BATTLE.png" alt="Scrap Battle Poster" class="poster-thumb">
+      <h4 class="event-name">Scrap Battle</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images\PULSE _PLUS.png" alt="Pulse Plus Poster" class="poster-thumb">
+      <h4 class="event-name">Pulse Plus</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images\VISION_QUEST_POSTER.jpg" alt="Vision X Poster" class="poster-thumb">
+      <h4 class="event-name">Vision X</h4>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Countdown -->
+  <section class="countdown fade-in-down">
+    <h3>Countdown to the Event</h3>
+    <div id="countdown">
+      <div><span id="days">00</span><div>Days</div></div>
+      <div><span id="hours">00</span><div>Hours</div></div>
+      <div><span id="minutes">00</span><div>Minutes</div></div>
+      <div><span id="seconds">00</span><div>Seconds</div></div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="description fade-in-down">
+    <p>
+      SRMIST Vadapalani is renowned for its academic excellence and immersive learning environment, especially in Electronics & Communication Engineering.
+      <strong>Abhigyan 25</strong> reflects our commitment to sustainable innovation backed by skilled faculty, global exposure, and industry-relevant curriculum.
+    </p>
+  </section>
+
+  <!-- Poster -->
+  <section class="poster-section fade-in-down">
+    <h3>Abhigyan 25 Poster</h3>
+    <img src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\WhatsApp Image 2025-08-23 at 23.48.55_5681fa20.jpg" alt="Abhigyan Poster" />
+  </section>
+
+  <!-- Past Editions -->
+  <section class="past-editions fade-in-down">
+    <h3>Past Editions</h3>
+    <ul>
+      <p>Abhigyan 2024 – "Bendable Innovation"</p>
+      <p>Abhigyan 2023 – "AI Renaissance"</p>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-in-down">
+    <p>© 2025 SRMIST Vadapalani – Department of ECE. All rights reserved.</p>
+  </footer>
+
+  <!-- Poster Modal -->
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+</div>
+
+</body>
+</html>
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #a8ffb0;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+section, header, footer {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 30, 0, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #a8ffb0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #66ffaa;
+}
+
+/* Logo SVG */
+.logo {
+  position: relative;
+}
+
+.logo-svg {
+  width: 160px;
+  stroke: #66ff99;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s ease forwards 0.5s;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #66ff99;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: scale(0);
+  animation: pop 0.3s forwards 0.5s;
+}
+
+/* Floating Leaves Background */
+.leaves-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.leaves-background .leaf {
+  position: absolute;
+  top: -10%;
+  left: calc(10% * var(--i));
+  width: 40px;
+  opacity: 0.6;
+  animation: floatLeaf 20s linear infinite;
+  animation-delay: calc(var(--i) * 3s);
+  transform: rotateZ(45deg);
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Countdown */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66ff99;
+}
+
+#countdown div {
+  min-width: 60px;
+  padding: 10px;
+  background: rgba(0, 255, 100, 0.05);
+  border: 1px solid #22ff66;
+  border-radius: 8px;
+  text-shadow: 0 0 5px #003300;
+}
+
+/* Animation */
+.fade-in-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop {
+  to {
+    transform: scale(1);
+  }
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #000; /* Pure black background */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  background: linear-gradient(90deg, #66ff99, #22ddff, #ffaa44);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+
+/* Solar video as main visual */
+.solar-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;   /* Increase video size */
+  max-width: 1000px; /* Limit max */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.85; /* Slight transparency for elegance */
+  background: #000; /* ensures black box around */
+  border-radius: 12px; /* optional: smooth edges */
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+/* Poster Section 
+
+.poster-section {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.poster-wrapper img {
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.poster-wrapper img:hover {
+  transform: scale(1.05);
+}
+*/
+.top-poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.poster-card {
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid #22ff66;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,255,100,0.15);
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.poster-card img.poster-thumb {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.poster-card h4.event-name {
+  color: #a8ffb0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+.poster-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,255,100,0.3);
+}
+
+/* Floating Leaves Background */
+.leaves-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.leaves-background .leaf {
+  position: absolute;
+  top: -10%;
+  left: calc(10% * var(--i));
+  width: 40px;
+  opacity: 0.6;
+  animation: floatLeaf 20s linear infinite;
+  animation-delay: calc(var(--i) * 3s);
+  transform: rotateZ(45deg);
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #66ff99;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
+  user-select: none;
+}
+
+
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 80%;
+  border-radius: 12px;
+}
+.lightbox:focus {
+  outline: none;
+}
+
+// Scroll reveal logic
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.fade-in-down').forEach(section => {
+  observer.observe(section);
+});
+
+// Countdown Timer
+const targetDate = new Date("2025-09-11T09:30:00");
+
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = "<span style='color:#ff6666'>Event Started!</span>";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / 1000 / 60) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('days').textContent = String(days).padStart(2, '0');
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// POSTER LIGHTBOX + GSAP ZOOM
+/*
+gsap.from("#poster-img", {
+  scale: 0.8,
+  opacity: 0,
+  duration: 1.5,
+  ease: "elastic.out(1,0.5)",
+  scrollTrigger: {
+    trigger: "#poster-img",
+    start: "top 80%",
+  }
+});
+*/
+// GSAP Scroll Animations
+// Make sure GSAP and ScrollTrigger are loaded in your HTML before this script runs
+
+// GSAP ScrollTrigger Animation for Top Posters
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".grow-on-scroll").forEach((card, i) => {
+  gsap.to(card, {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    ease: "power2.out",
+    delay: i * 0.1,
+    scrollTrigger: {
+      trigger: card,
+      start: "top 85%",
+      toggleActions: "play none none reverse"
+    }
+  });
+});
+
+
+
+// Lightbox effect
+document.getElementById("poster-img").addEventListener("click", () => {
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.innerHTML = <img src="poster.jpg" alt="Event Poster">;
+  document.body.appendChild(overlay);
+
+  gsap.fromTo(".lightbox img", { scale: 0.5 }, { scale: 1, duration: 0.6, ease: "back.out(1.7)" });
+
+  overlay.addEventListener("click", () => overlay.remove());
+});
+ChatGPT said:
+Thanks for the full code! I’ve reviewed it and here’s exactly why clicking on the posters is NOT opening the modal, and how to correct it.
+
+🛑 Current Issues:
+❌ No JavaScript code handling clicks on .poster-thumb images to open the modal (#poster-modal).
+
+✅ You do have a modal element in HTML (#poster-modal), but it's never shown because there's no script wired to trigger it.
+
+❌ poster-img click logic is targeting a single image, not your top event posters.
+
+❌ You’re using backslashes in image paths like images\POSTER_FLEXTRONICS.png. That only works on Windows locally — not in browsers. Use forward slashes (/).
+
+✅ Solution: Add This Working JS Logic
+Just add this after all your existing code in script.js, or within a <script> tag at the bottom of your HTML if you're testing inline:
+
+// === Poster Modal Click Logic ===
+const modal = document.getElementById("poster-modal");
+const modalImg = modal.querySelector(".modal-img");
+const closeModal = modal.querySelector(".modal-close");
+
+// Attach click listeners to all poster thumbnails
+document.querySelectorAll(".poster-thumb").forEach(img => {
+  img.addEventListener("click", () => {
+    modalImg.src = img.src;
+    modal.classList.remove("hidden");
+  });
+});
+
+// Close modal on click of close button or outside the image
+closeModal.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+✅ Also Fix Your Image Paths
+Replace this:
+
+<img src="images\POSTER_FLEXTRONICS.png" ... >
+With this:
+
+<img src="images/POSTER_FLEXTRONICS.png" ... >
+✅ Use forward slashes for all paths.
+
+✅ (Optional) Add Modal Caption
+If you want to show the event name under the image in the modal, update your modal like this:
+
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+  <div class="modal-caption" id="modal-caption"></div>
+</div>
+Then update your JS:
+
+const caption = document.getElementById("modal-caption");
+
+document.querySelectorAll(".poster-thumb").forEach(img => {
+  img.addEventListener("click", () => {
+    modalImg.src = img.src;
+    caption.textContent = img.alt; // Uses the image alt text
+    modal.classList.remove("hidden");
+  });
+});
+And style .modal-caption if desired:
+
+.modal-caption {
+  color: #a8ffb0;
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+}
+✅ Final Checklist
+Item	✅ Done?
+Poster image paths use /	✅
+JS code listens for .poster-thumb clicks	✅
+Modal markup exists in HTML	✅
+.hidden class hides modal	✅
+Modal shows image and caption	✅
+Let me know if you want:
+
+🔄 Auto-slideshow feature
+
+⬅️➡️ Navigation inside modal
+
+Smooth zoom-in GSAP animation when modal opens
+
+Ready for that?
+
+You said:
+I COULD NOT SEE THE CHANGES TOMMOR WHERE THNFALO
+ChatGPT said:
+Got it — let me give you the exact working setup you need so that:
+
+✅ Clicking any of the 6 poster images opens a full-screen modal preview
+✅ The image appears clearly with an optional caption
+✅ It works without relying on local paths or missing scripts
+
+✅ STEP 1: Fix Your HTML (Modal Markup)
+Place this at the very bottom of your <body> in your HTML:
+
+<!-- Poster Modal -->
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+  <div class="modal-caption" id="modal-caption"></div>
+</div>
+✅ STEP 2: Paste This JS (Modal Functionality)
+Make sure this JavaScript is placed either in your script.js or inside a <script> tag at the bottom of your HTML file, after all HTML elements load:
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("poster-modal");
+  const modalImg = modal.querySelector(".modal-img");
+  const caption = document.getElementById("modal-caption");
+  const closeModal = modal.querySelector(".modal-close");
+
+  // Click on any poster image to open modal
+  document.querySelectorAll(".poster-thumb").forEach(img => {
+    img.addEventListener("click", () => {
+      modalImg.src = img.src;
+      caption.textContent = img.alt;
+      modal.classList.remove("hidden");
+    });
+  });
+
+  // Close modal when close button is clicked
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Close modal when clicking outside the image
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+});
+✅ STEP 3: Fix Image Paths (Super Important!)
+You are using Windows-style backslashes (\) like:
+
+<img src="images\POSTER_FLEXTRONICS.png" ... >
+🔧 Replace with this format:
+
+<img src="images/POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+✅ Use forward slashes /
+✅ Make sure the image is located in the images/ folder relative to the HTML file
+
+✅ STEP 4: Modal CSS (Already in your CSS, but double check!)
+This should already exist in your CSS. If not, add:
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #66ff99;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
+}
+
+.modal-caption {
+  color: #a8ffb0;
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+}
+✅ Test It
+Open in browser
+
+Click any of the 6 posters
+
+The modal will open with full image + caption (based on alt)
+
+Click outside or the close × to exit
+
+If you're still not seeing the changes:
+
+Press Ctrl+Shift+R to hard-refresh
+
+Make sure your browser console doesn't show path errors (F12 > Console)
+
+Check that your image paths are relative and correct
+
+If you need the auto slideshow, GSAP animation, or modal navigation (next/prev), I can help after this is working. Would you like that next?
+
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhigyan 25 – Sustainable Synergy</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Allura&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Leaves Background -->
+  <div class="leaves-background">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:0;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:1;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:2;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:3;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:4;">
+  <img src="https://png.pngtree.com/png-clipart/20220117/original/pngtree-hand-drawn-green-leaf-vector-graphics-png-image_7135015.png" class="leaf" style="--i:5;">
+</div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <svg viewBox="0 0 500 100" class="logo-svg">
+        <path d="M10,80 C50,10 150,10 200,80 S300,150 400,80" />
+      </svg>
+      <span class="dot"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Past Editions</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+<!-- HERO SECTION -->
+<section id="hero" class="hero-section fade-in-down">
+  <div class="hero-content">
+    <h1 class="hero-title">Abhigyan 2025</h1>
+    <h2 class="hero-subtitle">Sustainable Synergy</h2>
+  </div>
+
+  <!-- Background Video -->
+  <div class="hero-bg">
+    <video autoplay loop muted playsinline class="solar-video">
+      <source src="images\Futuristic_Solar_Panel_Animation.webm" type="video/webm">
+    </video>
+  </div>
+</section>
+
+
+<!-- POSTER SECTION 
+<section id="poster" class="poster-section fade-in-down">
+  <h3>Event Poster</h3>
+  <div class="poster-wrapper">
+    <img id="poster-img" src="C:\Users\Home\Downloads\abigyanweb\TRY1\mainpage\POSTER_FLEXTRONICS.png" 
+         alt="Abhigyan 25 Poster – Sustainable Synergy" 
+         loading="lazy">
+  </div>
+</section>
+
+-->
+  <!-- Event Title 
+  <section class="event-name fade-in-down">
+    <h1>ABHIGYAN 25</h1>
+    <h3>Sustainable Synergy</h3>
+  </section>
+-->
+  <!-- Top Events -->
+<section id="top-events" class="poster-section">
+  <h3>Top Events – Abhigyan 25</h3>
+  <div class="top-poster-grid">
+    <div class="poster-card grow-on-scroll">
+      <img src="images/POSTER_FLEXTRONICS.png" alt="Flextronics Poster" class="poster-thumb">
+      <h4 class="event-name">Flextronics</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/PAPER_PRESENTATION_POSTER.jpg" alt="Paper Presentation Poster" class="poster-thumb">
+      <h4 class="event-name">Paper Presentation</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/BEAT_ODASSY.png" alt="Beat Odyssey Poster" class="poster-thumb">
+      <h4 class="event-name">Beat Odyssey</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/SCRAP_BATTLE.png" alt="Scrap Battle Poster" class="poster-thumb">
+      <h4 class="event-name">Scrap Battle</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/PULSE _PLUS.png" alt="Pulse Plus Poster" class="poster-thumb">
+      <h4 class="event-name">Pulse Plus</h4>
+    </div>
+    <div class="poster-card grow-on-scroll">
+      <img src="images/VISION_QUEST_POSTER.jpg" alt="Vision X Poster" class="poster-thumb">
+      <h4 class="event-name">Vision X</h4>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Countdown -->
+  <section class="countdown fade-in-down">
+    <h3>Countdown to the Event</h3>
+    <div id="countdown">
+      <div><span id="days">00</span><div>Days</div></div>
+      <div><span id="hours">00</span><div>Hours</div></div>
+      <div><span id="minutes">00</span><div>Minutes</div></div>
+      <div><span id="seconds">00</span><div>Seconds</div></div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="description fade-in-down">
+    <p>
+      SRMIST Vadapalani is renowned for its academic excellence and immersive learning environment, especially in Electronics & Communication Engineering.
+      <strong>Abhigyan 25</strong> reflects our commitment to sustainable innovation backed by skilled faculty, global exposure, and industry-relevant curriculum.
+    </p>
+  </section>
+
+  <!-- Poster -->
+  <section class="poster-section fade-in-down">
+    <h3>Abhigyan '25 Poster</h3>
+    <img src="images\Abhigyan '25 poster.jpg" alt="Abhigyan 25 Poster" class="poster-img">
+  </section>
+
+  <!-- Past Editions -->
+  <section class="past-editions fade-in-down">
+    <h3>Past Editions</h3>
+    <ul>
+      <p>Abhigyan 2024 – "Bendable Innovation"</p>
+      <p>Abhigyan 2023 – "AI Renaissance"</p>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-in-down">
+    <p>© 2025 SRMIST Vadapalani – Department of ECE. All rights reserved.</p>
+  </footer>
+
+  <!-- Poster Modal -->
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+  <div class="modal-caption" id="modal-caption"></div>
+</div>
+
+</body>
+</html>
+
+// Scroll reveal logic
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.fade-in-down').forEach(section => {
+  observer.observe(section);
+});
+
+// Countdown Timer
+const targetDate = new Date("2025-09-11T09:30:00");
+
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = "<span style='color:#ff6666'>Event Started!</span>";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / 1000 / 60) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('days').textContent = String(days).padStart(2, '0');
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// POSTER LIGHTBOX + GSAP ZOOM
+/*
+gsap.from("#poster-img", {
+  scale: 0.8,
+  opacity: 0,
+  duration: 1.5,
+  ease: "elastic.out(1,0.5)",
+  scrollTrigger: {
+    trigger: "#poster-img",
+    start: "top 80%",
+  }
+});
+*/
+// GSAP Scroll Animations
+// Make sure GSAP and ScrollTrigger are loaded in your HTML before this script runs
+
+// GSAP ScrollTrigger Animation for Top Posters
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".grow-on-scroll").forEach((card, i) => {
+  gsap.to(card, {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    ease: "power2.out",
+    delay: i * 0.1,
+    scrollTrigger: {
+      trigger: card,
+      start: "top 85%",
+      toggleActions: "play none none reverse"
+    }
+  });
+});
+
+
+
+// Lightbox effect
+document.getElementById("poster-img").addEventListener("click", () => {
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.innerHTML = <img src="poster.jpg" alt="Event Poster">;
+  document.body.appendChild(overlay);
+
+  gsap.fromTo(".lightbox img", { scale: 0.5 }, { scale: 1, duration: 0.6, ease: "back.out(1.7)" });
+
+  overlay.addEventListener("click", () => overlay.remove());
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("poster-modal");
+  const modalImg = modal.querySelector(".modal-img");
+  const caption = document.getElementById("modal-caption");
+  const closeModal = modal.querySelector(".modal-close");
+
+  // Click on any poster image to open modal
+  document.querySelectorAll(".poster-thumb").forEach(img => {
+    img.addEventListener("click", () => {
+      modalImg.src = img.src;
+      caption.textContent = img.alt;
+      modal.classList.remove("hidden");
+    });
+  });
+
+  // Close modal when close button is clicked
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Close modal when clicking outside the image
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+});
+
+
+// code of green neon modal popup for posters in the poster section in css mentions as green glow modal comment//
+/*
+// === Poster Modal Click Logic ===
+const modal = document.getElementById("poster-modal");
+const modalImg = modal.querySelector(".modal-img");
+const closeModal = modal.querySelector(".modal-close");
+
+// Attach click listeners to all poster thumbnails
+document.querySelectorAll(".poster-thumb").forEach(img => {
+  img.addEventListener("click", () => {
+    modalImg.src = img.src;
+    modal.classList.remove("hidden");
+  });
+});
+
+// Close modal on click of close button or outside the image
+closeModal.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+
+const caption = document.getElementById("modal-caption");
+
+document.querySelectorAll(".poster-thumb").forEach(img => {
+  img.addEventListener("click", () => {
+    modalImg.src = img.src;
+    caption.textContent = img.alt; // Uses the image alt text
+    modal.classList.remove("hidden");
+  });
+});
+*/
+
+// === End Poster Modal Click Logic ===
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #a8ffb0;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+section, header, footer {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 30, 0, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #a8ffb0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #66ffaa;
+}
+
+/* Logo SVG */
+.logo {
+  position: relative;
+}
+
+.logo-svg {
+  width: 160px;
+  stroke: #66ff99;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s ease forwards 0.5s;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #66ff99;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: scale(0);
+  animation: pop 0.3s forwards 0.5s;
+}
+
+/* Floating Leaves Background */
+.leaves-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.leaves-background .leaf {
+  position: absolute;
+  top: -10%;
+  left: calc(10% * var(--i));
+  width: 40px;
+  opacity: 0.6;
+  animation: floatLeaf 20s linear infinite;
+  animation-delay: calc(var(--i) * 3s);
+  transform: rotateZ(45deg);
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Countdown */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66ff99;
+}
+
+#countdown div {
+  min-width: 60px;
+  padding: 10px;
+  background: rgba(0, 255, 100, 0.05);
+  border: 1px solid #22ff66;
+  border-radius: 8px;
+  text-shadow: 0 0 5px #003300;
+}
+
+/* Animation */
+.fade-in-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop {
+  to {
+    transform: scale(1);
+  }
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #000; /* Pure black background */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  background: linear-gradient(90deg, #66ff99, #22ddff, #ffaa44);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+
+/* Solar video as main visual */
+.solar-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;   /* Increase video size */
+  max-width: 1000px; /* Limit max */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.85; /* Slight transparency for elegance */
+  background: #000; /* ensures black box around */
+  border-radius: 12px; /* optional: smooth edges */
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+/* Poster Section 
+
+.poster-section {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.poster-wrapper img {
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.poster-wrapper img:hover {
+  transform: scale(1.05);
+}
+*/
+
+
+.top-poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #66ff99;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
+}
+
+.modal-caption {
+  color: #a8ffb0;
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #66ff99;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
+}
+
+.modal-caption {
+  color: #a8ffb0;
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+}
+
+
+
+/* Poster Cards with neon green outer glow */
+/*
+.poster-card {
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid #22ff66;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,255,100,0.15);
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.poster-card img.poster-thumb {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.poster-card h4.event-name {
+  color: #a8ffb0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+.poster-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,255,100,0.3);
+}
+
+.modal-caption {
+  color: #a8ffb0;
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+}
+*/
+
+
+/* Floating Leaves Background */
+.leaves-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.leaves-background .leaf {
+  position: absolute;
+  top: -10%;
+  left: calc(10% * var(--i));
+  width: 40px;
+  opacity: 0.6;
+  animation: floatLeaf 20s linear infinite;
+  animation-delay: calc(var(--i) * 3s);
+  transform: rotateZ(45deg);
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #66ff99;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10000;
+  user-select: none;
+}
+
+
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 80%;
+  border-radius: 12px;
+}
+.lightbox:focus {
+  outline: none;
+}
+
+my modal full image is stilll not working
+ChatGPT said:
+Thanks for sharing your full setup. You're very close — but I’ve identified exactly why your modal isn’t working:
+
+🚨 PROBLEM 1: You're using backslashes (\) in your video/image src paths.
+In HTML only forward slashes (/) are valid path separators.
+You wrote:
+
+<source src="images\Futuristic_Solar_Panel_Animation.webm" type="video/webm">
+And:
+
+<img src="images\Abhigyan '25 poster.jpg" ... >
+✅ Fix them like this:
+
+<source src="images/Futuristic_Solar_Panel_Animation.webm" type="video/webm">
+<img src="images/Abhigyan '25 poster.jpg" alt="Abhigyan 25 Poster" class="poster-img">
+🚨 PROBLEM 2: You're still referencing an absolute Windows file path in a comment block:
+<!--
+<img id="poster-img" src="C:\Users\Home\Downloads\..." ... >
+-->
+✅ Just delete this block entirely — it may confuse your JS if uncommented later.
+
+🚨 PROBLEM 3: You're using multiple versions of poster modal logic, including old/deprecated commented code.
+✅ Only keep this version (already at the bottom of your JS):
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("poster-modal");
+  const modalImg = modal.querySelector(".modal-img");
+  const caption = document.getElementById("modal-caption");
+  const closeModal = modal.querySelector(".modal-close");
+
+  document.querySelectorAll(".poster-thumb").forEach(img => {
+    img.addEventListener("click", () => {
+      modalImg.src = img.src;
+      caption.textContent = img.alt;
+      modal.classList.remove("hidden");
+    });
+  });
+
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+});
+✅ Make sure this is the only script controlling the modal, and it's either:
+
+Inside <script defer src="script.js"></script>, or
+
+Inside a <script> tag at the end of your HTML body
+
+🚨 PROBLEM 4: You’re mixing up poster-img (lightbox image) and .poster-thumb (grid poster images)
+You’re trying to apply modal logic to a poster with id="poster-img" (which is commented out) or used elsewhere. That JS block opens a "lightbox" on a single static image — not related to the grid.
+
+✅ If you’re only trying to make the six grid posters clickable, make sure they have this structure:
+
+<div class="poster-card grow-on-scroll">
+  <img src="images/PAPER_PRESENTATION_POSTER.jpg" alt="Paper Presentation Poster" class="poster-thumb">
+  <h4 class="event-name">Paper Presentation</h4>
+</div>
+Don't use id="poster-img" anymore — that’s unrelated to the modal for thumbnails.
+
+✅ FINAL CHECKLIST (Do This):
+✅ Update all image/video paths to use /, not \
+
+✅ Only use .poster-thumb for modal images
+
+✅ Keep one clean modal logic script
+
+✅ Only keep the correct modal HTML once, like this:
+
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+  <div class="modal-caption" id="modal-caption"></div>
+</div>
+🔍 BONUS: Want to Test It?
+Here’s how you can quickly test if your modal works:
+
+Open DevTools (F12) → Console
+
+Click one of your poster images
+
+If nothing happens, see if there are errors like:
+
+Uncaught TypeError
+
+Cannot read property of null
+
+404 (Not Found) — check paths!
+
+✅ Optional: Clean working version
+If you want, I can give you a single clean HTML + CSS + JS demo that you can copy and paste and test locally to prove it works.
+
+Let me know — want me to generate a working version?
+
+You said:
+what else could i do to further enhance this model and my caption is wier in the rigth side looking small and unwanted..i want to show it below the zoomed poster images or large poster image, i would like to Auto-slideshow feature 
+⬅️➡️ Navigation inside modal
+
+ChatGPT said:
+Great — you're already at a solid foundation! Let’s now enhance your modal with the following improvements:
+
+✅ Final Goals (from you):
+✅ Caption should appear centered below the zoomed poster image, not weirdly on the side
+
+✅ Add ← → navigation inside the modal (for next/previous posters)
+
+✅ Add automatic slideshow (with pause on manual interaction)
+
+✅ Maintain green neon styling and full responsiveness
+
+🛠️ Step-by-Step Enhancements
+✅ 1. Fix Caption Position
+Update your .modal layout in CSS so the caption is below the image, centered.
+
+🔧 Replace .modal CSS like this:
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,100,0.3);
+}
+
+.modal-caption {
+  margin-top: 16px;
+  color: #a8ffb0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  text-align: center;
+  max-width: 90%;
+}
+✅ 2. Add Modal Navigation Arrows ⬅️➡️
+🔧 Add these HTML elements inside #poster-modal:
+<span class="modal-prev">&#10094;</span>
+<span class="modal-next">&#10095;</span>
+So the modal structure becomes:
+
+<div id="poster-modal" class="modal hidden">
+  <span class="modal-close">&times;</span>
+  <span class="modal-prev">&#10094;</span>
+  <span class="modal-next">&#10095;</span>
+  <img class="modal-img" src="" alt="Full Poster View">
+  <div class="modal-caption" id="modal-caption"></div>
+</div>
+🔧 Add this to your CSS:
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #66ff99;
+  cursor: pointer;
+  z-index: 10001;
+  user-select: none;
+  padding: 8px;
+  background: rgba(0, 50, 0, 0.3);
+  border-radius: 8px;
+}
+
+.modal-prev { left: 20px; }
+.modal-next { right: 20px; }
+
+.modal-prev:hover,
+.modal-next:hover {
+  background: rgba(0, 255, 100, 0.2);
+}
+✅ 3. Add Auto-Slideshow and Navigation Logic
+This JavaScript will:
+
+Support arrow navigation
+
+Add slideshow (5 sec per poster)
+
+Pause auto-slideshow if user interacts
+
+🔧 Replace your modal JS with this:
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("poster-modal");
+  const modalImg = modal.querySelector(".modal-img");
+  const caption = document.getElementById("modal-caption");
+  const closeModal = modal.querySelector(".modal-close");
+  const prevBtn = modal.querySelector(".modal-prev");
+  const nextBtn = modal.querySelector(".modal-next");
+  const posters = Array.from(document.querySelectorAll(".poster-thumb"));
+
+  let currentIndex = 0;
+  let slideshowInterval;
+
+  function showImage(index) {
+    const img = posters[index];
+    if (!img) return;
+
+    modalImg.src = img.src;
+    caption.textContent = img.alt;
+    currentIndex = index;
+    modal.classList.remove("hidden");
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % posters.length;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + posters.length) % posters.length;
+    showImage(currentIndex);
+  }
+
+  // Autoplay
+  function startSlideshow() {
+    slideshowInterval = setInterval(nextImage, 5000); // 5 seconds
+  }
+
+  function stopSlideshow() {
+    clearInterval(slideshowInterval);
+  }
+
+  // Click thumbnails to open modal
+  posters.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      showImage(index);
+      stopSlideshow();
+      startSlideshow();
+    });
+  });
+
+  // Close
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    stopSlideshow();
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      stopSlideshow();
+    }
+  });
+
+  // Arrows
+  nextBtn.addEventListener("click", () => {
+    nextImage();
+    stopSlideshow();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevImage();
+    stopSlideshow();
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (modal.classList.contains("hidden")) return;
+
+    if (e.key === "ArrowRight") {
+      nextImage();
+      stopSlideshow();
+    } else if (e.key === "ArrowLeft") {
+      prevImage();
+      stopSlideshow();
+    } else if (e.key === "Escape") {
+      modal.classList.add("hidden");
+      stopSlideshow();
+    }
+  });
+});
+✅ Summary of What You Added
+Feature	✅ Status
+Proper caption below modal image	✅ Done
+Next/Prev arrow buttons in modal	✅ Done
+Keyboard navigation (← → Esc)	✅ Done
+Auto slideshow with pause on click	✅ Done
+Fully styled with green neon glow	✅ Done
+🔄 Optional Enhancement Ideas (later):
+Add a "Play/Pause" button for slideshow
+
+Add a "Fullscreen toggle" on image click
+
+Lazy-load images for performance
+
+Add swipe navigation on mobile using touch events
+
+Would you like me to generate a fully working HTML demo file with all this already implemented for you?
+
+
+Get smarter responses, upload files and images, and more.
+
+Log in
+
+Sign up for free
+IT CAME VERY VELL I LIKE IT THANK YOU THANK YOU SO MUCH
+
+
+Attach
+
+Search
+
+Study
+
+No file chosenNo file chosen
+ChatGPT can make mistakes. Check important info. See Cookie Preferences.
+

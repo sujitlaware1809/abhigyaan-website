@@ -10,6 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Satisfy&display=swap" rel="stylesheet">
+  
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://forms.gle">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="images/srm_lgo.webp">
+  <link rel="shortcut icon" type="image/webp" href="images/srm_lgo.webp">
+  
+  <!-- Devicon CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  
+  <!-- EmailJS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -18,7 +33,7 @@
     }
 
     :root {
-      --primary: #00ff88;
+      --primary:#37fd12;
       --secondary: #ff6b6b;
       --accent: #4ecdc4;
       --dark: #0a0a0a;
@@ -36,6 +51,69 @@
       cursor: none;
     }
 
+    /* Themed Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--darker);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      border: 2px solid var(--darker);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #45ff20, #5bebe2);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5), 0 0 10px rgba(55, 253, 18, 0.4);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: var(--darker);
+    }
+
+    /* Firefox Scrollbar */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--darker);
+    }
+
+    /* Image Optimization for Performance */
+    img {
+      image-rendering: auto;
+      image-rendering: crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    
+    /* Event card images optimization */
+    .event-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+      will-change: transform;
+      loading: lazy;
+      decoding: async;
+    }
+    
+    /* Lazy loading attributes */
+    img[loading="lazy"] {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    img[loading="lazy"].loaded {
+      opacity: 1;
+    }
+
     /* Custom Cursor */
     .cursor {
       position: fixed;
@@ -44,9 +122,11 @@
       border: 2px solid var(--primary);
       border-radius: 50%;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 99999;
       mix-blend-mode: difference;
       transition: all 0.1s ease;
+      opacity: 1;
+      visibility: visible;
     }
 
     .cursor-follower {
@@ -56,8 +136,10 @@
       background: var(--primary);
       border-radius: 50%;
       pointer-events: none;
-      z-index: 9998;
+      z-index: 99998;
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 1;
+      visibility: visible;
     }
 
     /* 3D Background */
@@ -98,7 +180,6 @@
 
     .navbar:hover {
       background: rgba(10, 10, 10, 0.8);
-      transform: translateX(-50%) translateY(-2px);
       box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
     }
 
@@ -197,9 +278,25 @@
       font-family: 'Satisfy', cursive;
       font-size: clamp(1.5rem, 4vw, 3rem);
       color: var(--light);
-      margin-top: 20px;
+      margin-top: 10px;
       opacity: 1;
       letter-spacing: 2px;
+    }
+
+    .hero-date {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: var(--primary);
+      margin-top: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 1;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
     }
 
     .hero-year {
@@ -336,122 +433,349 @@
       opacity: 1;
     }
 
-    /* Events Grid - FIXED OPACITY ISSUES */
+    /* Events Grid - Modern Card Layout */
     .events-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+      padding: 0 15px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Featured Events Layout */
+    .featured-first-event {
+      margin-bottom: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .featured-card {
+      max-width: 600px;
+      position: relative;
+      border: 2px solid rgba(0, 255, 136, 0.4);
+      box-shadow: 0 15px 50px rgba(0, 255, 136, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .featured-card:hover {
+      border-color: rgba(0, 255, 136, 0.6);
+      box-shadow: 0 20px 70px rgba(0, 255, 136, 0.3), 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      z-index: 2;
+    }
+
+    .featured-other-events {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-      margin-top: 60px;
+      gap: 30px;
+      margin-top: 20px;
     }
 
     .event-card {
-      background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.95));
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 25px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border: 1px solid rgba(0, 255, 136, 0.1);
+      border-radius: 24px;
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
-      cursor: pointer;
-      height: 675px;
+      height: auto;
+      min-height: 480px;
       display: flex;
       flex-direction: column;
       opacity: 1;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .event-card:hover {
-      transform: translateY(-15px) rotateX(5deg);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 136, 0.3);
-      cursor: default;
-      border-color: var(--primary);
+      transform: translateY(-15px);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(0, 255, 136, 0.3),
+        0 0 0 1px rgba(0, 255, 136, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border-color: rgba(0, 255, 136, 0.4);
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.03), rgba(79, 70, 229, 0.03));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .event-card:hover::before {
       opacity: 1;
     }
 
     .event-image {
-      height: 285px;
+      height: 180px;
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
+      border-radius: 20px 20px 0 0;
     }
 
     .event-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: all 0.4s ease;
-      filter: grayscale(20%);
-      opacity: 1;
+      filter: brightness(1) contrast(1.1) saturate(1.2);
     }
 
     .event-card:hover .event-image img {
-      transform: scale(1.1);
-      filter: grayscale(0%);
-      opacity: 1;
+      filter: brightness(1) contrast(1.3) saturate(1.4);
+    }
+
+    .event-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(79, 70, 229, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .event-card:hover .event-image::after {
+      opacity: 0;
     }
 
     .event-content {
-      padding: 25px;
+      padding: 20px 20px 20px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       justify-content: space-between;
       position: relative;
       height: 100%;
-      text-align: center;
+      text-align: left;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
     }
 
     .event-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--light);
-      align-self: flex-start;
-      width: 100%;
-      margin-bottom: 15px;
-      background: linear-gradient(90deg, var(--light), var(--primary));
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #e0e7ff);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      opacity: 1;
+      width: 100%;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .event-description {
       color: rgba(255, 255, 255, 0.9);
       line-height: 1.6;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 20px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      height: 4.8rem;
-      opacity: 1;
-      align-self: flex-start;
-      width: 100%;
+      flex-grow: 1;
+      font-weight: 400;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .event-date {
-      display: inline-block;
-      background: rgba(0, 255, 136, 0.15);
-      color: var(--primary);
-      padding: 8px 16px;
-      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(78, 205, 196, 0.15));
+      color: #37fd12;
+      padding: 10px 18px;
+      border-radius: 30px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 700;
       border: 1px solid rgba(0, 255, 136, 0.3);
-      margin-top: 10px;
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+      margin-bottom: 5px;
+      box-shadow: 
+        0 4px 12px rgba(0, 255, 136, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
-      opacity: 1;
-      align-self: flex-start;
+      width: fit-content;
+      backdrop-filter: blur(10px);
+    }
+    
+    .event-venue {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(99, 102, 241, 0.15));
+      color: #818cf8;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      margin-bottom: 12px;
+      box-shadow: 
+        0 3px 10px rgba(79, 70, 229, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      width: fit-content;
+      backdrop-filter: blur(10px);
+    }
+    
+    .register-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-top: auto;
+      width: 100%;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 8px 32px rgba(102, 126, 234, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .register-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .register-button:hover::before {
+      left: 100%;
+    }
+    
+    .register-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 12px 40px rgba(102, 126, 234, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+    }
+
+
+    
+    /* Responsive poster modal */
+    @media (max-width: 768px) {
+      .poster-modal-content {
+        flex-direction: column;
+        max-width: 95vw;
+        max-height: 90vh;
+        padding: 20px;
+        gap: 20px;
+        overflow-y: auto;
+      }
+    
+      .poster-section {
+        width: 100%;
+        max-width: none;
+      }
+    
+      .poster-modal-image {
+        max-width: 100%;
+        max-height: 250px;
+        align-self: center;
+      }
+    
+      .poster-register-btn {
+        max-width: 250px;
+        font-size: 1.1rem;
+        padding: 16px 28px;
+      }
+    
+      .poster-modal-info {
+        width: 100%;
+      }
+    
+      .poster-modal-title {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+    
+      .poster-modal-date {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    
+      .event-round {
+        padding: 15px;
+      }
+    
+      .round-details {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .poster-modal-content {
+        padding: 15px;
+        gap: 15px;
+      }
+    
+      .poster-modal-title {
+        font-size: 1.6rem;
+      }
+    
+      .poster-register-btn {
+        font-size: 1rem;
+        padding: 14px 24px;
+      }
+    
+      .round-title {
+        font-size: 1.1rem;
+      }
+    
+      .round-details {
+        gap: 10px;
+      }
+    
+      .round-detail {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+      }
     }
     
     .event-card:hover .event-date {
-      background: rgba(0, 255, 136, 0.25);
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(78, 205, 196, 0.25));
       border-color: rgba(0, 255, 136, 0.5);
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
+      transform: translateY(-2px);
       opacity: 1;
     }
 
@@ -495,7 +819,7 @@
     }
 
     .team-card:hover {
-      transform: translateY(-15px) rotateX(5deg);
+      transform: translateY(-15px);
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 136, 0.3);
       border-color: var(--primary);
       opacity: 1;
@@ -522,7 +846,6 @@
     }
     
     .team-card:hover .team-avatar {
-      transform: scale(1.05);
       border: 2px solid var(--primary);
       box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
     }
@@ -606,7 +929,6 @@
     }
 
     .timeline-content:hover {
-      transform: scale(1.02);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 136, 0.1);
       border-color: var(--primary);
     }
@@ -629,6 +951,19 @@
       margin-bottom: 15px;
     }
     
+    /* Additional styling for register button links */
+    a.register-button {
+      text-decoration: none !important;
+      color: var(--light) !important;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    a.register-button:hover {
+      color: var(--light) !important;
+      text-decoration: none !important;
+    }
+
     /* Enhanced register button styling */
     button[onclick*="registerEvent"], 
     button[onclick*="window.open"],
@@ -690,6 +1025,7 @@
       .event-card {
         height: auto;
         min-height: 550px;
+        cursor: pointer;
       }
       
       button[onclick*="registerEvent"],
@@ -862,7 +1198,7 @@
 
     /* Success Message */
     .success-message {
-      background: linear-gradient(45deg, #00ff88, #4ecdc4);
+      background: linear-gradient(45deg, #37fd12, #4ecdc4);
       color: var(--dark);
       padding: 15px 20px;
       border-radius: 15px;
@@ -872,11 +1208,17 @@
       opacity: 0;
       transform: translateY(-20px);
       transition: all 0.3s ease;
+      line-height: 1.6;
     }
 
     .success-message.show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .success-message.error {
+      background: linear-gradient(45deg, #ff6b6b, #ff8a80);
+      color: white;
     }
 
     /* Modal */
@@ -886,15 +1228,16 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 10000;
+      z-index: 19999;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
+      padding: 10px;
     }
 
     .modal.active {
@@ -908,13 +1251,10 @@
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-      transform: scale(0.8);
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .modal.active .modal-content {
-      transform: scale(1);
-    }
+
 
     .modal img {
       width: 100%;
@@ -922,30 +1262,56 @@
       display: block;
     }
 
+    .modal-image {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 15px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     .close-modal {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      font-size: 2rem;
-      color: var(--light);
-      cursor: none;
-      z-index: 10001;
-      width: 50px;
-      height: 50px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 2.5rem;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 30000;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 0, 0, 0.9);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 3px solid #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       opacity: 1;
+      visibility: visible;
+      font-weight: 900;
+      line-height: 1;
+      box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.8), 
+        0 0 40px rgba(255, 255, 255, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      font-family: Arial, sans-serif;
     }
 
-    .close-modal:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(90deg);
+    .close-modal:hover,
+    .close-modal:active {
+      background: rgba(255, 0, 0, 1);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: scale(1.1);
+      box-shadow: 
+        0 0 30px rgba(255, 0, 0, 1), 
+        0 0 60px rgba(255, 255, 255, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
     }
 
     /* Advanced Button Styles */
@@ -999,16 +1365,57 @@
       justify-content: center;
       align-items: center;
       z-index: 10000;
-      transition: opacity 1s ease, visibility 1s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      animation: autoHideLoader 3s forwards;
+    }
+
+    @keyframes autoHideLoader {
+      0%, 85% {
+        opacity: 1;
+        visibility: visible;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+      }
     }
 
     .loader.hidden {
       opacity: 0;
       visibility: hidden;
+      display: none !important;
+    }
+
+    /* Hidden class for modals */
+    .modal.hidden {
+      display: none !important;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .modal:not(.hidden) {
+      display: flex !important;
+      opacity: 1;
+      visibility: visible;
     }
 
     .loader-content {
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .loader-gif {
+      max-width: 500px;
+      max-height: 500px;
+      width: auto;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+      filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.6));
     }
 
     .loader-text {
@@ -1025,19 +1432,424 @@
       50% { opacity: 1; }
     }
 
-    .loader-circle {
-      width: 100px;
-      height: 100px;
-      border: 3px solid rgba(0, 255, 136, 0.1);
-      border-top: 3px solid var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+    /* Event Details Modal Styles */
+    #event-details-modal {
+      z-index: 25000;
+      padding: 10px;
+    }
+    
+    .event-details-modal-content {
+      background: linear-gradient(145deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.95));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      max-width: 900px;
+      max-height: 90vh;
+      width: 95%;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      margin: 20px;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .event-poster-section {
+      flex: 1;
+      max-width: 400px;
+      position: relative;
     }
+
+    .modal-event-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px 0 0 0;
+    }
+
+    .poster-register-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin: 20px;
+      width: calc(100% - 40px);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 8px 32px rgba(102, 126, 234, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      z-index: 1;
+    }
+    
+    .poster-register-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .poster-register-btn:hover::before,
+    .poster-register-btn:active::before {
+      left: 100%;
+    }
+    
+    .poster-register-btn:hover,
+    .poster-register-btn:active {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 12px 40px rgba(102, 126, 234, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+    }
+
+    .event-info-section {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+      max-height: 90vh;
+      background: rgba(255, 255, 255, 0.02);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-event-title {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-family: 'Orbitron', monospace;
+      opacity: 1;
+      visibility: visible;
+      display: block;
+      line-height: 1.2;
+      word-wrap: break-word;
+      text-align: center;
+    }
+
+    .modal-register-btn {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: var(--darker);
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .modal-register-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(55, 253, 18, 0.4);
+    }
+
+    .event-details-content {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .detail-section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .detail-section:last-child {
+      border-bottom: none;
+    }
+
+    .detail-section h3 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+
+    .detail-section p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+      opacity: 1;
+      visibility: visible;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .fee-info {
+      background: linear-gradient(45deg, rgba(55, 253, 18, 0.2), rgba(78, 205, 196, 0.2));
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 253, 18, 0.3);
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.1rem;
+      opacity: 1;
+      visibility: visible;
+      display: inline-block;
+    }
+
+    .event-meta-info p {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .coordinators-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .coordinator-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .coordinator-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .coordinator-name {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .coordinator-role {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .coordinator-contact {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .rounds-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rounds-list li {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Mobile Responsiveness for Event Modal */
+    @media (max-width: 768px) {
+      #event-details-modal {
+        padding: 5px;
+      }
+      
+      .event-details-modal-content {
+        flex-direction: column;
+        max-width: 95%;
+        max-height: 90vh;
+        width: 95%;
+        border-radius: 15px;
+        overflow: visible;
+        margin: 10px;
+      }
+
+      .event-poster-section {
+        max-width: 100%;
+        height: 220px;
+        min-height: 220px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .modal-event-poster {
+        border-radius: 15px 15px 0 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      
+      .poster-register-btn {
+        margin: 12px;
+        width: calc(100% - 24px);
+        font-size: 0.95rem;
+        padding: 12px 20px;
+        border-radius: 20px;
+      }
+
+      .event-info-section {
+        padding: 15px;
+        flex: 1;
+        overflow-y: auto;
+        min-height: 200px;
+        margin-top: 18px;
+      }
+
+      .modal-event-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 12px !important;
+        margin-top: 0 !important;
+        color: var(--primary) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .detail-section {
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+      }
+      
+      .detail-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: var(--accent);
+        opacity: 1;
+      }
+      
+      .detail-section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        opacity: 1;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      
+      .rounds-list li {
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        opacity: 1;
+      }
+      
+      .fee-info {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        opacity: 1;
+      }
+      
+      .close-modal {
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+        border-width: 2px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .event-details-modal-content {
+        max-width: 98%;
+        width: 98%;
+        max-height: 92vh;
+        border-radius: 10px;
+        margin: 5px;
+        overflow: visible;
+      }
+      
+      #event-details-modal {
+        padding: 5px;
+      }
+      
+      .event-poster-section {
+        height: 200px;
+        min-height: 200px;
+      }
+      
+      .modal-event-poster {
+        border-radius: 10px 10px 0 0;
+      }
+      
+      .poster-register-btn {
+        margin: 10px;
+        width: calc(100% - 20px);
+        font-size: 0.9rem;
+        padding: 12px 18px;
+      }
+      
+      .event-info-section {
+        padding: 12px;
+        min-height: 180px;
+        margin-top: 20px;
+      }
+      
+      .modal-event-title {
+        font-size: 1.4rem !important;
+        margin-bottom: 8px !important;
+        margin-top: 0 !important;
+        color: #37fd12 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+        font-weight: 700 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      
+      .close-modal {
+        top: 8px;
+        right: 8px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Image compression and quality optimization */
+    @media (max-width: 768px) {
+      .event-image img {
+        height: 180px;
+        image-rendering: -webkit-optimize-contrast;
+      }
+      
+      .abhigyan-poster-img {
+        max-width: 280px !important;
+        height: auto;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .event-image img {
+        height: 160px;
+      }
+      
+      .loader-gif {
+        width: 300px !important;
+        height: 300px !important;
+      }
+    }
+    
+    /* Image optimization - removed conflicting rule */
 
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -1184,6 +1996,181 @@
       background: linear-gradient(145deg, rgba(35, 35, 35, 0.98), rgba(20, 20, 20, 0.98));
       border-color: var(--primary);
     }
+    
+    /* Corner Logos - COMPLETELY FIXED FOR FULL LOGO VISIBILITY */
+    .corner-logos {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: visible;
+    }
+    
+    .corner-logo {
+      position: absolute;
+      pointer-events: auto;
+      /* STANDARD SIZE FOR LEFT LOGO */
+      width: 100px;
+      height: 100px;
+      overflow: visible;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .corner-logo.top-left {
+      top: 20px;
+      left: 20px;
+    }
+    
+    .corner-logo.top-right {
+      top: 20px;
+      right: 20px;
+      /* PROPER CONTAINER SIZE FOR RIGHT CORNER LOGO */
+      width: 120px !important;
+      height: 120px !important;
+      border-radius: 25px !important;
+      overflow: visible !important;
+      padding: 8px !important;
+      box-sizing: border-box !important;
+      z-index: 15 !important;
+    }
+    
+    /* Standard styling for left corner logo */
+    .corner-logo-img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.3s ease;
+      opacity: 0.9;
+      filter: brightness(1.1) contrast(1.1);
+    }
+    
+    /* Special settings for right corner SRM logo - ENHANCED VISIBILITY WITHOUT DISTORTION */
+    .corner-logo.top-right .corner-logo-img {
+      width: 1900% !important;
+      height: 150% !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      max-width: none !important;
+      max-height: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      outline: none !important;
+      transform: none !important;
+      clip-path: none !important;
+      overflow: visible !important;
+      opacity: 1 !important;
+      filter: brightness(1.3) contrast(1.3) saturate(1.1) !important;
+    }
+    
+    .corner-logo:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    }
+    
+    .corner-logo:hover .corner-logo-img {
+      opacity: 1;
+      filter: brightness(1.2) contrast(1.2);
+    }
+    
+    /* Responsive adjustments - PROPER SIZING FOR RIGHT LOGO */
+    @media (max-width: 1024px) {
+      .corner-logo {
+        width: 90px;
+        height: 90px;
+        border-radius: 18px;
+      }
+      
+      .corner-logo.top-right {
+        width: 110px !important;
+        height: 110px !important;
+        border-radius: 22px !important;
+        padding: 6px !important;
+        overflow: visible !important;
+      }
+      
+      .corner-logo.top-left,
+      .corner-logo.top-right {
+        top: 15px;
+      }
+      
+      .corner-logo.top-left {
+        left: 15px;
+      }
+      
+      .corner-logo.top-right {
+        right: 15px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .corner-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+      }
+      
+      .corner-logo.top-right {
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 20px !important;
+        padding: 5px !important;
+        overflow: visible !important;
+      }
+      
+      .corner-logo.top-left,
+      .corner-logo.top-right {
+        top: 12px;
+      }
+      
+      .corner-logo.top-left {
+        left: 12px;
+      }
+      
+      .corner-logo.top-right {
+        right: 12px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .corner-logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+      }
+      
+      .corner-logo.top-right {
+        width: 90px !important;
+        height: 90px !important;
+        border-radius: 18px !important;
+        padding: 4px !important;
+        overflow: visible !important;
+      }
+      
+      .corner-logo.top-left,
+      .corner-logo.top-right {
+        top: 10px;
+      }
+      
+      .corner-logo.top-left {
+        left: 10px;
+      }
+      
+      .corner-logo.top-right {
+        right: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1197,38 +2184,74 @@
   <!-- Loader -->
   <div class="loader" id="loader">
     <div class="loader-content">
-      <div class="loader-circle"></div>
+      <img src="images/Abhigyan_25.gif" alt="Abhigyan 25 Loading" class="loader-gif">
       <div class="loader-text">Loading Experience...</div>
     </div>
   </div>
+
+  <!-- Normal loader hide script -->
+  <script>
+    console.log('Loader script starting...');
+    
+    // Normal 3-second loader hide
+    setTimeout(function() {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.5s ease';
+        console.log('Loader fading out after 3 seconds');
+        
+        // Remove from DOM after fade
+        setTimeout(function() {
+          if (loader.parentNode) {
+            loader.parentNode.removeChild(loader);
+            console.log('Loader removed from DOM');
+          }
+        }, 500);
+      }
+    }, 3000);
+  </script>
 
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-links">
       <a href="#" class="nav-link active" data-page="home">Home</a>
       <a href="#" class="nav-link" data-page="events">Events</a>
-      <a href="#" class="nav-link" data-page="about">About</a>
       <a href="#" class="nav-link" data-page="team">Team</a>
-      <a href="#" class="nav-link" data-page="past-events">Past Events</a>
+      <a href="#" class="nav-link" data-page="past-events">Past Edi.</a>
       <a href="#" class="nav-link" data-page="contact">Contact</a>
     </div>
   </nav>
+
 
   <!-- HOME PAGE -->
   <div class="page active" id="home">
     <!-- Hero Section -->
     <section class="hero">
+      <!-- Corner Logos -->
+      <div class="corner-logos">
+        <div class="corner-logo top-left">
+          <img src="images/club_logo.png" alt="ECE Department Logo" class="corner-logo-img">
+        </div>
+        <div class="corner-logo top-right">
+          <img src="images/srm_logo.png" alt="SRM Vadapalani Logo" class="corner-logo-img">
+        </div>
+      </div>
+      
       <div class="floating-elements" id="floating-elements"></div>
       <h1 class="hero-title">Abhigyan '25</h1>
             <p class="hero-subtitle">Sustainable Synergy</p>
-<p style="font-family: 'Poppins', sans-serif; font-size:20px; font-weight:500; line-height:1.6; color:#ffffff; opacity:1; margin-top:10px; text-align:center; letter-spacing:0.5px;">
-  By Electronics and Communication Department, SRMIST VDP Campus
-</p>
-
-
+            <p class="hero-date">11th Sept 2025 (Thursday)</p>
+<p style="font-family: 'Poppins', sans-serif; font-size:20px; font-weight:500; line-height:1.6; color:#ffffff; opacity:1; margin-top:5px; text-align:center; letter-spacing:0.5px;">
+Department of Electronics and Communication Engineering, SRMIST VDP Campus</p>
 
       <div class="hero-year">2025</div>
-      <div style="margin-top: 50px;">
+      
+      <div style="margin-top: 5px; text-align: center;">
+        <img src="images/unstop.png" alt="Untop Logo" style="max-width: 120px; height: auto; margin-bottom: 8px; opacity: 0.9; border-radius: 15px;">
+      </div>
+      
+      <div style="margin-top: 5px;">
         <a href="#" class="cta-button" data-page="events">Explore Events</a>
       </div>
     </section>
@@ -1308,88 +2331,94 @@
     <section class="section content-section">
   <h2 class="section-title">Featured Events</h2>
   <div class="events-grid">
-    <div class="event-card">
+    <!-- Technical Event -->
+    <div class="event-card" data-image="images/paper_prep.jpg">
       <div class="event-image">
-        <img src="images/1.jpg" alt="Paper Presentation">
+        <img src="images/paper_prep.jpg" alt="Paper Presentation" loading="lazy" decoding="async">
       </div>
       <div class="event-content">
         <h3 class="event-title">Paper Presentation</h3>
         <p class="event-description">Share your research and innovative ideas with peers and faculty in this academic showcase.</p>
-        <span class="event-date">September 9, 2025</span>
-        <span class="event-venue">📍 SRM Campus</span>
-        <button class="register-button" onclick="registerEvent('Paper Presentation')" style="margin-top: auto;">
+        <span class="event-date">11th Sept 2025</span>
+        <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+        <a href="https://forms.gle/trZv4eHqs74TEUAi7" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
           Register Now
-        </button>
+        </a>
       </div>
     </div>
-    <div class="event-card">
+    <!-- Non-Technical Event -->
+    <div class="event-card" data-image="images/TREASUREHUNT.png">
       <div class="event-image">
-        <img src="images/4.jpg" alt="Mindspark">
+        <img src="images/TREASUREHUNT.png" alt="Treasure Hunt" loading="lazy" decoding="async">
+      </div>
+      <div class="event-content">
+        <h3 class="event-title">Treasure Hunt</h3>
+        <p class="event-description">Put your wits to the test as you follow clues and solve puzzles to find the hidden treasure.</p>
+        <span class="event-date">11th Sept 2025</span>
+        <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+        <a href="https://forms.gle/CaPS6ktSGsDYLRhJ7" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
+          Register Now
+        </a>
+      </div>
+    </div>
+    <!-- Technical Event -->
+    <div class="event-card" data-image="images/MINDSPARK.png">
+      <div class="event-image">
+        <img src="images/MINDSPARK.png" alt="Mindspark" loading="lazy" decoding="async">
       </div>
       <div class="event-content">
         <h3 class="event-title">Mindspark</h3>
         <p class="event-description">Test your mental agility and quick thinking in a series of challenging puzzles and quizzes.</p>
-        <span class="event-date">September 9, 2025</span>
-        <span class="event-venue">📍 SRM Campus</span>
-        <button class="register-button" onclick="registerEvent('Mindspark')" style="margin-top: auto;">
+        <span class="event-date">11th Sept 2025</span>
+        <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+        <a href="https://forms.gle/oRP33esP5EdfEdZN6" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
           Register Now
-        </button>
+        </a>
       </div>
     </div>
-    <div class="event-card">
+    <!-- Non-Technical Event -->
+    <div class="event-card" data-image="images/ipl_action.jpg">
       <div class="event-image">
-        <img src="images/2.jpg" alt="Vision X">
-      </div>
-      <div class="event-content">
-        <h3 class="event-title">Vision X</h3>
-        <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
-        <span class="event-date">September 9, 2025</span>
-        <span class="event-venue">📍 SRM Campus</span>
-        <button class="register-button" onclick="registerEvent('Vision X')" style="margin-top: auto;">
-          Register Now
-        </button>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-image">
-        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" alt="IPL Auction">
+        <img src="images/ipl_action.jpg" alt="IPL Auction" loading="lazy" decoding="async">
       </div>
       <div class="event-content">
         <h3 class="event-title">IPL Auction</h3>
         <p class="event-description">Step into the shoes of a team owner and build your dream team in this strategic mock auction.</p>
-        <span class="event-date">September 9, 2025</span>
-        <span class="event-venue">📍 SRM Campus</span>
-        <button class="register-button" onclick="registerEvent('IPL Auction')" style="margin-top: auto;">
+        <span class="event-date">11th Sept 2025</span>
+        <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+        <a href="https://forms.gle/F4B2qDmkHDVG78rj8" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
           Register Now
-        </button>
+        </a>
       </div>
     </div>
-    <div class="event-card">
+    <!-- Technical Event -->
+    <div class="event-card" data-image="images/vision.jpg">
       <div class="event-image">
-        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop" alt="Free Fire">
+        <img src="images/vision.jpg" alt="Vision X" loading="lazy" decoding="async">
       </div>
       <div class="event-content">
-        <h3 class="event-title">Free Fire</h3>
-        <p class="event-description">A high-stakes gaming tournament for all Free Fire enthusiasts to showcase their skills.</p>
-        <span class="event-date">September 9, 2025</span>
-        <span class="event-venue">📍 SRM Campus</span>
-        <button class="register-button" onclick="registerEvent('Free Fire')" style="margin-top: auto;">
+        <h3 class="event-title">Vision X</h3>
+        <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
+        <span class="event-date">11th Sept 2025</span>
+        <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScJECPSznKZP35GiC7N4hgFGxYCajIerbQooM1HdKSEUwniAg/viewform" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
           Register Now
-        </button>
+        </a>
       </div>
     </div>
-    <div class="event-card">
+    <!-- Non-Technical Event -->
+    <div class="event-card" data-image="images/BEATODYSSEY1.png">
       <div class="event-image">
-        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=400&h=300&fit=crop" alt="Beat Odyssey">
+        <img src="images/BEATODYSSEY1.png" alt="Beat Odyssey" loading="lazy" decoding="async">
       </div>
       <div class="event-content">
         <h3 class="event-title">Beat Odyssey</h3>
         <p class="event-description">Unleash your inner rhythm in this thrilling music and technology-focused event.</p>
-        <span class="event-date">September 9, 2025</span>
-        <span class="event-venue">📍 SRM Campus</span>
-        <button class="register-button" onclick="registerEvent('Beat Odyssey')" style="margin-top: auto;">
+        <span class="event-date">11th Sept 2025</span>
+        <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+        <a href="https://forms.gle/Vp8ERVqDFcaMdz589" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
           Register Now
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -1397,6 +2426,67 @@
   <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
     <a href="#" class="cta-button" data-page="events">View All Events</a>
   </div>
+
+  <!-- ABOUT SECTION ADDED TO HOME PAGE -->
+  <section class="section" style="margin-top: 60px;">
+    <h2 class="section-title">About Abhigyan 25</h2>
+    
+    <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 80px;">
+      <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; opacity: 1;">
+        Abhigyan 25 represents the pinnacle of sustainable innovation and technological excellence. Our theme "Sustainable Synergy" embodies the perfect harmony between cutting-edge technology and environmental responsibility.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.8); opacity: 1;">
+        ECE Department SRMIST VDP Campus presents this grand symposium showcasing the future of green technology, sustainable engineering practices, and innovative solutions for global challenges.
+      </p>
+    </div>
+    
+    <div style="max-width: 1000px; margin: 0 auto 60px; background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 25px; padding: 40px; text-align: center;">
+      <h3 style="color: var(--primary); font-size: 2.2rem; margin-bottom: 25px; opacity: 1;">Innovation is Calling!</h3>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); opacity: 1;">
+        The ECE Department, SRMIST VDP Campus, proudly presents Abhigyan'25 - a spectacular tech fest. With the theme "Sustainable Synergy," this edition is all about uniting technology with sustainability to shape a better tomorrow. From thrilling technical events that test your skills to exciting non-technical events packed with creativity and fun, Abhigyan'25 offers something for every innovator and dreamer.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-top: 20px; opacity: 1; font-style: italic;">
+        Get ready for a journey where knowledge meets collaboration, and every idea has the power to inspire change.
+      </p>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 20px; opacity: 1;">Key Focus Areas</h3>
+    </div>
+
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-content" style="text-align: center; padding: 40px 30px;">
+          <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🌱</div>
+          <h3 class="event-title">Sustainability Focus</h3>
+          <p class="event-description">Every event and competition is designed with environmental consciousness, promoting green technology and sustainable engineering practices.</p>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-content" style="text-align: center; padding: 40px 30px;">
+          <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🚀</div>
+          <h3 class="event-title">Innovation Hub</h3>
+          <p class="event-description">Cutting-edge research presentations, breakthrough technology showcases, and revolutionary ideas that shape the future of engineering.</p>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-content" style="text-align: center; padding: 40px 30px;">
+          <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🤝</div>
+          <h3 class="event-title">Collaborative Learning</h3>
+          <p class="event-description">Fostering collaboration between students, researchers, and industry experts to create synergistic solutions for global challenges.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width: 1000px; margin: 80px auto 0; background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 25px; padding: 40px;">
+      <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 30px; text-align: center; opacity: 1;">Our Mission</h3>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); text-align: center; opacity: 1;">
+        To create a platform where sustainable technology meets innovative engineering, fostering the development of eco-friendly solutions that address real-world challenges while inspiring the next generation of environmentally conscious engineers and technologists.
+      </p>
+    </div>
+  </section>
 </section>
   </div>
 
@@ -1405,186 +2495,200 @@
     <section class="section" style="padding-top: 120px;">
       <h2 class="section-title">All Events</h2>
       <div class="events-grid">
-        <div class="event-card" data-image="images/1.jpg">
+        <!-- 1. Technical Event - Paper Presentation -->
+        <div class="event-card" data-image="images/paper_prep.jpg">
   <div class="event-image">
-    <img src="images/1.jpg" alt="Paper Presentation">
+    <img src="images/paper_prep.jpg" alt="Paper Presentation" loading="lazy" decoding="async">
   </div>
   <div class="event-content">
     <h3 class="event-title">Paper Presentation</h3>
     <p class="event-description">Share your research and innovative ideas with peers and faculty in this academic showcase.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
     <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Paper Presentation')">
+      <a href="https://forms.gle/trZv4eHqs74TEUAi7" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
         Register Now
-      </button>
+      </a>
     </div>
   </div>
 </div>
 
-<div class="event-card" data-image="images/5.jpg">
+<!-- 2. Non-Technical Event - Treasure Hunt -->
+<div class="event-card" data-image="images/TREASUREHUNT.png">
   <div class="event-image">
-    <img src="images/5.jpg" alt="Poster Pulse">
-  </div>
-  <div class="event-content">
-    <h3 class="event-title">Poster Pulse</h3>
-    <p class="event-description">Display your research findings and projects on posters and engage in one-on-one discussions with experts.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Poster Pulse')">
-        Register Now
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="event-card" data-image="images/3.jpg">
-  <div class="event-image">
-    <img src="images/3.jpg" alt="Mindspark">
-  </div>
-  <div class="event-content">
-    <h3 class="event-title">Mindspark</h3>
-    <p class="event-description">Test your mental agility and quick thinking in a series of challenging puzzles and quizzes.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Mindspark')">
-        Register Now
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="event-card" data-image="images/2.jpg">
-  <div class="event-image">
-    <img src="images/2.jpg" alt="Scrap Battle">
-  </div>
-  <div class="event-content">
-    <h3 class="event-title">Scrap Battle</h3>
-    <p class="event-description">An ultimate robotics competition where creativity meets engineering excellence.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Scrap Battle')">
-        Register Now
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="event-card" data-image="images/5.jpg">
-  <div class="event-image">
-    <img src="images/5.jpg" alt="Vision X">
-  </div>
-  <div class="event-content">
-    <h3 class="event-title">Vision X</h3>
-    <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Vision X')">
-        Register Now
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="event-card" data-image="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=400&h=300&fit=crop">
-  <div class="event-image">
-    <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=400&h=300&fit=crop" alt="Treasure Hunt">
+    <img src="images/TREASUREHUNT.png" alt="Treasure Hunt" loading="lazy" decoding="async">
   </div>
   <div class="event-content">
     <h3 class="event-title">Treasure Hunt</h3>
     <p class="event-description">Put your wits to the test as you follow clues and solve puzzles to find the hidden treasure.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
     <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Treasure Hunt')">
+      <a href="https://forms.gle/CaPS6ktSGsDYLRhJ7" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
         Register Now
-      </button>
+      </a>
     </div>
   </div>
 </div>
 
-<div class="event-card" data-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop">
+<!-- 3. Technical Event - Poster Pulse -->
+<div class="event-card" data-image="images/poster_pulse.jpg">
   <div class="event-image">
-    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop" alt="Doodlescape">
+    <img src="images/poster_pulse.jpg" alt="Poster Pulse" loading="lazy" decoding="async">
   </div>
   <div class="event-content">
-    <h3 class="event-title">Doodlescape</h3>
-    <p class="event-description">Unleash your creativity and artistic flair in a live doodling competition.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
+    <h3 class="event-title">Poster Pulse</h3>
+    <p class="event-description">Display your research findings and projects on posters and engage in one-on-one discussions with experts.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
     <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="registerEvent('Doodlescape')">
+      <a href="https://forms.gle/Cuf7BJzYtf6MvVDR8" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
         Register Now
-      </button>
+      </a>
     </div>
   </div>
 </div>
 
-<div class="event-card" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop">
+<!-- 4. Non-Technical Event - Fluid Strokes -->
+<div class="event-card" data-image="images/FLUIDSTROKES.png">
   <div class="event-image">
-    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Legends & Timelines">
+    <img src="images/FLUIDSTROKES.png" alt="Fluid Strokes" loading="lazy" decoding="async">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Fluid Strokes</h3>
+    <p class="event-description">Unleash your creativity and artistic flair in a live drawing and painting competition.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <a href="https://forms.gle/Fee5r6cFX7Bq7RCb7" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
+        Register Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Technical Event - Mindspark -->
+<div class="event-card" data-image="images/MINDSPARK.png">
+  <div class="event-image">
+    <img src="images/MINDSPARK.png" alt="Mindspark" loading="lazy" decoding="async">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Mindspark</h3>
+    <p class="event-description">Test your mental agility and quick thinking in a series of challenging puzzles and quizzes.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <a href="https://forms.gle/oRP33esP5EdfEdZN6" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
+        Register Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 6. Non-Technical Event - Legends & Timelines -->
+<div class="event-card" data-image="images/LEAGENDANDTIMELINES.png">
+  <div class="event-image">
+    <img src="images/LEAGENDANDTIMELINES.png" alt="Legends & Timelines" loading="lazy" decoding="async">
   </div>
   <div class="event-content">
     <h3 class="event-title">Legends & Timelines</h3>
     <p class="event-description">A competition testing your knowledge of history, mythology, and legendary tales.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <button onclick="registerEvent('Legends & Timelines')" style="margin-top: auto;">
-      Register Now
-    </button>
-  </div>
-</div>
-
-<div class="event-card" data-image="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop">
-  <div class="event-image">
-    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop" alt="IPL Auction">
-  </div>
-  <div class="event-content">
-    <h3 class="event-title">IPL Auction</h3>
-    <p class="event-description">Step into the shoes of a team owner and build your dream team in this strategic mock auction.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
     <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
-      <button class="register-button" onclick="window.open('https://forms.gle/your-google-form-link','_blank')">
+      <a href="https://forms.gle/hmP5uDat8GbJSG9y6" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
         Register Now
-      </button>
+      </a>
     </div>
   </div>
 </div>
 
-<div class="event-card" data-image="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop">
+<!-- 7. Technical Event - Scrap Battle -->
+<div class="event-card" data-image="images/scrap.jpg">
   <div class="event-image">
-    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop" alt="Free Fire">
+    <img src="images/scrap.jpg" alt="Scrap Battle" loading="lazy" decoding="async">
   </div>
   <div class="event-content">
-    <h3 class="event-title">Free Fire</h3>
-    <p class="event-description">A high-stakes gaming tournament for all Free Fire enthusiasts to showcase their skills.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <button onclick="registerEvent('Free Fire')" style="margin-top: auto;">
-      Register Now
-    </button>
+    <h3 class="event-title">Scrap Battle</h3>
+    <p class="event-description">An ultimate robotics competition where creativity meets engineering excellence.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <a href="https://forms.gle/jMjVRmnnL4tZmbjS9" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
+        Register Now
+      </a>
+    </div>
   </div>
 </div>
 
-<div class="event-card" data-image="https://images.unsplash.com/photo-1581092921461-39b9d08a9b31?w=400&h=300&fit=crop">
+<!-- 8. Non-Technical Event - Beat Odyssey -->
+<div class="event-card" data-image="images/BEATODYSSEY1.png">
   <div class="event-image">
-    <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b31?w=400&h=300&fit=crop" alt="Beat Odyssey">
+    <img src="images/BEATODYSSEY1.png" alt="Beat Odyssey" loading="lazy" decoding="async">
   </div>
   <div class="event-content">
     <h3 class="event-title">Beat Odyssey</h3>
     <p class="event-description">Unleash your inner rhythm in this thrilling music and technology-focused event.</p>
-    <span class="event-date">September 9, 2025</span>
-    <span class="event-venue">📍 SRM Campus</span>
-    <button onclick="registerEvent('Beat Odyssey')" style="margin-top: auto;">
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <a href="https://forms.gle/Vp8ERVqDFcaMdz589" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
       Register Now
-    </button>
+    </a>
   </div>
 </div>
+
+<!-- 9. Technical Event - Vision X -->
+<div class="event-card" data-image="images/vision.jpg">
+  <div class="event-image">
+    <img src="images/vision.jpg" alt="Vision X" loading="lazy" decoding="async">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Vision X</h3>
+    <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScJECPSznKZP35GiC7N4hgFGxYCajIerbQooM1HdKSEUwniAg/viewform" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
+        Register Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 10. Non-Technical Event - IPL Auction -->
+<div class="event-card" data-image="images/ipl_action.jpg">
+  <div class="event-image">
+    <img src="images/ipl_action.jpg" alt="IPL Auction" loading="lazy" decoding="async">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">IPL Auction</h3>
+    <p class="event-description">Step into the shoes of a team owner and build your dream team in this strategic mock auction.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <div class="button-container" style="width: 100%; text-align: center; margin-top: 20px;">
+      <a href="https://forms.gle/F4B2qDmkHDVG78rj8" target="_blank" class="register-button" style="text-decoration: none; display: inline-block; text-align: center;">
+        Register Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 11. Non-Technical Event - Free Fire -->
+<div class="event-card" data-image="images/FREEFIRE.png">
+  <div class="event-image">
+    <img src="images/FREEFIRE.png" alt="Free Fire" loading="lazy" decoding="async">
+  </div>
+  <div class="event-content">
+    <h3 class="event-title">Free Fire</h3>
+    <p class="event-description">A high-stakes gaming tournament for all Free Fire enthusiasts to showcase their skills.</p>
+    <span class="event-date">11th Sept 2025</span>
+    <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+    <a href="https://forms.gle/pxJ2NGjeF8sd6EgS6" target="_blank" class="register-button" style="margin-top: auto; text-decoration: none; display: inline-block; text-align: center;">
+      Register Now
+    </a>
+  </div>
+</div>
+      </div>
     </section>
   </div>
 
@@ -1630,61 +2734,54 @@
     </div>
   </div>
 
-  <!-- ABOUT PAGE -->
-  <div class="page" id="about">
-    <section class="section" style="padding-top: 120px;">
-      <h2 class="section-title">About Abhigyan 25</h2>
+  <!-- Event Details Modal -->
+  <div id="event-details-modal" class="modal hidden">
+    <div class="modal-content event-details-modal-content">
+      <span class="modal-close" onclick="closeEventModal()">&times;</span>
       
-      <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 80px;">
-        <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; opacity: 1;">
-          Abhigyan 25 represents the pinnacle of sustainable innovation and technological excellence. Our theme "Sustainable Synergy" embodies the perfect harmony between cutting-edge technology and environmental responsibility.
-        </p>
-        <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.8); opacity: 1;">
-          SRMIST Vadapalani's Department of Electronics & Communication Engineering presents this grand symposium showcasing the future of green technology, sustainable engineering practices, and innovative solutions for global challenges.
-        </p>
+      <!-- Event Poster Section -->
+      <div class="event-poster-section">
+        <img id="modal-event-poster" src="" alt="Event Poster" class="modal-event-poster">
+        
+        <!-- Register Button under poster -->
+        <button id="modal-register-btn" class="poster-register-btn" onclick="registerFromModal()">
+          🎯 Register Now
+        </button>
       </div>
-
-      <div class="events-grid">
-        <div class="event-card">
-          <div class="event-content" style="text-align: center; padding: 40px 30px;">
-            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🌱</div>
-            <h3 class="event-title">Sustainability Focus</h3>
-            <p class="event-description">Every event and competition is designed with environmental consciousness, promoting green technology and sustainable engineering practices.</p>
+      
+      <!-- Event Info Section -->
+      <div class="event-info-section">
+        <h2 id="modal-event-title" class="modal-event-title">Event Title</h2>
+        
+        <!-- Event Details -->
+        <div class="event-details-content">
+          <div class="detail-section">
+            <h3>📋 About Event</h3>
+            <p id="modal-event-description">Event description goes here...</p>
           </div>
-        </div>
-
-        <div class="event-card">
-          <div class="event-content" style="text-align: center; padding: 40px 30px;">
-            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🚀</div>
-            <h3 class="event-title">Innovation Hub</h3>
-            <p class="event-description">Cutting-edge research presentations, breakthrough technology showcases, and revolutionary ideas that shape the future of engineering.</p>
+          
+          <div class="detail-section">
+            <h3>🏆 Event Structure</h3>
+            <div id="modal-event-rounds">
+              <!-- Rounds will be populated dynamically -->
+            </div>
           </div>
-        </div>
-
-        <div class="event-card">
-          <div class="event-content" style="text-align: center; padding: 40px 30px;">
-            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🤝</div>
-            <h3 class="event-title">Collaborative Learning</h3>
-            <p class="event-description">Fostering collaboration between students, researchers, and industry experts to create synergistic solutions for global challenges.</p>
-          </div>
-        </div>
-
-        <div class="event-card">
-          <div class="event-content" style="text-align: center; padding: 40px 30px;">
-            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">🎯</div>
-            <h3 class="event-title">Future Ready</h3>
-            <p class="event-description">Preparing the next generation of engineers with skills and knowledge essential for sustainable technological advancement.</p>
+          
+          <div class="detail-section">
+            <h3>💰 Registration Fee</h3>
+            <p id="modal-event-fee" class="fee-info"></p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div style="max-width: 1000px; margin: 80px auto 0; background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 25px; padding: 40px;">
-        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 30px; text-align: center; opacity: 1;">Our Mission</h3>
-        <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); text-align: center; opacity: 1;">
-          To create a platform where sustainable technology meets innovative engineering, fostering the development of eco-friendly solutions that address real-world challenges while inspiring the next generation of environmentally conscious engineers and technologists.
-        </p>
-      </div>
-    </section>
+  <!-- Basic Image Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="modal-close">&times;</span>
+      <img id="modal-image" src="" alt="Event Poster" class="modal-image">
+    </div>
   </div>
 
   <!-- TEAM PAGE -->
@@ -1693,9 +2790,10 @@
       <h2 class="section-title">Our Team</h2>
       
       <div class="team-grid">
+        <!-- ALL FACULTY COORDINATORS LISTED FIRST -->
         <div class="team-card">
           <div class="team-avatar">SE</div>
-          <h3 class="team-name">Dr. Shirly Edward </h3>
+          <h3 class="team-name">Dr. Shirly Edward</h3>
           <p class="team-role">Faculty Coordinator</p>
           <p class="team-bio">Leading expert in sustainable electronics and green technology with over 15 years of research experience.</p>
         </div>
@@ -1704,49 +2802,424 @@
           <div class="team-avatar">PR</div>
           <h3 class="team-name">Dr. Priti Rishi</h3>
           <p class="team-role">Faculty Coordinator</p>
-          <p class="team-bio">Final year ECE student passionate about renewable energy systems and environmental technology.</p>
+          <p class="team-bio">Expert in environmental technology and sustainable engineering practices.</p>
         </div>
 
         <div class="team-card">
           <div class="team-avatar">SR</div>
-          <h3 class="team-name">Dr. Sathiya </h3>
+          <h3 class="team-name">Dr. Sathiya</h3>
           <p class="team-role">Faculty Coordinator</p>
           <p class="team-bio">Specializes in IoT solutions for environmental monitoring and sustainable smart city technologies.</p>
         </div>
 
         <div class="team-card">
           <div class="team-avatar">VS</div>
-          <h3 class="team-name">Dr. Vasuki </h3>
+          <h3 class="team-name">Dr. Vasuki</h3>
           <p class="team-role">Faculty Coordinator</p>
           <p class="team-bio">Expert in event management with focus on sustainable event practices and green logistics.</p>
         </div>
 
         <div class="team-card">
+          <div class="team-avatar">BJ</div>
+          <h3 class="team-name">Dr. Bestley Joe</h3>
+          <p class="team-role">Marketing & Publicity Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing marketing strategies and promotional activities.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DN</div>
+          <h3 class="team-name">Dr. Nagarajan</h3>
+          <p class="team-role">Outreach (Inter College) Faculty</p>
+          <p class="team-bio">Faculty coordinator for inter-college outreach and collaboration programs.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DK</div>
+          <h3 class="team-name">Dr. Karthick</h3>
+          <p class="team-role">Technical Team Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing technical competitions and workshops.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DI</div>
+          <h3 class="team-name">Dr. Ilayaraja</h3>
+          <p class="team-role">Design & Creation Faculty</p>
+          <p class="team-bio">Faculty coordinator for design, invitation preparation, and poster creation.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AV</div>
+          <h3 class="team-name">Dr. Akila V</h3>
+          <p class="team-role">Website Management Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing website development and digital presence.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AM</div>
+          <h3 class="team-name">Dr. Anju M I</h3>
+          <p class="team-role">Registration & Hospitality Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing registration processes and hospitality services.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">MV</div>
+          <h3 class="team-name">Mrs. Vanitha</h3>
+          <p class="team-role">Registration & Hospitality Faculty</p>
+          <p class="team-bio">Faculty member coordinating hospitality arrangements for participants.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DB</div>
+          <h3 class="team-name">Dr. Dinesh Babu</h3>
+          <p class="team-role">Documentation & Media Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing documentation and media coverage.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">TB</div>
+          <h3 class="team-name">Dr. T S Balaji</h3>
+          <p class="team-role">Photography & Videography Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing visual documentation and media production.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SK</div>
+          <h3 class="team-name">Dr. Sanjay kumar</h3>
+          <p class="team-role">Lunch & Refreshments Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing catering and refreshment services.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DK</div>
+          <h3 class="team-name">Dr. Kabilamani</h3>
+          <p class="team-role">Lunch & Refreshments Faculty</p>
+          <p class="team-bio">Faculty member coordinating meal arrangements and dietary requirements.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SB</div>
+          <h3 class="team-name">Dr. S Balaji</h3>
+          <p class="team-role">Logistics Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing logistics and operational management.</p>
+        </div>
+
+        <div class="team-card">
           <div class="team-avatar">AK</div>
-          <h3 class="team-name">Arjun Kumar</h3>
-          <p class="team-role">Marketing Head</p>
-          <p class="team-bio">Creative strategist promoting awareness about sustainable technology through innovative campaigns.</p>
+          <h3 class="team-name">Dr. Akila</h3>
+          <p class="team-role">Stage Decoration Faculty</p>
+          <p class="team-bio">Faculty coordinator for stage decoration, rangoli, and MC activities.</p>
         </div>
 
         <div class="team-card">
-          <div class="team-avatar">PT</div>
-          <h3 class="team-name">Priya Tandon</h3>
-          <p class="team-role">Design Lead</p>
-          <p class="team-bio">UI/UX designer and visual artist creating eco-friendly designs and sustainable branding solutions.</p>
+          <div class="team-avatar">BH</div>
+          <h3 class="team-name">Mrs. Bhuvaneshwari</h3>
+          <p class="team-role">Stage Decoration Faculty</p>
+          <p class="team-bio">Faculty member overseeing decorative and cultural arrangements.</p>
         </div>
 
         <div class="team-card">
-          <div class="team-avatar">VR</div>
-          <h3 class="team-name">Vikash Reddy</h3>
-          <p class="team-role">Logistics Manager</p>
-          <p class="team-bio">Operations expert ensuring smooth execution of events with minimal environmental impact.</p>
+          <div class="team-avatar">VK</div>
+          <h3 class="team-name">Dr. V P Kavitha</h3>
+          <p class="team-role">Atrium Project Showcase Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing project exhibitions and demonstrations.</p>
         </div>
 
         <div class="team-card">
-          <div class="team-avatar">NS</div>
-          <h3 class="team-name">Nisha Singh</h3>
-          <p class="team-role">Social Media Manager</p>
-          <p class="team-bio">Digital communication specialist spreading awareness about sustainable technology trends.</p>
+          <div class="team-avatar">AF</div>
+          <h3 class="team-name">Dr. Augustine Flitcher</h3>
+          <p class="team-role">Certificates Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing certificate preparation and distribution.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">GS</div>
+          <h3 class="team-name">Dr. Glaret Subin</h3>
+          <p class="team-role">Souvenir Magazine Faculty</p>
+          <p class="team-bio">Faculty coordinator overseeing souvenir magazine production.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">MD</div>
+          <h3 class="team-name">Mr. Deepjyothi</h3>
+          <p class="team-role">Ideation Team Faculty</p>
+          <p class="team-bio">Faculty member supporting ideation and creative processes.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">MS</div>
+          <h3 class="team-name">Mrs. Shalini</h3>
+          <p class="team-role">Treasurer Faculty</p>
+          <p class="team-bio">Faculty member overseeing financial operations and treasury management.</p>
+        </div>
+
+        <!-- ALL STUDENT COORDINATORS LISTED AFTER FACULTY -->
+        <div class="team-card">
+          <div class="team-avatar">SS</div>
+          <h3 class="team-name">Supriya S</h3>
+          <p class="team-role">Organizer / Event Management</p>
+          <p class="team-bio">Leading the organizational efforts for Abhigyan 2025 with expertise in event coordination.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">TV</div>
+          <h3 class="team-name">Talha V R A</h3>
+          <p class="team-role">Organizer / Event Management</p>
+          <p class="team-bio">Co-organizer ensuring seamless event execution and student coordination.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">KS</div>
+          <h3 class="team-name">Karthikeya S</h3>
+          <p class="team-role">Organizer / Event Management</p>
+          <p class="team-bio">Event management specialist focusing on technical competitions and workshops.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">KJ</div>
+          <h3 class="team-name">Kate Jonita R</h3>
+          <p class="team-role">Organizer / Event Management</p>
+          <p class="team-bio">Event coordination expert managing multiple aspects of the symposium.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">RS</div>
+          <h3 class="team-name">Rahul S</h3>
+          <p class="team-role">Marketing & Publicity</p>
+          <p class="team-bio">Marketing specialist driving awareness campaigns for Abhigyan 2025.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SG</div>
+          <h3 class="team-name">Sharon S G</h3>
+          <p class="team-role">Marketing & Publicity</p>
+          <p class="team-bio">Publicity coordinator managing social media and promotional content.</p>
+        </div>
+
+        <!-- Sponsorship & Finance Team -->
+        <div class="team-card">
+          <div class="team-avatar">JI</div>
+          <h3 class="team-name">Jithendran</h3>
+          <p class="team-role">Sponsorship & Finance</p>
+          <p class="team-bio">Finance coordinator managing sponsorships and budget allocation.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">LV</div>
+          <h3 class="team-name">Lohitashva V S</h3>
+          <p class="team-role">Sponsorship & Finance</p>
+          <p class="team-bio">Sponsorship specialist securing partnerships for the event.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">RA</div>
+          <h3 class="team-name">Roshan A</h3>
+          <p class="team-role">Sponsorship & Finance</p>
+          <p class="team-bio">Finance team member handling monetary operations and transactions.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">VM</div>
+          <h3 class="team-name">Vishal M</h3>
+          <p class="team-role">Sponsorship & Finance</p>
+          <p class="team-bio">Financial planning coordinator for event budget management.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">KL</div>
+          <h3 class="team-name">Kelvin J</h3>
+          <p class="team-role">Sponsorship & Finance</p>
+          <p class="team-bio">Finance team member ensuring transparent financial operations.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SM</div>
+          <h3 class="team-name">Shabar M</h3>
+          <p class="team-role">Technical Team</p>
+          <p class="team-bio">Technical specialist managing competition infrastructure and setup.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AM</div>
+          <h3 class="team-name">Akhilesh M</h3>
+          <p class="team-role">Technical Team</p>
+          <p class="team-bio">Technical coordinator ensuring smooth operation of all technical events.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SH</div>
+          <h3 class="team-name">Shri ram</h3>
+          <p class="team-role">Design & Creation</p>
+          <p class="team-bio">Creative designer responsible for visual content and poster designs.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AA</div>
+          <h3 class="team-name">Aravind A</h3>
+          <p class="team-role">Design & Creation</p>
+          <p class="team-bio">Design specialist creating invitations and promotional materials.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SU</div>
+          <h3 class="team-name">Sujal R</h3>
+          <p class="team-role">Design & Creation</p>
+          <p class="team-bio">Graphic designer contributing to visual identity and creative content.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">VV</div>
+          <h3 class="team-name">Vishva V B</h3>
+          <p class="team-role">Design & Creation</p>
+          <p class="team-bio">Creative team member specializing in poster and invitation design.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">YU</div>
+          <h3 class="team-name">Yuvan</h3>
+          <p class="team-role">Website Management</p>
+          <p class="team-bio">Web developer maintaining the official Abhigyan 2025 website.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AS</div>
+          <h3 class="team-name">Aashish</h3>
+          <p class="team-role">Website Management</p>
+          <p class="team-bio">Frontend developer ensuring responsive and user-friendly web experience.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SJ</div>
+          <h3 class="team-name">Sujith</h3>
+          <p class="team-role">Website Management</p>
+          <p class="team-bio">Backend developer managing server infrastructure and database operations.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DR</div>
+          <h3 class="team-name">Dharshana R</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Registration coordinator managing participant enrollment and check-ins.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DM</div>
+          <h3 class="team-name">Disya M</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Hospitality team member ensuring comfortable experience for all participants.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">LK</div>
+          <h3 class="team-name">Lakshitha</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Registration specialist handling participant documentation and support.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">JA</div>
+          <h3 class="team-name">Jenifrey A J</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Hospitality coordinator managing guest services and accommodation.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">DH</div>
+          <h3 class="team-name">Dharani</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Team member supporting registration processes and guest management.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">PO</div>
+          <h3 class="team-name">Pooja</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Hospitality specialist ensuring seamless participant experience.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AK</div>
+          <h3 class="team-name">Akshaya</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Registration team member handling participant queries and assistance.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">PR</div>
+          <h3 class="team-name">Priyadarshini R</h3>
+          <p class="team-role">Registration & Hospitality</p>
+          <p class="team-bio">Multi-role coordinator contributing to registration and ideation teams.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">RR</div>
+          <h3 class="team-name">Rhoda Rakshana</h3>
+          <p class="team-role">Documentation & Media</p>
+          <p class="team-bio">Documentation specialist capturing and recording all event proceedings.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">BG</div>
+          <h3 class="team-name">Bagyalakshmi</h3>
+          <p class="team-role">Documentation & Media</p>
+          <p class="team-bio">Media coordinator managing photo and video documentation.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">LS</div>
+          <h3 class="team-name">Lubna Shireen</h3>
+          <p class="team-role">Documentation & Media</p>
+          <p class="team-bio">Media team member specializing in content creation and documentation.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">CS</div>
+          <h3 class="team-name">Charumathi S</h3>
+          <p class="team-role">Documentation & Media</p>
+          <p class="team-bio">Documentation coordinator ensuring comprehensive event coverage.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">MI</div>
+          <h3 class="team-name">Mohammed Irfan</h3>
+          <p class="team-role">Photography & Videography</p>
+          <p class="team-bio">Videographer producing promotional and documentary content for the event.</p>
+        </div>
+
+        <!-- Workshop Coordinators -->
+        <div class="team-card">
+          <div class="team-avatar">MG</div>
+          <h3 class="team-name">Monisha G</h3>
+          <p class="team-role">Workshop Coordinator</p>
+          <p class="team-bio">Workshop specialist organizing technical and skill-building sessions.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SA</div>
+          <h3 class="team-name">Ssadhana R</h3>
+          <p class="team-role">Workshop Coordinator</p>
+          <p class="team-bio">Workshop coordinator managing hands-on learning experiences.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AB</div>
+          <h3 class="team-name">Abhinav</h3>
+          <p class="team-role">Workshop Coordinator</p>
+          <p class="team-bio">Technical workshop specialist ensuring quality learning sessions.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AV</div>
+          <h3 class="team-name">Avanthika K</h3>
+          <p class="team-role">Workshop Coordinator</p>
+          <p class="team-bio">Workshop team member facilitating interactive learning experiences.</p>
+        </div>
+
+        <!-- Treasurer -->
+        <div class="team-card">
+          <div class="team-avatar">KA</div>
+          <h3 class="team-name">Koushik A</h3>
+          <p class="team-role">Treasurer</p>
+          <p class="team-bio">Financial oversight coordinator managing event treasury and budget control.</p>
         </div>
       </div>
     </section>
@@ -1757,14 +3230,25 @@
     <section class="section" style="padding-top: 120px;">
       <h2 class="section-title">Past Editions</h2>
       
+      <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 60px;">
+        <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); opacity: 1;">
+          This section provides a consolidated list of past Abhigyan events organized by the ECE Department at SRMIST VDP Campus.
+        </p>
+      </div>
+      
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="timeline-year">2024</span>
             <h3 class="timeline-title">Abhigyan 2024: "Bendable Innovation"</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: September 24-25, 2024</p>
+              <p style="color: var(--accent); font-weight: 600; margin-bottom: 5px;">🎯 Theme: "Flexible Electronics - Unlocking the Potential of Flexible Electronics"</p>
+              <p style="color: var(--secondary); font-weight: 600;">🎤 Chief Guest: Dr. S. Krishna Kumar, Senior Technical Officer at DRDO</p>
+            </div>
             <p class="timeline-description">
-              A groundbreaking symposium focused on flexible electronics and adaptive technologies. Featured over 500 participants, 15 competitions, and showcased revolutionary developments in bendable displays, flexible solar panels, and wearable technology. The event established new standards for innovation in adaptive electronics.
+              The symposium showcased cutting-edge technologies and their future prospects, with events like Flextronica, Tech Tangles, Arm Wrestling, and BGMI. A groundbreaking symposium focused on flexible electronics and adaptive technologies featuring revolutionary developments in bendable displays, flexible solar panels, and wearable technology.
             </p>
           </div>
         </div>
@@ -1774,8 +3258,11 @@
           <div class="timeline-content">
             <span class="timeline-year">2023</span>
             <h3 class="timeline-title">Abhigyan 2023: "AI Renaissance"</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: February 22-23, 2023</p>
+            </div>
             <p class="timeline-description">
-              The renaissance of artificial intelligence took center stage with cutting-edge AI demonstrations, machine learning competitions, and deep learning workshops. Over 800 participants explored the transformative power of AI in various domains including healthcare, environmental monitoring, and smart infrastructure.
+              This edition provided opportunities for students to participate in a Paper Presentation, a National Level Symposium, Quizonics, and a 24-hour Online Hackathon. The renaissance of artificial intelligence took center stage with cutting-edge AI demonstrations, machine learning competitions, and deep learning workshops.
             </p>
           </div>
         </div>
@@ -1783,10 +3270,13 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="timeline-year">2022</span>
-            <h3 class="timeline-title">Abhigyan 2022: "Digital Transformation"</h3>
+            <span class="timeline-year">2019</span>
+            <h3 class="timeline-title">Abhigyan 2k19</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: August 22-23, 2019</p>
+            </div>
             <p class="timeline-description">
-              Embracing the digital revolution with focus on IoT, cloud computing, and digital twin technologies. The event featured industry partnerships with leading tech companies and provided hands-on experience with emerging digital technologies that are reshaping industries.
+              The 8th edition of the symposium focused on "Innovation Redefined" with events including Tek-Thesis (paper presentation), Quizzonics, Mission Impossible, and Circuitrix.
             </p>
           </div>
         </div>
@@ -1794,10 +3284,13 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="timeline-year">2021</span>
-            <h3 class="timeline-title">Abhigyan 2021: "Connected Future"</h3>
+            <span class="timeline-year">2018</span>
+            <h3 class="timeline-title">Abhigyan 2k18: "Innovation Redefined"</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: August 31 - September 1, 2018</p>
+            </div>
             <p class="timeline-description">
-              A virtual symposium that brought together minds from across the globe during challenging times. Focused on 5G technologies, edge computing, and the future of connectivity. Despite being online, it achieved record participation with attendees from over 20 countries.
+              Featured a variety of technical and non-technical events, including Project Expo, Paper Presentation, Circuit Debugging, gaming, and a workshop on IOT Challenge 2019.
             </p>
           </div>
         </div>
@@ -1805,10 +3298,93 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="timeline-year">2020</span>
-            <h3 class="timeline-title">Abhigyan 2020: "Smart Systems"</h3>
+            <span class="timeline-year">2017</span>
+            <h3 class="timeline-title">Abhigyan 2017</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: September 22-23, 2017</p>
+              <p style="color: var(--secondary); font-weight: 600; margin-bottom: 5px;">🎤 Chief Guest: Mr. M. Mathivanan, General Manager, Operations, Ericsson</p>
+              <p style="color: var(--accent); font-weight: 600;">🏆 Guest of Honour: Mr. T. S. Rangarajan, Management Consultant and Former Chair, IEEE Madras Section</p>
+            </div>
             <p class="timeline-description">
-              The inaugural edition that laid the foundation for all future events. Focused on smart city technologies, automation, and intelligent systems. Though smaller in scale, it established the tradition of excellence and innovation that continues to define Abhigyan.
+              A national-level technical symposium with events like Quizonics, Pariyojana (Project Exhibition), and Tek-Thesis (Paper Presentation).
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2016</span>
+            <h3 class="timeline-title">Abhigyan 2016</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: August 18-19, 2016</p>
+              <p style="color: var(--secondary); font-weight: 600; margin-bottom: 5px;">🎤 Chief Guest: Mr. K. Srinivasa Raghavan, Senior Technical Director, National Informatics Center, Chennai</p>
+              <p style="color: var(--accent); font-weight: 600;">🏆 Guest of Honour: Mr. Chandrasekaran Vasudevan, Head of Emerging Technology, Ericsson India</p>
+            </div>
+            <p class="timeline-description">
+              The technical symposium included events such as Cerebra-Quiz, Pariyojana-Project, and a workshop on Arduino Uno.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2015</span>
+            <h3 class="timeline-title">Abhigyan 2015</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: February 25-26, 2015</p>
+              <p style="color: var(--secondary); font-weight: 600;">🎤 Chief Guest: Mr. B. Sai Ramesh, Vice President (Engineering), Technip India Pvt. Ltd.</p>
+            </div>
+            <p class="timeline-description">
+              A national-level symposium that aimed to "unleash the latent knowledge" and included workshops on FPGA and Android.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2013</span>
+            <h3 class="timeline-title">Abhigyan 2013</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: September 12-13, 2013</p>
+              <p style="color: var(--secondary); font-weight: 600; margin-bottom: 5px;">🎤 Chief Guest: Dr. Shanmugavel, Professor, ECE Department, Anna University, Chennai</p>
+              <p style="color: var(--accent); font-weight: 600;">🏆 Guest of Honour: Dr. G. Kannan, Former Additional Director, Robotics Division, CVRDE</p>
+            </div>
+            <p class="timeline-description">
+              A landmark edition that established the foundation for technical excellence and industry-academia collaboration.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2012</span>
+            <h3 class="timeline-title">Abhigyan 2012</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: March 1-2, 2012</p>
+              <p style="color: var(--secondary); font-weight: 600;">🎤 Chief Guest: Mr. N. Rangamani, Deputy General Manager, Engineering Aircraft Maintenance, Air India, Chennai</p>
+            </div>
+            <p class="timeline-description">
+              An early edition that helped shape the vision and scope of future Abhigyan events, establishing key traditions.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2011</span>
+            <h3 class="timeline-title">Abhigyan 2011</h3>
+            <div style="margin-bottom: 15px;">
+              <p style="color: var(--primary); font-weight: 600; margin-bottom: 5px;">📅 Date: March 25, 2011</p>
+              <p style="color: var(--secondary); font-weight: 600; margin-bottom: 5px;">🎤 Chief Guest: Prof. Dr. Krishnan Basker, Director, Centre for International Affairs, Anna University</p>
+              <p style="color: var(--accent); font-weight: 600;">🏆 Guest of Honour: Mr. R.B.U. Shyam Kumar, Vice-President, Marketing - Puthiya Thalaimurai</p>
+            </div>
+            <p class="timeline-description">
+              The inaugural edition that laid the foundation for all future events. This pioneering symposium established the tradition of excellence and innovation that continues to define Abhigyan.
             </p>
           </div>
         </div>
@@ -1881,98 +3457,158 @@
           
           <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 30px;">
             <h4 style="color: var(--primary); margin-bottom: 15px;">📍 Location</h4>
-            <p style="color: rgba(255, 255, 255, 0.9);">SRMIST Vadapalani, Chennai</p>
+            <p style="color: rgba(255, 255, 255, 0.9);">ECE Department SRMIST VDP CAMPUS</p>
           </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Section -->
+      <div style="max-width: 800px; margin: 60px auto 0; text-align: center;">
+        <h3 style="color: var(--primary); margin-bottom: 30px; font-size: 1.5rem;">Find Us Here</h3>
+        <div style="background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 20px; overflow: hidden;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242.9217063464852!2d80.21026497612182!3d13.051750416984994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266ea218fc7e3%3A0x70bbbca6edfc9243!2sSRM%20University%20Vadapalani%20City%20Campus!5e0!3m2!1smr!2sin!4v1756424822346!5m2!1smr!2sin" 
+                  width="100%" 
+                  height="450" 
+                  style="border:0; border-radius: 15px;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="close-modal" id="close-modal">×</div>
-    <div class="modal-content">
-      <img id="modal-image" src="" alt="Event Poster">
-    </div>
-  </div>
 
   <script>
+    // Emergency loader fallback - runs immediately
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      if (loader && !loader.classList.contains('hidden')) {
+        console.log('Emergency loader hide activated');
+        loader.classList.add('hidden');
+      }
+    }, 3000); // 3 second emergency fallback
+    
     // Initialize Three.js background
     let scene, camera, renderer, particles;
 
     function initThree() {
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      renderer = new THREE.WebGLRenderer({ alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.getElementById('three-bg').appendChild(renderer.domElement);
+      try {
+        if (typeof THREE === 'undefined') {
+          console.warn('Three.js library not loaded, skipping 3D background');
+          return;
+        }
+        
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        const threeBg = document.getElementById('three-bg');
+        if (threeBg) {
+          threeBg.appendChild(renderer.domElement);
+        } else {
+          console.warn('three-bg element not found');
+          return;
+        }
 
-      // Create particles
-      const geometry = new THREE.BufferGeometry();
-      const particlesCount = 1500;
-      const positions = new Float32Array(particlesCount * 3);
-      const colors = new Float32Array(particlesCount * 3);
+        // Create particles
+        const geometry = new THREE.BufferGeometry();
+        const particlesCount = 1500;
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
 
-      for (let i = 0; i < particlesCount * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 50;
-        positions[i + 1] = (Math.random() - 0.5) * 50;
-        positions[i + 2] = (Math.random() - 0.5) * 50;
+        for (let i = 0; i < particlesCount * 3; i += 3) {
+          positions[i] = (Math.random() - 0.5) * 50;
+          positions[i + 1] = (Math.random() - 0.5) * 50;
+          positions[i + 2] = (Math.random() - 0.5) * 50;
 
-        colors[i] = Math.random() * 0.5 + 0.5;
-        colors[i + 1] = 1;
-        colors[i + 2] = Math.random() * 0.5 + 0.5;
+          colors[i] = Math.random() * 0.5 + 0.5;
+          colors[i + 1] = 1;
+          colors[i + 2] = Math.random() * 0.5 + 0.5;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+          size: 0.02,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.7
+        });
+
+        particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        camera.position.z = 5;
+        animate();
+        console.log('Three.js background initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize Three.js background:', error);
       }
-
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-      const material = new THREE.PointsMaterial({
-        size: 0.02,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.7
-      });
-
-      particles = new THREE.Points(geometry, material);
-      scene.add(particles);
-
-      camera.position.z = 5;
-      animate();
     }
 
     function animate() {
-      requestAnimationFrame(animate);
-      
-      particles.rotation.x += 0.0005;
-      particles.rotation.y += 0.001;
-      
-      renderer.render(scene, camera);
+      try {
+        if (!renderer || !scene || !camera || !particles) return;
+        
+        requestAnimationFrame(animate);
+        
+        particles.rotation.x += 0.0005;
+        particles.rotation.y += 0.001;
+        
+        renderer.render(scene, camera);
+      } catch (error) {
+        console.error('Animation error:', error);
+      }
     }
 
     // Custom cursor
     const cursor = document.querySelector('.cursor');
     const cursorFollower = document.querySelector('.cursor-follower');
 
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+    // Ensure cursors are visible
+    if (cursor && cursorFollower) {
+      cursor.style.display = 'block';
+      cursorFollower.style.display = 'block';
       
-      setTimeout(() => {
-        cursorFollower.style.left = e.clientX + 'px';
-        cursorFollower.style.top = e.clientY + 'px';
-      }, 100);
-    });
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        setTimeout(() => {
+          cursorFollower.style.left = e.clientX + 'px';
+          cursorFollower.style.top = e.clientY + 'px';
+        }, 100);
+      });
+
+      // Show cursor when mouse enters the window
+      document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+        cursorFollower.style.opacity = '1';
+      });
+
+      // Hide cursor when mouse leaves the window
+      document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+        cursorFollower.style.opacity = '0';
+      });
+    }
 
     // Hover effects for cursor
-    document.querySelectorAll('a, button, .event-card, .team-card, .submit-btn').forEach(el => {
+    document.querySelectorAll('a, button, .event-card, .team-card, .submit-btn, .poster-register-btn, .close-modal, .modal-close, .modal-register-btn').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        cursor.style.borderColor = '#00ff88';
+        if (cursor) {
+          cursor.style.borderColor = '#37fd12';
+        }
       });
       
       el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.borderColor = '#00ff88';
+        if (cursor) {
+          cursor.style.borderColor = '#37fd12';
+        }
       });
     });
 
@@ -2010,7 +3646,7 @@
 
     // Countdown functionality
     function updateCountdown() {
-      const eventDate = new Date('2025-09-09T00:00:00').getTime();
+      const eventDate = new Date('2025-09-11T00:00:00').getTime();
       const now = new Date().getTime();
       const distance = eventDate - now;
 
@@ -2032,24 +3668,36 @@
 
     // Floating elements
     function createFloatingElements() {
-      const container = document.getElementById('floating-elements');
-      if (!container) return;
-      
-      for (let i = 0; i < 30; i++) {
-        const element = document.createElement('div');
-        element.className = 'floating-element';
-        element.style.left = Math.random() * 100 + '%';
-        element.style.animationDelay = Math.random() * 20 + 's';
-        element.style.animationDuration = (Math.random() * 10 + 15) + 's';
-        container.appendChild(element);
+      try {
+        const container = document.getElementById('floating-elements');
+        if (!container) {
+          console.warn('floating-elements container not found');
+          return;
+        }
+        
+        for (let i = 0; i < 30; i++) {
+          const element = document.createElement('div');
+          element.className = 'floating-element';
+          element.style.left = Math.random() * 100 + '%';
+          element.style.animationDelay = Math.random() * 20 + 's';
+          element.style.animationDuration = (Math.random() * 10 + 15) + 's';
+          container.appendChild(element);
+        }
+        console.log('Floating elements created successfully');
+      } catch (error) {
+        console.error('Failed to create floating elements:', error);
       }
     }
 
     // GSAP Animations
     function initPageAnimations() {
-      if (typeof gsap === 'undefined') return;
-      
-      gsap.registerPlugin(ScrollTrigger);
+      try {
+        if (typeof gsap === 'undefined') {
+          console.warn('GSAP library not loaded, skipping animations');
+          return;
+        }
+        
+        gsap.registerPlugin(ScrollTrigger);
 
       const activeEventCards = document.querySelectorAll('.page.active .event-card');
       if (activeEventCards.length > 0) {
@@ -2066,10 +3714,10 @@
       if (activeTeamCards.length > 0) {
         gsap.from(activeTeamCards, {
           duration: 0.8,
-          scale: 0.9,
+          y: 30,
           opacity: 0.7,
           stagger: 0.1,
-          ease: 'back.out(1.7)'
+          ease: 'power3.out'
         });
       }
 
@@ -2093,10 +3741,17 @@
           ease: 'power3.out'
         });
       }
+      
+      console.log('Page animations initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize page animations:', error);
+      }
     }
 
-    // Contact Form Functionality
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Contact Form Functionality with EmailJS
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
       const formData = new FormData(this);
@@ -2105,57 +3760,424 @@
       const submitBtn = this.querySelector('.submit-btn');
       const successMessage = document.getElementById('successMessage');
       
+      // Update button state
       submitBtn.textContent = 'Sending...';
       submitBtn.style.opacity = '0.7';
       submitBtn.disabled = true;
       
-      setTimeout(() => {
-        submitBtn.textContent = 'Send Message';
-        submitBtn.style.opacity = '1';
-        submitBtn.disabled = false;
+      // Initialize EmailJS (replace with your actual keys)
+      // To set up EmailJS:
+      // 1. Go to https://www.emailjs.com/
+      // 2. Create a free account
+      // 3. Create an email service
+      // 4. Create an email template
+      // 5. Replace the keys below with your actual keys
+      
+      const emailjsPublicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+      const emailjsServiceId = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID  
+      const emailjsTemplateId = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
+      
+      // Check if EmailJS is properly configured
+      if (emailjsPublicKey === 'YOUR_PUBLIC_KEY' || !window.emailjs) {
+        // Fallback: Create mailto link
+        const subject = encodeURIComponent(`Abhigyan 25 Contact: ${data.subject}`);
+        const body = encodeURIComponent(
+          `Name: ${data.name}\n` +
+          `Email: ${data.email}\n` +
+          `Phone: ${data.phone || 'Not provided'}\n` +
+          `Institution: ${data.institution || 'Not provided'}\n\n` +
+          `Message:\n${data.message}`
+        );
+        const mailtoLink = `mailto:abhigyan2025@srmist.edu.in,sl9951@srmist.edu.in?subject=${subject}&body=${body}`;
         
+        // Open email client
+        window.open(mailtoLink);
+        
+        // Show success message
+        submitBtn.textContent = 'Opening Email Client...';
+        successMessage.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span style="font-size: 1.2rem;">📧</span>
+            <span>Opening your email client... If it doesn't open automatically, please email us at abhigyan2025@srmist.edu.in or sl9951@srmist.edu.in</span>
+          </div>
+        `;
         successMessage.classList.add('show');
-        this.reset();
         
+        // Reset form and button
         setTimeout(() => {
+          const contactFormReset = document.getElementById('contactForm');
+          if (contactFormReset) {
+            contactFormReset.reset();
+          }
+          submitBtn.textContent = 'Send Message';
+          submitBtn.style.opacity = '1';
+          submitBtn.disabled = false;
           successMessage.classList.remove('show');
-        }, 5000);
+        }, 3000);
         
-        console.log('Form submitted:', data);
-      }, 2000);
-    });
+        return;
+      }
+      
+      // EmailJS configuration
+      emailjs.init(emailjsPublicKey);
+      
+      // Email template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        phone: data.phone || 'Not provided',
+        institution: data.institution || 'Not provided',
+        subject: data.subject,
+        message: data.message,
+        to_email: 'sl9951@srmist.edu.in' // Support emails
+      };
+      
+      // Send email using EmailJS
+      emailjs.send(emailjsServiceId, emailjsTemplateId, templateParams)
+        .then(function(response) {
+          console.log('Email sent successfully:', response);
+          
+          // Success state
+          submitBtn.textContent = 'Message Sent!';
+          submitBtn.style.background = 'linear-gradient(45deg, #37fd12, #4ecdc4)';
+          successMessage.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <span style="font-size: 1.2rem;">✅</span>
+              <span>Thank you ${data.name}! Your message has been sent successfully. We'll get back to you within 24 hours.</span>
+            </div>
+          `;
+          successMessage.classList.add('show');
+          
+          // Reset form
+          const contactFormReset = document.getElementById('contactForm');
+          if (contactFormReset) {
+            contactFormReset.reset();
+          }
+          
+          // Reset button after delay
+          setTimeout(() => {
+            submitBtn.textContent = 'Send Message';
+            submitBtn.style.background = 'linear-gradient(45deg, var(--primary), var(--accent))';
+            submitBtn.style.opacity = '1';
+            submitBtn.disabled = false;
+            successMessage.classList.remove('show');
+          }, 5000);
+          
+        }, function(error) {
+          console.error('Email sending failed:', error);
+          
+          // Error state
+          submitBtn.textContent = 'Failed to Send';
+          submitBtn.style.background = 'linear-gradient(45deg, #ff6b6b, #ff8a80)';
+          successMessage.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(45deg, #ff6b6b, #ff8a80);">
+              <span style="font-size: 1.2rem;">❌</span>
+              <span>Sorry, there was an error sending your message. Please try again or contact us directly at abhigyan2025@srmist.edu.in or sl9951@srmist.edu.in</span>
+            </div>
+          `;
+          successMessage.classList.add('show');
+          
+          // Reset button after delay
+          setTimeout(() => {
+            submitBtn.textContent = 'Send Message';
+            submitBtn.style.background = 'linear-gradient(45deg, var(--primary), var(--accent))';
+            submitBtn.style.opacity = '1';
+            submitBtn.disabled = false;
+            successMessage.classList.remove('show');
+          }, 5000);
+        });
+      });
+    } else {
+      console.warn('Contact form not found - contact form functionality will not be available');
+    }
 
+    // Modal initialization check
+    console.log('Initializing modal functionality...');
+    console.log('Event details modal found:', !!document.getElementById('event-details-modal'));
+    console.log('Event cards found:', document.querySelectorAll('.event-card').length);
+    
     // Modal functionality
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modal-image');
     const closeModal = document.getElementById('close-modal');
+    const eventDetailsModal = document.getElementById('event-details-modal');
 
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('.event-card')) {
-        const card = e.target.closest('.event-card');
-        const imageSrc = card.dataset.image;
-        if (imageSrc) {
-          modalImage.src = imageSrc;
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+    if (modal && modalImage && closeModal) {
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('.event-card')) {
+          const card = e.target.closest('.event-card');
+          // Don't open modal if register button was clicked
+          if (e.target.closest('.register-button') || e.target.closest('.button-container')) {
+            console.log('Register button clicked, not opening modal');
+            return;
+          }
+          
+          const eventTitle = card.querySelector('.event-title').textContent;
+          const imageSrc = card.dataset.image;
+          
+          console.log('Event card clicked:', eventTitle, imageSrc); // Debug log
+          
+          if (imageSrc && eventTitle) {
+            showEventDetailsModal(eventTitle, imageSrc);
+          } else {
+            console.warn('Missing event data:', { eventTitle, imageSrc });
+          }
         }
-      }
-    });
+      });
 
-    closeModal.addEventListener('click', closeModalFunc);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModalFunc();
-    });
+      closeModal.addEventListener('click', closeModalFunc);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFunc();
+      });
+    } else {
+      console.warn('Modal elements not found - modal functionality will not be available');
+    }
+
+    // Event Details Modal click-outside functionality
+    if (eventDetailsModal) {
+      eventDetailsModal.addEventListener('click', (e) => {
+        // Close modal if clicking outside the modal content
+        if (e.target === eventDetailsModal) {
+          closeEventModal();
+        }
+      });
+      
+      // Prevent modal from closing when clicking inside modal content
+      const modalContent = eventDetailsModal.querySelector('.event-details-modal-content');
+      if (modalContent) {
+        modalContent.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+    }
 
     function closeModalFunc() {
-      modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
+      const modal = document.getElementById('modal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Event Details Modal Functions
+    function showEventDetailsModal(eventTitle, imageSrc) {
+      console.log('Opening modal for:', eventTitle, 'with image:', imageSrc);
+      const eventModal = document.getElementById('event-details-modal');
+      if (!eventModal) {
+        console.error('Event modal not found!');
+        return;
+      }
+      
+      const modalPoster = document.getElementById('modal-event-poster');
+      const modalTitle = document.getElementById('modal-event-title');
+      const modalDescription = document.getElementById('modal-event-description');
+      const modalRounds = document.getElementById('modal-event-rounds');
+      const modalFee = document.getElementById('modal-event-fee');
+      const modalRegisterBtn = document.getElementById('modal-register-btn');
+      
+      // Set poster and title
+      if (modalPoster) {
+        modalPoster.src = imageSrc;
+        modalPoster.onerror = () => {
+          console.warn('Failed to load image:', imageSrc);
+          modalPoster.src = 'images/default-poster.jpg'; // Fallback image
+        };
+      }
+      if (modalTitle) modalTitle.textContent = eventTitle;
+      
+      // Get event details
+      const eventDetails = getEventDetails(eventTitle);
+      console.log('Event details loaded:', eventDetails);
+      
+      // Set description
+      if (modalDescription) modalDescription.textContent = eventDetails.description;
+      
+      // Set rounds
+      if (modalRounds) {
+        modalRounds.innerHTML = eventDetails.rounds.length > 0 ? 
+          '<ul class="rounds-list">' + 
+          eventDetails.rounds.map(round => `<li><strong>${round.name}:</strong> ${round.description}</li>`).join('') + 
+          '</ul>' : 
+          '<p>Single round event with on-the-spot participation.</p>';
+      }
+      
+      // Set fee
+      if (modalFee) {
+        modalFee.textContent = eventDetails.fee;
+        modalFee.className = eventDetails.fee === 'Free Registration' ? 'fee-info' : 'fee-info paid';
+      }
+      
+      // Set register button event
+      if (modalRegisterBtn) {
+        modalRegisterBtn.onclick = () => registerFromModal(eventTitle);
+      }
+      
+      // Show modal with proper display
+      console.log('Showing modal...');
+      eventModal.classList.remove('hidden');
+      eventModal.style.display = 'flex';
+      eventModal.style.opacity = '1';
+      eventModal.style.visibility = 'visible';
+      document.body.style.overflow = 'hidden';
+      
+      // Force reflow to ensure display change is applied
+      eventModal.offsetHeight;
+      
+      console.log('Modal should now be visible. Modal classes:', eventModal.className);
+      console.log('Modal display style:', eventModal.style.display);
+      console.log('Modal opened successfully for:', eventTitle);
+    }
+    
+    function closeEventModal() {
+      console.log('Closing event modal');
+      const eventModal = document.getElementById('event-details-modal');
+      if (eventModal) {
+        eventModal.classList.add('hidden');
+        eventModal.style.display = 'none';
+        eventModal.style.opacity = '0';
+        eventModal.style.visibility = 'hidden';
+        document.body.style.overflow = 'auto';
+        console.log('Event modal closed successfully');
+      } else {
+        console.error('Event modal not found when trying to close');
+      }
+    }
+    
+    function registerFromModal(eventTitle) {
+      const eventForms = {
+        'Paper Presentation': 'https://forms.gle/trZv4eHqs74TEUAi7',
+        'Treasure Hunt': 'https://forms.gle/CaPS6ktSGsDYLRhJ7',
+        'Poster Pulse': 'https://forms.gle/Cuf7BJzYtf6MvVDR8',
+        'Fluid Strokes': 'https://forms.gle/Fee5r6cFX7Bq7RCb7',
+        'Mindspark': 'https://forms.gle/oRP33esP5EdfEdZN6',
+        'Legends & Timelines': 'https://forms.gle/hmP5uDat8GbJSG9y6',
+        'Scrap Battle': 'https://forms.gle/jMjVRmnnL4tZmbjS9',
+        'Beat Odyssey': 'https://forms.gle/Vp8ERVqDFcaMdz589',
+        'Vision X': 'https://docs.google.com/forms/d/e/1FAIpQLScJECPSznKZP35GiC7N4hgFGxYCajIerbQooM1HdKSEUwniAg/viewform',
+        'IPL Auction': 'https://forms.gle/F4B2qDmkHDVG78rj8',
+        'Free Fire': 'https://forms.gle/pxJ2NGjeF8sd6EgS6'
+      };
+      
+      const currentEventTitle = eventTitle || document.getElementById('modal-event-title')?.textContent;
+      const formUrl = eventForms[currentEventTitle];
+      
+      if (formUrl && formUrl !== '#') {
+        window.open(formUrl, '_blank');
+      } else {
+        alert('Registration form not available yet for this event.');
+      }
+      
+      closeEventModal();
+    }
+    
+    function getEventDetails(eventTitle) {
+      const eventData = {
+        'Paper Presentation': {
+          description: 'Present groundbreaking research on sustainable innovation. Share bold solutions that could reshape our planet.',
+          rounds: [
+            { name: 'Submit Presentation', description: 'Submit your research presentation for review' },
+            { name: 'Present to Judges', description: 'Showcase your findings to judges and peers' }
+          ],
+          fee: '₹250 per participant'
+        },
+        'Poster Pulse': {
+          description: 'Create stunning posters on sustainable energy. Blend art with awareness where colors, concepts, and creativity come together.',
+          rounds: [
+            { name: 'Poster Creation', description: 'Create your poster on Canva with sustainable energy theme' },
+            { name: 'Poster Pitch', description: 'Present and explain your poster concept to judges' }
+          ],
+          fee: '₹80 per participant'
+        },
+        'Mindspark': {
+          description: 'Ultimate quiz challenge on "Sustainable Energy: Powering a Greener Tomorrow". Test your awareness, speed, and presence of mind.',
+          rounds: [
+            { name: 'Rapid Fire Round', description: 'Quick-fire questions on sustainable energy' },
+            { name: 'Scenario Challenge', description: 'Real-world sustainability problem solving' },
+            { name: 'Final Showdown', description: 'Head-to-head quiz battle' }
+          ],
+          fee: '₹180 per team (3 members)'
+        },
+        'Scrap Battle': {
+          description: 'Transform discarded materials into remarkable creations showcasing sustainable energy solutions. Scrap it, shape it, show it!',
+          rounds: [
+            { name: 'Material Selection', description: 'Choose from provided scrap materials' },
+            { name: 'Creation Phase', description: 'Build your sustainable energy solution' },
+            { name: 'Presentation', description: 'Present your creation and concept' }
+          ],
+          fee: '₹140 per team (2 members)'
+        },
+        'Vision X': {
+          description: 'Compete in technical challenges focused on computer vision, image processing, and AI applications for sustainable solutions.',
+          rounds: [
+            { name: 'Theory Round', description: 'Computer vision and AI fundamentals' },
+            { name: 'Practical Challenge', description: 'Implement vision-based solutions' }
+          ],
+          fee: '₹160 per team (2 members)'
+        },
+        'Treasure Hunt': {
+          description: 'Crack clues, chase thrills, and claim the hidden treasure! Mind-bending riddles and campus-wide adventure await.',
+          rounds: [
+            { name: 'Mind Maze', description: 'Solve brain-teasing riddles and puzzles' },
+            { name: 'Clue Chase', description: 'Follow hidden hints across campus' },
+            { name: 'Final Hunt', description: 'High-stakes race to discover the treasure' }
+          ],
+          fee: '₹60 per head (4 members per team)'
+        },
+        'Fluid Strokes': {
+          description: 'Ultimate watercolor painting challenge! Create, express, and win with dreamy washes and detailed strokes.',
+          rounds: [
+            { name: 'Watercolor Creation', description: 'Create painting based on given theme' },
+            { name: 'Artwork Explanation', description: 'Share inspiration and techniques behind your painting' }
+          ],
+          fee: '₹80 per head'
+        },
+        'Legends & Timelines': {
+          description: 'Ultimate storytelling showdown! Rewrite history, twist reality, and create mind-blowing "What if" stories.',
+          rounds: [
+            { name: 'Timeline Connect', description: 'Link random pictures to form chronological events' },
+            { name: 'Snap the Timeline', description: 'Create innovative "What if" stories from random topics' }
+          ],
+          fee: '₹120 per team (2 members)'
+        },
+        'Free Fire': {
+          description: 'Step into the battlefield of strategy and survival! Showcase gaming skills and teamwork in electrifying Battle Royale showdown.',
+          rounds: [
+            { name: 'Battle Royale Matches', description: 'Teams compete in BR lobbies with points system' },
+            { name: 'Finals', description: 'Top teams battle for ultimate BOOYAH!' }
+          ],
+          fee: '₹240 per team (4 members)'
+        },
+        'Beat Odyssey': {
+          description: 'Ultimate musical battlefield! Show off rhythm, lyrical knowledge, and creativity in electrifying music challenge.',
+          rounds: [
+            { name: 'Snap the Track', description: 'Guess songs from visual hints and pictures' },
+            { name: 'BGM Buzz', description: 'Identify songs from background music' },
+            { name: 'Lyrical Speedrun', description: 'Catch fast-paced lyrics under pressure' }
+          ],
+          fee: '₹180 per team'
+        },
+        'IPL Auction': {
+          description: 'Step into the owner\'s box and build your dream cricket squad! Experience high-stakes bidding where strategy and sports knowledge collide.',
+          rounds: [
+            { name: 'Quiz Round (Elimination)', description: 'Rapid-fire cricket quiz to qualify top 10 teams' },
+            { name: 'Simulated Auction', description: 'Bid for players with virtual budget to build balanced team' }
+          ],
+          fee: '₹200 per team (2-3 members)'
+        },
+      };
+      
+      return eventData[eventTitle] || {
+        description: 'Exciting event with innovative challenges and great prizes awaiting participants.',
+        rounds: [],
+        fee: 'To be announced'
+      };
     }
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeModalFunc();
+        closeEventModal();
       }
       
       const pageKeys = {
@@ -2183,10 +4205,14 @@
 
     // Form validation
     const formInputs = document.querySelectorAll('.form-input, .form-textarea');
-    formInputs.forEach(input => {
-      input.addEventListener('blur', validateField);
-      input.addEventListener('input', clearValidation);
-    });
+    if (formInputs.length > 0) {
+      formInputs.forEach(input => {
+        input.addEventListener('blur', validateField);
+        input.addEventListener('input', clearValidation);
+      });
+    } else {
+      console.warn('Form inputs not found - form validation will not be available');
+    }
 
     function validateField(e) {
       const field = e.target;
@@ -2216,23 +4242,124 @@
       field.style.borderColor = '';
     }
 
+    // Backup loader hide mechanism
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM content loaded');
+      
+      // Backup timer to hide loader if window.load doesn't fire
+      setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader && !loader.classList.contains('hidden')) {
+          console.log('Hiding loader via backup timer');
+          loader.classList.add('hidden');
+        }
+      }, 5000); // 5 second backup
+    });
+
+    // Image optimization and lazy loading
+    function optimizeImages() {
+      // Lazy loading for images
+      if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+              }
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        });
+
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+          imageObserver.observe(img);
+          img.classList.add('loaded'); // For immediate visibility since we're using src directly
+        });
+      }
+      
+      // Preload critical images
+      const criticalImages = [
+        'images/Abhigyan_25.gif',
+        'images/club_logo.png',
+        'images/srm_logo.png'
+      ];
+      
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+      });
+    }
+    
+    // Initialize image optimization
+    document.addEventListener('DOMContentLoaded', optimizeImages);
+
     // Page load sequence
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 2000);
-
-      initThree();
-      createFloatingElements();
+      console.log('Page loaded, starting initialization sequence...');
       
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      // Normal loader hide after 3 seconds
+      const loaderTimeout = setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          loader.style.transition = 'opacity 0.5s ease';
+          console.log('Loader fading out');
+          
+          setTimeout(() => {
+            if (loader.parentNode) {
+              loader.parentNode.removeChild(loader);
+              console.log('Loader removed');
+            }
+          }, 500);
+        }
+      }, 3000);
 
+      try {
+        // Initialize Three.js background (non-blocking)
+        initThree();
+      } catch (error) {
+        console.error('Three.js initialization failed:', error);
+      }
+      
+      try {
+        // Create floating elements (non-blocking)
+        createFloatingElements();
+      } catch (error) {
+        console.error('Floating elements creation failed:', error);
+      }
+      
+      try {
+        // Start countdown
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      } catch (error) {
+        console.error('Countdown initialization failed:', error);
+      }
+
+      // Initialize page animations after loader transition
       setTimeout(() => {
-        initPageAnimations();
+        try {
+          initPageAnimations();
+        } catch (error) {
+          console.error('Page animations initialization failed:', error);
+        }
       }, 2200);
 
-      document.body.classList.add('loaded');
+      // Mark body as loaded
+      try {
+        document.body.classList.add('loaded');
+        console.log('Page initialization completed successfully');
+      } catch (error) {
+        console.error('Failed to mark body as loaded:', error);
+      }
     });
 
     // Touch gesture support
@@ -2280,7 +4407,10 @@
     6 - Contact
     ESC - Close Modal
     Swipe left/right on mobile for navigation
-    `);
+    `);  
   </script>
+
+
+
 </body>
 </html>
