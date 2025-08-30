@@ -1891,33 +1891,36 @@
 
       .navbar {
         top: 10px;
-        padding: 12px 20px;
+        padding: 12px 18px;
         border-radius: 25px;
         width: auto;
-        max-width: 85vw;
+        max-width: 90vw;
         margin: 0 auto;
         left: 50%;
         transform: translateX(-50%);
+        overflow: hidden;
       }
 
       .nav-links {
-        gap: 12px;
+        gap: 10px;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
       }
 
       .nav-links a {
-        font-size: 15px;
+        font-size: 14px;
         cursor: pointer;
         font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 18px;
+        padding: 7px 10px;
+        border-radius: 16px;
         background: rgba(255, 255, 255, 0.08);
         transition: all 0.3s ease;
         white-space: nowrap;
         border: 1px solid rgba(255, 255, 255, 0.12);
         backdrop-filter: blur(8px);
+        flex-shrink: 0;
       }
       
       .nav-links a:hover,
@@ -2286,19 +2289,62 @@
       }
       
       .navbar {
-        padding: 10px 16px;
-        max-width: 92vw;
-        border-radius: 22px;
+        padding: 8px 12px;
+        max-width: 96vw;
+        border-radius: 20px;
+        top: 8px;
       }
       
       .nav-links {
-        gap: 10px;
+        gap: 6px;
       }
       
       .nav-links a {
-        font-size: 14px;
+        font-size: 12px;
+        padding: 5px 8px;
+        border-radius: 14px;
+      }
+    }
+    
+    /* Extra small screens */
+    @media (max-width: 375px) {
+      .navbar {
         padding: 6px 10px;
+        max-width: 98vw;
+        border-radius: 18px;
+        top: 6px;
+      }
+      
+      .nav-links {
+        gap: 4px;
+      }
+      
+      .nav-links a {
+        font-size: 11px;
+        padding: 4px 6px;
+        border-radius: 12px;
+        letter-spacing: 0;
+      }
+    }
+    
+    /* Very small screens */
+    @media (max-width: 320px) {
+      .navbar {
+        padding: 5px 8px;
+        max-width: 99vw;
         border-radius: 16px;
+        top: 5px;
+      }
+      
+      .nav-links {
+        gap: 3px;
+      }
+      
+      .nav-links a {
+        font-size: 10px;
+        padding: 3px 5px;
+        border-radius: 10px;
+        font-weight: 500;
       }
     }
   </style>
