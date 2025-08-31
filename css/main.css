@@ -401,7 +401,7 @@ img[loading="lazy"].loaded {
 
 .mobile-srm-logo {
   width: 750% !important;
-  height: 150% !important;
+  height: 180% !important;
   max-width: 200px !important;
   position: relative;
   transform-origin: center;
