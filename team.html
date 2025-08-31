@@ -7,6 +7,7 @@
   
   <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   
   <!-- Fonts -->
@@ -19,234 +20,10 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="images/srm_lgo.webp">
+  <link rel="shortcut icon" type="image/webp" href="images/srm_lgo.webp">
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
-  
-  <style>
-    /* Team Page Specific Styles */
-    .team-header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(76, 201, 240, 0.1));
-      border-radius: 20px;
-      margin: 20px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .team-header h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      background: linear-gradient(45deg, var(--primary), var(--accent));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-    }
-
-    .team-header p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .team-section {
-      margin: 60px 0;
-    }
-
-    .team-section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-      color: var(--primary);
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .team-card {
-      background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .team-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0, 255, 136, 0.2);
-      border-color: var(--primary);
-    }
-
-    .member-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 20px;
-      border: 3px solid var(--primary);
-      display: block;
-    }
-
-    .member-name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .member-role {
-      font-size: 1.1rem;
-      color: var(--accent);
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .member-department {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 20px;
-    }
-
-    .member-contact {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .member-contact a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .member-contact a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .faculty-section {
-      background: linear-gradient(135deg, rgba(55, 253, 18, 0.05), rgba(76, 201, 240, 0.05));
-      border-radius: 20px;
-      padding: 40px;
-      margin: 40px 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .student-section {
-      background: linear-gradient(135deg, rgba(76, 201, 240, 0.05), rgba(255, 107, 107, 0.05));
-      border-radius: 20px;
-      padding: 40px;
-      margin: 40px 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .domain-team {
-      margin: 50px 0;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .domain-title {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid var(--accent);
-    }
-
-    .coordinators-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .coordinator-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 20px;
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .coordinator-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
-    }
-
-    .coordinator-name {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .coordinator-role {
-      color: var(--accent);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .coordinator-contact {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .coordinators-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .member-photo {
-        width: 100px;
-        height: 100px;
-      }
-
-      .member-name {
-        font-size: 1.3rem;
-      }
-
-      .team-section-title {
-        font-size: 2rem;
-      }
-
-      .domain-title {
-        font-size: 1.5rem;
-      }
-
-      .faculty-section,
-      .student-section,
-      .domain-team {
-        padding: 20px;
-        margin: 20px 0;
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Custom Cursor -->
@@ -269,199 +46,623 @@
 
   <!-- Mobile Nav Logos -->
   <div class="mobile-nav-logo-left">
-    <img src="images/club_logo.png" alt="ECE Department Logo" class="mobile-club-logo" loading="eager">
+    <img src="images/club_logo.png" alt="ECE Department Logo" class="mobile-club-logo" loading="eager" onerror="console.warn('Mobile ECE logo failed to load');">
   </div>
   <div class="mobile-nav-logo-right">
-    <img src="images/srm_lgo.webp" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager">
+    <img src="images/srm_logo.png" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager" onerror="console.warn('Mobile SRM logo failed to load');">
   </div>
 
   <!-- Main Content -->
-  <div class="page">
+  <div class="page" style="display: block; text-align: center; max-width: 100%; overflow-x: hidden;">
     <!-- Team Header -->
-    <div class="team-header">
-      <h1>Our Team</h1>
-      <p>Meet the dedicated team behind Abhigyan 25, working tirelessly to bring you an unforgettable technical festival experience.</p>
-    </div>
-
-    <!-- Faculty Coordinators Section -->
-    <section class="section faculty-section">
-      <h2 class="team-section-title">Faculty Coordinators</h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <img src="images/faculty-placeholder.jpg" alt="Faculty Coordinator" class="member-photo" loading="lazy" onerror="this.src='images/placeholder-avatar.png'">
-          <h3 class="member-name">Dr. [Faculty Name]</h3>
-          <p class="member-role">Faculty Coordinator</p>
-          <p class="member-department">Department of ECE</p>
-          <div class="member-contact">
-            <p>Email: <a href="mailto:faculty@srmist.edu.in">faculty@srmist.edu.in</a></p>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <img src="images/faculty-placeholder.jpg" alt="Faculty Coordinator" class="member-photo" loading="lazy" onerror="this.src='images/placeholder-avatar.png'">
-          <h3 class="member-name">Dr. [Faculty Name]</h3>
-          <p class="member-role">Co-Faculty Coordinator</p>
-          <p class="member-department">Department of ECE</p>
-          <div class="member-contact">
-            <p>Email: <a href="mailto:faculty2@srmist.edu.in">faculty2@srmist.edu.in</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <header class="team-header">
+      <h1>Abhigyan 25 Team</h1>
+      <p>Meet the dedicated team behind Abhigyan 25 - faculty coordinators and student organizers working together to make this event a grand success.</p>
+    </header>
 
     <!-- Student Team Section -->
     <section class="section student-section">
-      <h2 class="team-section-title">Student Organizing Committee</h2>
+      <h2 class="team-section-title" style="margin-bottom: 50px;">Organizing Committee</h2>
+
+      <!-- Organizers / Event Management -->
+      <div class="domain-team">
+        <h3 class="domain-title">Organizers / Event Management</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Shirly Edward</h4>
+            <p class="coordinator-role">Convener (HOD,ECE Department)</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Priti Rishi</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Sathiya</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Vasuki</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Supriya S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Talha V R A</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Karthikeya S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Kate Jonita R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marketing & Publicity -->
+      <div class="domain-team">
+        <h3 class="domain-title">Marketing & Publicity</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Bestley Joe</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Rahul S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Sharon S G</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outreach (Inter College) -->
+      <div class="domain-team">
+        <h3 class="domain-title">Outreach (Inter College)</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Nagarajan</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Supriya S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Kate Jonita R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sponsorship & Finance -->
+      <div class="domain-team">
+        <h3 class="domain-title">Sponsorship & Finance</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Priti Rishi</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Sathiya</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Vasuki</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Jithendran</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Lohitashva V S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Roshan A</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Vishal M</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Kelvin J</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Technical Team -->
       <div class="domain-team">
         <h3 class="domain-title">Technical Team</h3>
         <div class="coordinators-grid">
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 1</h4>
-            <p class="coordinator-role">Technical Head</p>
-            <p class="coordinator-contact">Email: tech1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Dr. Karthick</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 2</h4>
-            <p class="coordinator-role">Technical Co-Head</p>
-            <p class="coordinator-contact">Email: tech2@srmist.edu.in</p>
+            <h4 class="coordinator-name">Shabar M</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 3</h4>
-            <p class="coordinator-role">Event Coordinator</p>
-            <p class="coordinator-contact">Email: tech3@srmist.edu.in</p>
-          </div>
-          <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 4</h4>
-            <p class="coordinator-role">Event Coordinator</p>
-            <p class="coordinator-contact">Email: tech4@srmist.edu.in</p>
+            <h4 class="coordinator-name">Akhilesh M</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
         </div>
       </div>
 
-      <!-- Non-Technical Team -->
+      <!-- Design & Creation, Invitation Prep. & Posters -->
       <div class="domain-team">
-        <h3 class="domain-title">Non-Technical Team</h3>
+        <h3 class="domain-title">Design & Creation, Invitation Prep. & Posters</h3>
         <div class="coordinators-grid">
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 5</h4>
-            <p class="coordinator-role">Non-Technical Head</p>
-            <p class="coordinator-contact">Email: nontech1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Dr. Ilayaraja</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 6</h4>
-            <p class="coordinator-role">Non-Technical Co-Head</p>
-            <p class="coordinator-contact">Email: nontech2@srmist.edu.in</p>
+            <h4 class="coordinator-name">Shri ram</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 7</h4>
-            <p class="coordinator-role">Event Coordinator</p>
-            <p class="coordinator-contact">Email: nontech3@srmist.edu.in</p>
+            <h4 class="coordinator-name">Aravind A</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 8</h4>
-            <p class="coordinator-role">Event Coordinator</p>
-            <p class="coordinator-contact">Email: nontech4@srmist.edu.in</p>
+            <h4 class="coordinator-name">Sujath R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Vishva V B</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
         </div>
       </div>
 
-      <!-- Operations Team -->
+      <!-- Website Management -->
       <div class="domain-team">
-        <h3 class="domain-title">Operations & Logistics</h3>
+        <h3 class="domain-title">Website Management</h3>
         <div class="coordinators-grid">
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 9</h4>
-            <p class="coordinator-role">Operations Head</p>
-            <p class="coordinator-contact">Email: ops1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Dr. Akila V</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 10</h4>
-            <p class="coordinator-role">Logistics Coordinator</p>
-            <p class="coordinator-contact">Email: ops2@srmist.edu.in</p>
+            <h4 class="coordinator-name">Suijt Laware</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 11</h4>
-            <p class="coordinator-role">Venue Coordinator</p>
-            <p class="coordinator-contact">Email: ops3@srmist.edu.in</p>
+            <h4 class="coordinator-name">Aashish</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 12</h4>
-            <p class="coordinator-role">Registration Coordinator</p>
-            <p class="coordinator-contact">Email: ops4@srmist.edu.in</p>
+            <h4 class="coordinator-name">Yuvan</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
         </div>
       </div>
 
-      <!-- Marketing & Design Team -->
+      <!-- Registration & Hospitality -->
       <div class="domain-team">
-        <h3 class="domain-title">Marketing & Design</h3>
+        <h3 class="domain-title">Registration & Hospitality</h3>
         <div class="coordinators-grid">
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 13</h4>
-            <p class="coordinator-role">Marketing Head</p>
-            <p class="coordinator-contact">Email: marketing1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Dr. Anju M I</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 14</h4>
-            <p class="coordinator-role">Design Head</p>
-            <p class="coordinator-contact">Email: design1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Mrs. Vanitha</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 15</h4>
-            <p class="coordinator-role">Social Media Coordinator</p>
-            <p class="coordinator-contact">Email: social1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Dharshana R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 16</h4>
-            <p class="coordinator-role">Content Coordinator</p>
-            <p class="coordinator-contact">Email: content1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Disya M</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Lakshitha</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Jenifrey A J</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dharani</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Pooja</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Akshaya</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Priyadarshini R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
         </div>
       </div>
 
-      <!-- Web Development Team -->
+      <!-- Promotions (Intra College) -->
       <div class="domain-team">
-        <h3 class="domain-title">Web Development</h3>
+        <h3 class="domain-title">Promotions (Intra College)</h3>
         <div class="coordinators-grid">
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 17</h4>
-            <p class="coordinator-role">Web Development Lead</p>
-            <p class="coordinator-contact">Email: web1@srmist.edu.in</p>
+            <h4 class="coordinator-name">Dr. Nagarajan</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 18</h4>
-            <p class="coordinator-role">Frontend Developer</p>
-            <p class="coordinator-contact">Email: web2@srmist.edu.in</p>
+            <h4 class="coordinator-name">Laksshitha B</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
           <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 19</h4>
-            <p class="coordinator-role">UI/UX Designer</p>
-            <p class="coordinator-contact">Email: web3@srmist.edu.in</p>
-          </div>
-          <div class="coordinator-card">
-            <h4 class="coordinator-name">Student Coordinator 20</h4>
-            <p class="coordinator-role">Technical Support</p>
-            <p class="coordinator-contact">Email: web4@srmist.edu.in</p>
+            <h4 class="coordinator-name">Prabhanjan G H</h4>
+            <p class="coordinator-role">Student Coordinator</p>
           </div>
         </div>
       </div>
 
-    </section>
-
-    <!-- Contact Info -->
-    <section class="section">
-      <div style="text-align: center; background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(76, 201, 240, 0.1)); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
-        <h2 style="color: var(--primary); margin-bottom: 20px;">Get In Touch</h2>
-        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; font-size: 1.1rem;">
-          Have questions about Abhigyan 25? Reach out to our team for more information.
-        </p>
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-          <a href="mailto:abhigyan2025@srmist.edu.in" class="cta-button">Email Us</a>
-          <a href="contact.html" class="cta-button">Contact Page</a>
+      <!-- Documentation & Media -->
+      <div class="domain-team">
+        <h3 class="domain-title">Documentation & Media</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Dinesh Babu</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Rhoda Rakshana</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Bagyalakshmi</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Lubna Shireen</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Charumathi S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
         </div>
       </div>
+
+      <!-- Photography & Videography -->
+      <div class="domain-team">
+        <h3 class="domain-title">Photography & Videography</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. T S Balaji</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Shriram</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Mohammed Irfan</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshop Coordinators -->
+      <div class="domain-team">
+        <h3 class="domain-title">Workshop Coordinators</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Sathiya</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Vasuki</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Monisha G</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Ssadhana R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Abhinav</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Avanthika K</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logistics -->
+      <div class="domain-team">
+        <h3 class="domain-title">Logistics</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. S Balaji</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Paramasivan S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Harish</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Vengateshwer R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Arjun J</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Shanganidhi K N</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Decoration & Rangoli & MC -->
+      <div class="domain-team">
+        <h3 class="domain-title">Stage Decoration & Rangoli & MC</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Akila</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Mrs. Bhuvaneshwari</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Rrashmi U</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Seema S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Jenefar Keerthi S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Harshini Karthick</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">MC - 2nd Year</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atrium Project Showcase -->
+      <div class="domain-team">
+        <h3 class="domain-title">Atrium Project Showcase</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. V P Kavitha</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Yeshvanth R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Sai Dharshan K</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Talha A</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lunch & Refreshments -->
+      <div class="domain-team">
+        <h3 class="domain-title">Lunch & Refreshments</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Sanjay Kumar</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Kabilamani</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Vaseegaran A</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dinesh T</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Saiganesh S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Kelvin J</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Saranesh R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Pavithran B</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Lokesh M</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Sanjai M</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Lokesh B</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Vishal Madhu</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Lourdu Jeron X</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dev D V</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Jackson A J</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner & Standee Preparation -->
+      <div class="domain-team">
+        <h3 class="domain-title">Banner & Standee Preparation</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. S Balaji</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dharani Kumar M S</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificates -->
+      <div class="domain-team">
+        <h3 class="domain-title">Certificates</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Augustine Flitcher</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. T S Balaji</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Atchaya R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Divya Lakshmi R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Souvenir Magazine -->
+      <div class="domain-team">
+        <h3 class="domain-title">Souvenir Magazine</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Anand Yasaswini</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Sumitha Nandha Kumar</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ideation Team -->
+      <div class="domain-team">
+        <h3 class="domain-title">Ideation Team</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Dr. Glaret Subin</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Mr. Deepjyothi</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Priyadarshini R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Janani Priya</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Abishek Kumar</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Pulkit Raj</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Likhitha</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Niveditha K</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Shelly R</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Shamithaa</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Treasurer -->
+      <div class="domain-team">
+        <h3 class="domain-title">Treasurer</h3>
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Mrs. Shalini</h4>
+            <p class="coordinator-role">Faculty Coordinator</p>
+          </div>
+          <div class="coordinator-card">
+            <h4 class="coordinator-name">Koushik A</h4>
+            <p class="coordinator-role">Student Coordinator</p>
+          </div>
+        </div>
+      </div>
+
     </section>
   </div>
 

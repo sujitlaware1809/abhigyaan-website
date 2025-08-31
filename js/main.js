@@ -34,6 +34,19 @@ function setActiveNavigation() {
   });
 }
 
+// Ensure Navigation Visibility
+function ensureNavigationVisibility() {
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    navbar.style.display = 'block';
+    navbar.style.visibility = 'visible';
+    navbar.style.opacity = '1';
+    navbar.style.position = 'fixed';
+    navbar.style.zIndex = '1000';
+    console.log('Navigation visibility ensured');
+  }
+}
+
 // 3D Background Setup
 function init3DBackground() {
   try {
@@ -139,13 +152,28 @@ function initGSAPAnimations() {
       ease: 'power2.out'
     });
 
-    // Navigation animation
-    gsap.from('.navbar', {
-      duration: 1,
-      y: -100,
-      opacity: 0,
-      ease: 'bounce.out'
-    });
+    // Navigation animation - ensure it stays visible
+    gsap.fromTo('.navbar', 
+      {
+        y: -50,
+        opacity: 0
+      },
+      {
+        duration: 0.8,
+        y: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        onComplete: function() {
+          // Ensure navigation stays visible after animation
+          const navbar = document.querySelector('.navbar');
+          if (navbar) {
+            navbar.style.opacity = '1';
+            navbar.style.visibility = 'visible';
+            navbar.style.display = 'block';
+          }
+        }
+      }
+    );
 
   } catch (error) {
     console.error('Error initializing GSAP animations:', error);
@@ -213,6 +241,9 @@ function initImageOptimization() {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Abhigyan 25 - Initializing...');
   
+  // Ensure navigation is visible first
+  ensureNavigationVisibility();
+  
   setActiveNavigation();
   init3DBackground();
   createFloatingElements();
@@ -220,8 +251,25 @@ document.addEventListener('DOMContentLoaded', function() {
   initCountdown();
   initImageOptimization();
   
+  // Double-check navigation visibility after animations
+  setTimeout(function() {
+    ensureNavigationVisibility();
+  }, 2000);
+  
   console.log('Abhigyan 25 - Initialized successfully');
 });
+
+// Additional safety checks for navigation visibility
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    ensureNavigationVisibility();
+  }, 1000);
+});
+
+// Periodic check to ensure navigation stays visible
+setInterval(function() {
+  ensureNavigationVisibility();
+}, 5000);
 
 // Error handling
 window.addEventListener('error', (e) => {

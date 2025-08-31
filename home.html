@@ -59,7 +59,7 @@
 
     .hero-title {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(3rem, 12vw, 8rem);
+      font-size: clamp(3.5rem, 14vw, 9rem);
       font-weight: 900;
       text-transform: uppercase;
       background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary), var(--primary));
@@ -303,7 +303,7 @@
       }
 
       .hero-title {
-        font-size: clamp(2rem, 8vw, 4rem);
+        font-size: clamp(3.5rem, 12vw, 6rem);
         margin-bottom: 15px;
       }
 
@@ -326,13 +326,14 @@
 
       .countdown-item {
         padding: 20px 15px;
-        min-width: 90px;
+        min-width: 80px;
         flex: 1;
-        max-width: 120px;
+        max-width: 100px;
+        border-radius: 15px;
       }
 
       .countdown-number {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       .countdown-label {
@@ -376,35 +377,38 @@
       }
 
       .hero-title {
-        font-size: clamp(1.8rem, 7vw, 3rem);
+        font-size: clamp(4rem, 14vw, 7rem);
         letter-spacing: -1px;
       }
 
       .hero-subtitle {
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
+        font-size: clamp(1.3rem, 4vw, 2rem);
       }
 
       .hero-date {
-        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
       }
 
       .countdown {
         gap: 10px;
         margin: 25px 0;
+        flex-wrap: wrap;
       }
 
       .countdown-item {
-        padding: 15px 10px;
-        min-width: 75px;
-        border-radius: 15px;
+        padding: 18px 12px;
+        min-width: 70px;
+        border-radius: 12px;
+        flex: 0 0 calc(50% - 5px);
+        margin-bottom: 10px;
       }
 
       .countdown-number {
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
 
       .countdown-label {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         margin-top: 5px;
       }
 
@@ -437,35 +441,38 @@
       }
 
       .hero-title {
-        font-size: clamp(1.6rem, 6vw, 2.5rem);
+        font-size: clamp(4.5rem, 16vw, 8rem);
         letter-spacing: -0.5px;
       }
 
       .hero-subtitle {
-        font-size: clamp(0.9rem, 2vw, 1.3rem);
+        font-size: clamp(1.4rem, 4.5vw, 2.2rem);
       }
 
       .hero-date {
-        font-size: clamp(0.8rem, 1.8vw, 1rem);
+        font-size: clamp(1.2rem, 3.5vw, 1.6rem);
       }
 
       .countdown {
         gap: 8px;
         margin: 20px 0;
+        flex-wrap: wrap;
       }
 
       .countdown-item {
-        padding: 12px 8px;
+        padding: 15px 10px;
         min-width: 65px;
-        border-radius: 12px;
+        border-radius: 10px;
+        flex: 0 0 calc(50% - 4px);
+        margin-bottom: 8px;
       }
 
       .countdown-number {
-        font-size: 1.3rem;
+        font-size: 1.8rem;
       }
 
       .countdown-label {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
       }
 
       .poster-container {
@@ -663,21 +670,97 @@
   <script>
     console.log('Loader script starting...');
     
-    setTimeout(function() {
-      const loader = document.getElementById('loader');
-      if (loader) {
-        loader.style.opacity = '0';
-        loader.style.transition = 'opacity 0.5s ease';
-        console.log('Loader fading out after 3 seconds');
-        
-        setTimeout(function() {
-          if (loader.parentNode) {
-            loader.parentNode.removeChild(loader);
-            console.log('Loader removed from DOM');
-          }
-        }, 500);
+    // Improved loader with better error handling and no navigation interference
+    function hideLoader() {
+      try {
+        const loader = document.getElementById('loader');
+        // Ensure we only hide the loader, not affect navigation
+        if (loader && loader.id === 'loader') {
+          loader.style.opacity = '0';
+          loader.style.transition = 'opacity 0.5s ease';
+          console.log('Loader fading out');
+          
+          setTimeout(function() {
+            try {
+              if (loader && loader.parentNode && loader.id === 'loader') {
+                loader.style.display = 'none';
+                loader.parentNode.removeChild(loader);
+                console.log('Loader removed from DOM');
+              }
+            } catch (error) {
+              console.error('Error removing loader:', error);
+            }
+          }, 500);
+        }
+      } catch (error) {
+        console.error('Error in hideLoader:', error);
       }
+    }
+    
+    // Ensure navigation stays visible
+    function ensureNavigationVisible() {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        navbar.style.display = 'block';
+        navbar.style.visibility = 'visible';
+        navbar.style.opacity = '1';
+        console.log('Navigation visibility ensured');
+      }
+    }
+    
+    // Multiple fallback methods to ensure loader is hidden
+    let loaderHidden = false;
+    
+    // Method 1: Standard timeout
+    setTimeout(function() {
+      if (!loaderHidden) {
+        hideLoader();
+        ensureNavigationVisible();
+        loaderHidden = true;
+      }
+    }, 2000);
+    
+    // Method 2: When DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      ensureNavigationVisible();
+      setTimeout(function() {
+        if (!loaderHidden) {
+          hideLoader();
+          ensureNavigationVisible();
+          loaderHidden = true;
+        }
+      }, 1500);
+    });
+    
+    // Method 3: When window is fully loaded
+    window.addEventListener('load', function() {
+      ensureNavigationVisible();
+      setTimeout(function() {
+        if (!loaderHidden) {
+          hideLoader();
+          ensureNavigationVisible();
+          loaderHidden = true;
+        }
+      }, 1000);
+    });
+    
+    // Method 4: Emergency fallback - ensure navigation always visible
+    setTimeout(function() {
+      if (!loaderHidden) {
+        const loader = document.getElementById('loader');
+        if (loader) {
+          loader.style.display = 'none';
+          loaderHidden = true;
+          console.log('Emergency loader hide activated');
+        }
+      }
+      ensureNavigationVisible();
     }, 3000);
+    
+    // Additional safeguard - check navigation every 2 seconds
+    setInterval(function() {
+      ensureNavigationVisible();
+    }, 2000);
   </script>
 </body>
 </html>

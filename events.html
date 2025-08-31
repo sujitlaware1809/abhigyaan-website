@@ -179,14 +179,114 @@
 
     .modal-content {
       background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
-      margin: 5% auto;
-      padding: 40px;
+      margin: 2% auto;
+      padding: 0;
       border-radius: 20px;
-      max-width: 600px;
+      max-width: 1000px;
       position: relative;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      max-height: 80vh;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      min-height: 600px;
+    }
+
+    .modal-poster-section {
+      flex: 1;
+      max-width: 400px;
+      position: relative;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-event-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px 0 0 0;
+      display: block;
+    }
+
+    .modal-register-button {
+      display: block;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--darker);
+      text-decoration: none;
+      padding: 15px 25px;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 20px;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      border: none;
+      cursor: pointer;
+    }
+
+    .modal-register-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(55, 253, 18, 0.4);
+    }
+
+    .modal-info-section {
+      flex: 2;
+      padding: 30px;
       overflow-y: auto;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .modal-event-title {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Orbitron', monospace;
+    }
+
+    .modal-event-details {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .detail-section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .detail-section:last-child {
+      border-bottom: none;
+    }
+
+    .detail-section h3 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .rounds-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rounds-list li {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .fee-info {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(76, 201, 240, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(76, 201, 240, 0.3);
     }
 
     .close-modal {
@@ -205,6 +305,8 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
+      z-index: 1000;
+      border: none;
     }
 
     .close-modal:hover {
@@ -244,13 +346,61 @@
       }
 
       .modal-content {
-        margin: 10% auto;
+        margin: 5% auto;
+        padding: 0;
+        max-width: 95%;
+        flex-direction: column;
+        max-height: 90vh;
+      }
+
+      .modal-poster-section {
+        max-width: 100%;
+        position: relative;
+      }
+
+      .modal-event-image {
+        height: 300px;
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .modal-register-button {
+        margin: 15px;
+        font-size: 1rem;
+        padding: 12px 20px;
+        width: calc(100% - 30px);
+      }
+
+      .modal-info-section {
         padding: 20px;
-        max-width: 90%;
       }
 
       .modal-event-title {
         font-size: 1.5rem;
+      }
+
+      .detail-section h3 {
+        font-size: 1.1rem;
+      }
+
+      .fee-info {
+        font-size: 1.1rem;
+      }
+
+      .close-modal {
+        top: 10px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .close-modal:hover {
+        background: rgba(255, 0, 0, 0.3);
       }
     }
   </style>
@@ -330,17 +480,60 @@
           </div>
         </div>
 
+
         <div class="event-card" data-category="technical" data-event="vision-x">
           <div class="event-image">
-            <img src="images/vision.jpg" alt="Vision X" loading="lazy">
+            <img src="images/vision.jpg" alt="Vision-X" loading="lazy">
           </div>
           <div class="event-content">
             <span class="event-type technical">Technical</span>
             <h3 class="event-title">Vision X</h3>
-            <p class="event-description">Compete in a technical event focused on computer vision, image processing, and AI applications.</p>
+            <p class="event-description">An innovative challenge combining computer vision, AI algorithms, and real-world problem solving for sustainable solutions.</p>
             <span class="event-date">11th Sept 2025 (Thursday)</span>
             <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScJECPSznKZP35GiC7N4hgFGxYCajIerbQooM1HdKSEUwniAg/viewform" target="_blank" class="register-button">Register Now</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="technical" data-event="legends-timeline">
+          <div class="event-image">
+            <img src="images/LEAGENDANDTIMELINES.png" alt="Legends and Timeline" loading="lazy">
+          </div>
+          <div class="event-content">
+            <span class="event-type technical">Technical</span>
+            <h3 class="event-title">Legends and Timeline</h3>
+            <p class="event-description">Test your knowledge of technological evolution and engineering milestones in this timeline-based competition.</p>
+            <span class="event-date">11th Sept 2025 (Thursday)</span>
+            <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+            <a href="https://forms.gle/hmP5uDat8GbJSG9y6" target="_blank" class="register-button">Register Now</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="technical" data-event="poster-pulse">
+          <div class="event-image">
+            <img src="images/poster_pulse.jpg" alt="Poster Pulse" loading="lazy">
+          </div>
+          <div class="event-content">
+            <span class="event-type technical">Technical</span>
+            <h3 class="event-title">Poster Pulse</h3>
+            <p class="event-description">Display your research findings and projects on posters and engage in one-on-one discussions with experts.</p>
+            <span class="event-date">11th Sept 2025 (Thursday)</span>
+            <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+            <a href="https://forms.gle/Cuf7BJzYtf6MvVDR8" target="_blank" class="register-button">Register Now</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="technical" data-event="scrap-battle">
+          <div class="event-image">
+            <img src="images/scrap.jpg" alt="Scrap Battle" loading="lazy">
+          </div>
+          <div class="event-content">
+            <span class="event-type technical">Technical</span>
+            <h3 class="event-title">Scrap Battle</h3>
+            <p class="event-description">Build innovative solutions using waste materials and showcase your engineering creativity in this sustainability-focused competition.</p>
+            <span class="event-date">11th Sept 2025 (Thursday)</span>
+            <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+            <a href="https://forms.gle/jMjVRmnnL4tZmbjS9" target="_blank" class="register-button">Register Now</a>
           </div>
         </div>
 
@@ -387,6 +580,34 @@
           </div>
         </div>
 
+        <div class="event-card" data-category="non-technical" data-event="fluid-strokes">
+          <div class="event-image">
+            <img src="images/FLUIDSTROKES.png" alt="Fluid Strokes" loading="lazy">
+          </div>
+          <div class="event-content">
+            <span class="event-type non-technical">Non-Technical</span>
+            <h3 class="event-title">Fluid Strokes</h3>
+            <p class="event-description">Unleash your creativity and artistic flair in a live drawing and painting competition.</p>
+            <span class="event-date">11th Sept 2025 (Thursday)</span>
+            <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+            <a href="https://forms.gle/Fee5r6cFX7Bq7RCb7" target="_blank" class="register-button">Register Now</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="non-technical" data-event="free-fire">
+          <div class="event-image">
+            <img src="images/FREEFIRE.png" alt="Free Fire" loading="lazy">
+          </div>
+          <div class="event-content">
+            <span class="event-type non-technical">Non-Technical</span>
+            <h3 class="event-title">Free Fire</h3>
+            <p class="event-description">Battle it out in the ultimate gaming championship and prove your strategic prowess in this mobile gaming tournament.</p>
+            <span class="event-date">11th Sept 2025 (Thursday)</span>
+            <span class="event-venue">📍 ECE Department SRMIST VDP CAMPUS</span>
+            <a href="https://forms.gle/pxJ2NGjeF8sd6EgS6" target="_blank" class="register-button">Register Now</a>
+          </div>
+        </div>
+
       </div>
     </section>
   </div>
@@ -395,11 +616,39 @@
   <div id="event-modal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <h2 class="modal-event-title" id="modal-title"></h2>
-      <img class="modal-event-image" id="modal-image" src="" alt="">
-      <div id="modal-description"></div>
-      <div id="modal-details"></div>
-      <a id="modal-register-btn" class="register-button" target="_blank">Register Now</a>
+      
+      <!-- Event Poster Section -->
+      <div class="modal-poster-section">
+        <img class="modal-event-image" id="modal-image" src="" alt="">
+        <a id="modal-register-btn" class="modal-register-button" target="_blank">🎯 Register Now</a>
+      </div>
+      
+      <!-- Event Info Section -->
+      <div class="modal-info-section">
+        <h2 class="modal-event-title" id="modal-title"></h2>
+        
+        <div class="modal-event-details">
+          <div class="detail-section">
+            <h3>📋 About Event</h3>
+            <div id="modal-description"></div>
+          </div>
+          
+          <div class="detail-section">
+            <h3>🎯 Event Structure</h3>
+            <div id="modal-rounds"></div>
+          </div>
+          
+          <div class="detail-section">
+            <h3>💰 Registration Fee</h3>
+            <div id="modal-fee"></div>
+          </div>
+          
+          <div class="detail-section">
+            <h3>📅 Event Details</h3>
+            <div id="modal-details"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -407,6 +656,219 @@
   <script src="js/main.js"></script>
   
   <script>
+    // Event Details Database
+    const eventDetails = {
+      'legends-timeline': {
+        title: 'Legends and Timeline',
+        image: 'images/LEAGENDANDTIMELINES.png',
+        description: 'Ever imagined what would happen if Einstein had YouTube… or if Titanic never sank? Step into Legends and Timelines – the ultimate storytelling showdown where creativity, imagination, and talent collide! Rewrite history, twist reality, and let your stories take center stage.',
+        rounds: [
+          {
+            name: 'Round 1 – Timeline Connect',
+            description: 'Participants pick a category chit (like Science, History, Technology). Based on the category, random pictures will appear on the screen. They must link the pictures to form meaningful products or events, identify the year, and arrange them in chronological order.'
+          },
+          {
+            name: 'Round 2 – Snap the Timeline',
+            description: 'Connect two random topics (like Einstein + YouTube) and create a mind-blowing "What if" story!'
+          }
+        ],
+        fee: '₹120 Per team (2 Members)',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/hmP5uDat8GbJSG9y6'
+      },
+      'mindspark': {
+        title: 'Mind Spark',
+        image: 'images/MINDSPARK.png',
+        description: 'Step into the world of knowledge and sustainability with Mind spark, the ultimate quiz challenge of the Abhigyan Symposium 2025! Centered on the theme "Sustainable Energy: Powering a Greener Tomorrow", the quiz will test your awareness, speed, and presence of mind.',
+        rounds: [
+          {
+            name: '3 Exciting Rounds',
+            description: 'From rapid-fire to scenario challenges, test your knowledge and quick thinking skills.'
+          }
+        ],
+        fee: '₹180 per team',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/oRP33esP5EdfEdZN6'
+      },
+      'paper-presentation': {
+        title: 'Paper Presentation',
+        image: 'images/paper_prep.jpg',
+        description: 'Got groundbreaking ideas? Ready to present bold solutions that could reshape our planet? Welcome to ABHIGYAN 2025 - where brilliant researchers present game-changing papers on sustainability! Theme: "Sustainable Innovation: Research That Powers Tomorrow"',
+        rounds: [
+          {
+            name: 'Round 1',
+            description: 'Submit your presentation'
+          },
+          {
+            name: 'Round 2',
+            description: 'Present your work to judges and peers - showcase your findings like never before!'
+          }
+        ],
+        fee: '₹250 per head',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/trZv4eHqs74TEUAi7'
+      },
+      'poster-pulse': {
+        title: 'Poster Pulse',
+        image: 'images/POSTERPULSE.png',
+        description: 'Create. Present. Win Big! Unleash your imagination and showcase your skills at ABHIGYAN\'25 where your ideas speak louder than words! Poster Pulse is your canvas to blend art with awareness, where colors, concepts, and creativity come together for a cause: SUSTAINABLE ENERGY.',
+        rounds: [
+          {
+            name: 'Round 1: Poster Creation',
+            description: 'Create your poster on Canva, combining creativity with purpose.'
+          },
+          {
+            name: 'Round 2: Poster Pitch',
+            description: 'Shortlisted participants will present and explain the idea behind their poster to a panel of judges.'
+          }
+        ],
+        fee: '₹80 per head',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/Cuf7BJzYtf6MvVDR8'
+      },
+      'ipl-auction': {
+        title: 'IPL Auction',
+        image: 'images/IPLAUCTOIN.png',
+        description: 'Bid. Build. Win the Battle! Step into the owner\'s box and build your dream cricket squad at ABHIGYAN\'25! Experience the high-stakes thrill of a real IPL auction where strategy, sports knowledge, and smart bidding collide.',
+        rounds: [
+          {
+            name: 'Round 1: Quiz Round (Elimination)',
+            description: 'Face a rapid-fire cricket quiz to prove your knowledge. Only the top 10 teams will make it to the auction table!'
+          },
+          {
+            name: 'Round 2: Simulated IPL-Style Auction',
+            description: 'Get your virtual budget and bid for real-life players. Outsmart your rivals to build the most balanced and powerful team.'
+          }
+        ],
+        fee: '₹200 per team (2 or 3 Members)',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/L1zKjMbP3WJN4YaX8'
+      },
+      'scrap-battle': {
+        title: 'Scrap Battle',
+        image: 'images/SCRAPBATTLE.png',
+        description: 'Scrap It. Shape It. Show It! Gear up for Scrap Battle, a one-of-a-kind event at Abhigyan\'25 where your creativity, talent, and eco-awareness will be put to the ultimate test! Create something extraordinary from scraps provided, in line with the theme SUSTAINABLE ENERGY.',
+        rounds: [
+          {
+            name: 'Single Round Competition',
+            description: 'Transform discarded materials into remarkable creations that showcase sustainable energy solutions.'
+          }
+        ],
+        fee: 'Team of 2 — ₹140 (₹70 per person)',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/jMjVRmnnL4tZmbjS9'
+      },
+      'fluid-strokes': {
+        title: 'Fluid Strokes',
+        image: 'images/FLUIDSTROKES.png',
+        description: 'Create. Express. Win! Step into the world of colors with FluidStrokes, the ultimate Watercolour Painting Challenge of Abhigyan\'25! From dreamy washes to detailed strokes – this is your canvas to shine.',
+        rounds: [
+          {
+            name: 'Single Round: Painting with a Given Topic',
+            description: 'Create a painting based on the given theme using watercolours.'
+          },
+          {
+            name: 'Artwork Explanation',
+            description: 'Share the idea, inspiration, and techniques behind your painting.'
+          }
+        ],
+        fee: '₹80 per head',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/Fee5r6cFX7Bq7RCb7'
+      },
+      'treasure-hunt': {
+        title: 'Treasure Hunt',
+        image: 'images/TREASUREHUNT.png',
+        description: 'Crack the clues, chase the thrill, and claim the hidden treasure! Experience the ultimate adventure challenge at Abhigyan \'25.',
+        rounds: [
+          {
+            name: 'Round 1 – Mind Maze',
+            description: 'Solve brain-teasing riddles and puzzles to unlock your path forward.'
+          },
+          {
+            name: 'Round 2 – The Clue Chase',
+            description: 'Follow hidden hints across the campus; stay quick, stay clever, and don\'t let rival teams get ahead.'
+          },
+          {
+            name: 'Round 3 – The Final Hunt',
+            description: 'The last stage of mystery and thrill! A high-stakes race where the most resourceful team discovers the treasure.'
+          }
+        ],
+        fee: '₹60 per head (4 members per team)',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/CaPS6ktSGsDYLRhJ7'
+      },
+      'free-fire': {
+        title: 'Free Fire',
+        image: 'images/FREEFIRE.png',
+        description: 'Step into the battlefield of strategy and survival! FREE FIRE – Battle Royale invites students to showcase their gaming skills and teamwork in an electrifying eSports showdown.',
+        rounds: [
+          {
+            name: 'Battle Royale Mode',
+            description: 'All matches will be played in Battle Royale (BR) mode. Teams compete in BR lobbies, and rankings will be based on a points system (kills + placement).'
+          }
+        ],
+        fee: '₹240 per team (4 members per team)',
+        date: '11/09/2025 (Thursday)',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/pxJ2NGjeF8sd6EgS6'
+      },
+      'beat-odyssey': {
+        title: 'Beat Odyssey',
+        image: 'images/BEACODYSSEY.png',
+        description: 'Feel the Rhythm. Rule the Stage! Step into the ultimate musical battlefield at Abhigyan\'25! Show off your sense of rhythm, lyrical knowledge, and creativity in this electrifying music challenge that tests your tempo, timing, and talent.',
+        rounds: [
+          {
+            name: 'Round 1: Snap the Track',
+            description: 'Guess the groove from the visuals! Pictures and hints will be flashed on screen—identify the artist and song name to score points.'
+          },
+          {
+            name: 'Round 2: BGM Buzz',
+            description: 'Listen closely! A background score (BGM) will be played, and teams must identify the song it belongs to. Quick ears win here!'
+          },
+          {
+            name: 'Round 3: Lyrical Speedrun',
+            description: 'The lyrics are coming at lightning speed! Participants must catch the fast-paced lines and guess the correct lyrics under pressure.'
+          }
+        ],
+        fee: '₹180 per team',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://forms.gle/LqJMN9YsQGNdhW7N6'
+      },
+      'vision-quest': {
+        title: 'Vision Quest',
+        image: 'images/vision.jpg',
+        description: 'An innovative challenge combining computer vision, AI algorithms, and real-world problem solving for sustainable solutions. Test your skills in image processing, pattern recognition, and intelligent system design.',
+        rounds: [
+          {
+            name: 'Round 1: Algorithm Challenge',
+            description: 'Solve complex computer vision problems using cutting-edge algorithms and techniques.'
+          },
+          {
+            name: 'Round 2: Implementation Sprint',
+            description: 'Build and deploy your vision-based solution within time constraints.'
+          },
+          {
+            name: 'Round 3: Innovation Showcase',
+            description: 'Present your sustainable AI solution and demonstrate its real-world applications.'
+          }
+        ],
+        fee: '₹180 per team (2-3 members)',
+        date: 'Thursday, 11th September 2025',
+        venue: 'ECE Department SRMIST VDP CAMPUS',
+        registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScJECPSznKZP35GiC7N4hgFGxYCajIerbQooM1HdKSEUwniAg/viewform'
+      }
+    };
+
     // Event Filtering
     document.addEventListener('DOMContentLoaded', function() {
       const filterBtns = document.querySelectorAll('.filter-btn');
@@ -448,12 +910,41 @@
       const closeBtn = document.querySelector('.close-modal');
 
       closeBtn.addEventListener('click', closeModal);
+      closeBtn.addEventListener('touchend', closeModal); // Add touch support for mobile
+      
       modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+      
+      modal.addEventListener('touchend', function(e) {
         if (e.target === modal) closeModal();
       });
 
       function openEventModal(eventType) {
-        // You can add detailed information for each event here
+        const event = eventDetails[eventType];
+        if (!event) return;
+
+        // Update modal content
+        document.getElementById('modal-title').textContent = event.title;
+        document.getElementById('modal-image').src = event.image;
+        document.getElementById('modal-description').innerHTML = `<p>${event.description}</p>`;
+        document.getElementById('modal-register-btn').href = event.registerUrl;
+        
+        // Update rounds
+        const roundsHtml = event.rounds.map(round => 
+          `<li><strong>${round.name}:</strong> ${round.description}</li>`
+        ).join('');
+        document.getElementById('modal-rounds').innerHTML = `<ul class="rounds-list">${roundsHtml}</ul>`;
+        
+        // Update fee
+        document.getElementById('modal-fee').innerHTML = `<div class="fee-info">${event.fee}</div>`;
+        
+        // Update details
+        document.getElementById('modal-details').innerHTML = `
+          <p><strong>📅 Date:</strong> ${event.date}</p>
+          <p><strong>📍 Venue:</strong> ${event.venue}</p>
+        `;
+        
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
       }
