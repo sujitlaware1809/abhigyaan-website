@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Abhigyan 25</title>
+  
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Satisfy&display=swap" rel="stylesheet">
+  
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://forms.gle">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="images/srm_lgo.webp">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    /* Contact Page Specific Styles */
+    .contact-header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(76, 201, 240, 0.1));
+      border-radius: 20px;
+      margin: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .contact-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .contact-info {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .contact-info h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+    }
+
+    .info-card h3 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .info-card a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .info-card a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .contact-form h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--light);
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--light);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(55, 253, 18, 0.2);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      font-family: inherit;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+      filter: brightness(1.1);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-message {
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+    }
+
+    .form-message.success {
+      background: rgba(55, 253, 18, 0.2);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .form-message.error {
+      background: rgba(255, 107, 107, 0.2);
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+    }
+
+    .loading-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid var(--dark);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .map-section {
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .map-section h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .map-container {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 15px;
+      filter: grayscale(20%) invert(5%);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 25px;
+      }
+
+      .info-card {
+        padding: 20px;
+      }
+
+      .map-container {
+        padding: 20px;
+      }
+
+      .map-container iframe {
+        height: 300px;
+      }
+
+      .contact-header {
+        margin: 10px;
+        padding: 30px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-info,
+      .contact-form {
+        padding: 20px;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        padding: 12px;
+      }
+
+      .submit-btn {
+        padding: 12px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- 3D Background -->
+  <div id="three-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="team.html" class="nav-link">Team</a>
+      <a href="past-events.html" class="nav-link">Past Edi.</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Logos -->
+  <div class="mobile-nav-logo-left">
+    <img src="images/club_logo.png" alt="ECE Department Logo" class="mobile-club-logo" loading="eager">
+  </div>
+  <div class="mobile-nav-logo-right">
+    <img src="images/srm_lgo.webp" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager">
+  </div>
+
+  <!-- Main Content -->
+  <div class="page">
+    <!-- Contact Header -->
+    <div class="contact-header">
+      <h1>Contact Us</h1>
+      <p>Get in touch with us for any questions, suggestions, or information about Abhigyan 25. We're here to help!</p>
+    </div>
+
+    <!-- Contact Container -->
+    <section class="section">
+      <div class="contact-container">
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          
+          <div class="info-card">
+            <h3>📧 Email</h3>
+            <p>General Inquiries:</p>
+            <p><a href="mailto:abhigyan2025@srmist.edu.in">abhigyan2025@srmist.edu.in</a></p>
+            <p>Support:</p>
+            <p><a href="mailto:sl9951@srmist.edu.in">sl9951@srmist.edu.in</a></p>
+          </div>
+
+          <div class="info-card">
+            <h3>📍 Address</h3>
+            <p>Department of Electronics and Communication Engineering</p>
+            <p>SRM Institute of Science and Technology</p>
+            <p>Vadapalani Campus, Chennai</p>
+            <p>Tamil Nadu, India</p>
+          </div>
+
+          <div class="info-card">
+            <h3>📅 Event Date</h3>
+            <p>September 11, 2025 (Thursday)</p>
+            <p>Registration opens soon!</p>
+          </div>
+
+          <div class="info-card">
+            <h3>🌐 Follow Us</h3>
+            <p>Stay updated with the latest news and announcements about Abhigyan 25.</p>
+            <p>Check our website regularly for updates!</p>
+          </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2>Send Message</h2>
+          
+          <div id="form-message" class="form-message"></div>
+          
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+              <label for="college">College/Institution</label>
+              <input type="text" id="college" name="college">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="registration">Registration Support</option>
+                <option value="events">Event Information</option>
+                <option value="technical">Technical Support</option>
+                <option value="sponsorship">Sponsorship</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span class="loading-spinner" id="loading-spinner"></span>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section map-section">
+      <h2>Find Us Here</h2>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6774672481896!2d80.25007931482156!3d13.01170719081234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267164f8b9b8d%3A0x5f46be6b7a5c6b9a!2sSRM%20Institute%20of%20Science%20and%20Technology%2C%20Vadapalani%20Campus!5e0!3m2!1sen!2sin!4v1629789012345!5m2!1sen!2sin"
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Quick Contact Section -->
+    <section class="section">
+      <div style="text-align: center; background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(76, 201, 240, 0.1)); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <h2 style="color: var(--primary); margin-bottom: 20px;">Quick Links</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 30px; font-size: 1.1rem;">
+          Need immediate assistance? Check out these helpful resources.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+          <a href="events.html" class="cta-button">View Events</a>
+          <a href="team.html" class="cta-button">Our Team</a>
+          <a href="home.html" class="cta-button">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  
+  <script>
+    // Contact Form Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const loadingSpinner = document.getElementById('loading-spinner');
+      const formMessage = document.getElementById('form-message');
+
+      // Initialize EmailJS (replace with your actual keys)
+      // emailjs.init("YOUR_PUBLIC_KEY");
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        loadingSpinner.style.display = 'inline-block';
+        submitBtn.textContent = 'Sending...';
+        
+        // Get form data
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone') || 'Not provided',
+          college: formData.get('college') || 'Not provided',
+          subject: formData.get('subject'),
+          message: formData.get('message')
+        };
+
+        // Simulate sending (replace with actual EmailJS implementation)
+        setTimeout(() => {
+          try {
+            // EmailJS send would go here
+            // emailjs.send("SERVICE_ID", "TEMPLATE_ID", data)
+            
+            // For now, simulate success
+            showMessage('Message sent successfully! We\'ll get back to you soon.', 'success');
+            form.reset();
+            
+            // Alternative: Open mailto link as fallback
+            const mailtoLink = `mailto:abhigyan2025@srmist.edu.in?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nCollege: ${data.college}\n\nMessage:\n${data.message}`)}`;
+            // window.open(mailtoLink, '_blank');
+            
+          } catch (error) {
+            console.error('Error sending message:', error);
+            showMessage('Error sending message. Please try again or email us directly.', 'error');
+          } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            loadingSpinner.style.display = 'none';
+            submitBtn.textContent = 'Send Message';
+          }
+        }, 2000);
+      });
+
+      function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+        formMessage.style.display = 'block';
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      }
+
+      // Form validation
+      const requiredFields = form.querySelectorAll('[required]');
+      requiredFields.forEach(field => {
+        field.addEventListener('blur', function() {
+          if (!this.value.trim()) {
+            this.style.borderColor = 'var(--secondary)';
+          } else {
+            this.style.borderColor = 'var(--primary)';
+          }
+        });
+      });
+
+      // Email validation
+      const emailField = document.getElementById('email');
+      emailField.addEventListener('blur', function() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(this.value)) {
+          this.style.borderColor = 'var(--secondary)';
+        } else {
+          this.style.borderColor = 'var(--primary)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

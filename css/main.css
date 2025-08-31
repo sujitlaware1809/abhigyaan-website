@@ -1,0 +1,765 @@
+/* Abhigyan 25 - Main Stylesheet */
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #37fd12;
+  --secondary: #ff6b6b;
+  --accent: #4ecdc4;
+  --dark: #0a0a0a;
+  --darker: #050505;
+  --light: #ffffff;
+  --glass: rgba(255, 255, 255, 0.1);
+  --glow: 0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--darker);
+  color: var(--light);
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Themed Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 10px;
+  border: 2px solid var(--darker);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #45ff20, #5bebe2);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5), 0 0 10px rgba(55, 253, 18, 0.4);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--darker);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--darker);
+}
+
+/* Image Optimization */
+img {
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.event-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  will-change: transform;
+  loading: lazy;
+  decoding: async;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Custom Cursor */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: all 0.1s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 3D Background */
+#three-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Page Container */
+.page {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* Mobile viewport optimizations */
+@media (max-width: 768px) {
+  .page {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 65px;
+  }
+}
+
+@media (max-width: 375px) {
+  .page {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 320px) {
+  .page {
+    padding-top: 55px;
+  }
+}
+
+/* Glassmorphism Navigation */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 15px 30px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: var(--glow);
+}
+
+.navbar:hover {
+  background: rgba(10, 10, 10, 0.8);
+  box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: none;
+  opacity: 1;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.nav-links a:hover::before, 
+.nav-links a.active::before {
+  width: 100%;
+}
+
+/* Section Styles */
+.section {
+  padding: 100px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 60px;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+
+/* Buttons */
+.cta-button, .register-button, .submit-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  color: var(--dark);
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: none;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+.cta-button:hover, .register-button:hover, .submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+  filter: brightness(1.1);
+}
+
+/* Corner Logos */
+.corner-logos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.corner-logo {
+  position: absolute;
+  pointer-events: auto;
+  width: 100px;
+  height: 100px;
+  overflow: visible;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.corner-logo.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.corner-logo.top-right {
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 25px;
+  padding: 8px;
+}
+
+.corner-logo-img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 15px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.corner-logo.top-right .corner-logo-img {
+  width:1000%;
+  height: 150%;
+  object-fit: contain;
+  object-position: center;
+  max-width: none;
+  max-height: none;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  transform: none !important;
+  clip-path: none !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  filter: brightness(1.3) contrast(1.3) saturate(1.1) !important;
+}
+
+.corner-logo:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.corner-logo:hover .corner-logo-img {
+  opacity: 1;
+  filter: brightness(1.2) contrast(1.2);
+}
+
+/* Mobile Corner Logos */
+.mobile-nav-logo-left,
+.mobile-nav-logo-right {
+  display: none;
+  position: fixed;
+  top: 70px;
+  width: 55px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 4px;
+  box-sizing: border-box;
+  z-index: 1002;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-logo-left {
+  left: 8px;
+}
+
+.mobile-nav-logo-right {
+  right: 8px;
+}
+
+.mobile-nav-logo-left:hover,
+.mobile-nav-logo-right:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
+  border-color: rgba(55, 253, 18, 0.3);
+}
+
+.mobile-club-logo,
+.mobile-srm-logo {
+  height: 90%;
+  width: auto;
+  max-width: 45px;
+  object-fit: contain;
+  object-position: center;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  opacity: 1;
+  filter: brightness(1.2) contrast(1.2) saturate(1.1);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-srm-logo {
+  width: 750% !important;
+  height: 150% !important;
+  max-width: 200px !important;
+  position: relative;
+  transform-origin: center;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+    font-size: 16px;
+  }
+
+  .cursor, .cursor-follower {
+    display: none;
+  }
+
+  .navbar {
+    top: 8px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    width: auto;
+    max-width: 85vw;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+    box-sizing: border-box;
+    backdrop-filter: blur(15px);
+  }
+
+  .nav-links {
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  
+  /* Remove the problematic before pseudo-element on mobile */
+  .nav-links a::before {
+    display: none !important;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(55, 253, 18, 0.2);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 253, 18, 0.15);
+    border-color: rgba(55, 253, 18, 0.3);
+  }
+
+  /* Hide corner logos on mobile */
+  .corner-logos {
+    display: none !important;
+  }
+
+  /* Show mobile nav logos */
+  .mobile-nav-logo-left,
+  .mobile-nav-logo-right {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section {
+    padding: 60px 15px;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 40px;
+  }
+
+  /* Improved content spacing */
+  .page {
+    padding-top: 70px;
+  }
+
+  /* Better button sizing */
+  .cta-button, .register-button, .submit-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    width: auto;
+    min-width: 120px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-nav-logo-left,
+  .mobile-nav-logo-right {
+    top: 75px;
+    width: 48px;
+    height: 38px;
+    border-radius: 12px;
+    padding: 3px;
+  }
+  
+  .mobile-nav-logo-left {
+    left: 5px;
+  }
+  
+  .mobile-nav-logo-right {
+    right: 5px;
+  }
+  
+  .mobile-club-logo,
+  .mobile-srm-logo {
+    max-width: 38px;
+    height: 85%;
+  }
+  
+  .navbar {
+    padding: 6px 10px;
+    max-width: 92vw;
+    border-radius: 18px;
+    top: 6px;
+    overflow: visible;
+    box-sizing: border-box;
+  }
+  
+  .nav-links {
+    gap: 4px;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    font-size: 10px;
+    padding: 4px 6px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.2px;
+  }
+  
+  /* Remove the problematic before pseudo-element on mobile */
+  .nav-links a::before {
+    display: none !important;
+  }
+
+  .section {
+    padding: 50px 12px;
+  }
+
+  .page {
+    padding-top: 65px;
+  }
+
+  /* Better mobile typography */
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .cta-button, .register-button, .submit-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar {
+    padding: 5px 8px;
+    max-width: 95vw;
+    border-radius: 16px;
+    top: 5px;
+    overflow: visible;
+    box-sizing: border-box;
+  }
+  
+  .nav-links {
+    gap: 3px;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    font-size: 9px;
+    padding: 3px 5px;
+    border-radius: 10px;
+    letter-spacing: 0;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+  }
+  
+  /* Remove the problematic before pseudo-element on mobile */
+  .nav-links a::before {
+    display: none !important;
+  }
+
+  .section {
+    padding: 45px 10px;
+  }
+
+  .page {
+    padding-top: 60px;
+  }
+
+  .mobile-nav-logo-left,
+  .mobile-nav-logo-right {
+    top: 70px;
+    width: 45px;
+    height: 36px;
+    padding: 2px;
+  }
+
+  .mobile-nav-logo-left {
+    left: 4px;
+  }
+  
+  .mobile-nav-logo-right {
+    right: 4px;
+  }
+
+  .mobile-club-logo,
+  .mobile-srm-logo {
+    max-width: 35px;
+    height: 80%;
+  }
+}
+
+@media (max-width: 320px) {
+  .navbar {
+    padding: 4px 6px;
+    max-width: 98vw;
+    border-radius: 14px;
+    top: 4px;
+    overflow: visible;
+    box-sizing: border-box;
+  }
+  
+  .nav-links {
+    gap: 2px;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    font-size: 8px;
+    padding: 2px 4px;
+    border-radius: 8px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0;
+  }
+  
+  /* Remove the problematic before pseudo-element on mobile */
+  .nav-links a::before {
+    display: none !important;
+  }
+
+  .section {
+    padding: 40px 8px;
+  }
+
+  .page {
+    padding-top: 55px;
+  }
+
+  .mobile-nav-logo-left,
+  .mobile-nav-logo-right {
+    top: 65px;
+    width: 42px;
+    height: 34px;
+    padding: 2px;
+  }
+
+  .mobile-nav-logo-left {
+    left: 3px;
+  }
+  
+  .mobile-nav-logo-right {
+    right: 3px;
+  }
+
+  .mobile-club-logo,
+  .mobile-srm-logo {
+    max-width: 32px;
+    height: 75%;
+  }
+
+  .cta-button, .register-button, .submit-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+  }
+}
+
+/* Loader Styles */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--darker);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.loader-gif {
+  width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgba(0, 255, 136, 0.3);
+}
+
+.loader-text {
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .loader-gif {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .loader-text {
+    font-size: 1.2rem;
+  }
+}

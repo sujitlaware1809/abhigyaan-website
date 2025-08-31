@@ -4,6 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abhigyan 25 – Sustainable Synergy</title>
+  <meta http-equiv="refresh" content="0; url=home.html">
+  <link rel="canonical" href="home.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="images/srm_lgo.webp">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050505;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .redirect-message {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+    }
+    
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(55, 253, 18, 0.3);
+      border-top: 3px solid #37fd12;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    a {
+      color: #37fd12;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="redirect-message">
+    <h1>Abhigyan 25</h1>
+    <p>Redirecting to the main site...</p>
+    <div class="loader"></div>
+    <p>If you are not redirected automatically, <a href="home.html">click here</a>.</p>
+  </div>
+  
+  <script>
+    // Fallback redirect
+    setTimeout(function() {
+      window.location.href = 'home.html';
+    }, 1000);
+  </script>
+</body>
+</html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhigyan 25 – Sustainable Synergy</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

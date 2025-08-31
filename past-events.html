@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Past Editions - Abhigyan 25</title>
+  
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Satisfy&display=swap" rel="stylesheet">
+  
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="images/srm_lgo.webp">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    /* Past Events Page Specific Styles */
+    .past-events-header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(76, 201, 240, 0.1));
+      border-radius: 20px;
+      margin: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .past-events-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .past-events-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 40px 0;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .timeline-item:nth-child(odd) {
+      animation-delay: 0.2s;
+    }
+
+    .timeline-item:nth-child(even) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-content {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(15, 15, 15, 0.95));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      width: 45%;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 255, 136, 0.2);
+      border-color: var(--primary);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+      margin-right: 55%;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 55%;
+      margin-right: auto;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      right: -15px;
+      border: 15px solid transparent;
+      border-left-color: rgba(30, 30, 30, 0.95);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+      left: -15px;
+      border: 15px solid transparent;
+      border-right-color: rgba(30, 30, 30, 0.95);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border: 4px solid var(--darker);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      box-shadow: 0 0 20px rgba(55, 253, 18, 0.4);
+    }
+
+    .year-badge {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: var(--dark);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .edition-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .edition-theme {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .edition-description {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .edition-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 5px;
+    }
+
+    .highlights-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .highlights-list li {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .highlights-list li:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(5px);
+    }
+
+    .upcoming-edition {
+      background: linear-gradient(135deg, rgba(55, 253, 18, 0.1), rgba(76, 201, 240, 0.1));
+      border: 2px solid var(--primary);
+      margin: 60px 0;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .upcoming-edition h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .upcoming-edition p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .countdown-mini {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .countdown-mini-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .countdown-mini-number {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+      line-height: 1;
+    }
+
+    .countdown-mini-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50px;
+        margin-right: 0;
+        width: calc(100% - 70px);
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content::before,
+      .timeline-item:nth-child(even) .timeline-content::before {
+        left: -15px;
+        right: auto;
+        border: 15px solid transparent;
+        border-right-color: rgba(30, 30, 30, 0.95);
+        border-left-color: transparent;
+      }
+
+      .timeline-dot {
+        left: 20px;
+        transform: translateX(-50%);
+      }
+
+      .edition-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .upcoming-edition {
+        padding: 30px 20px;
+      }
+
+      .upcoming-edition h2 {
+        font-size: 2.5rem;
+      }
+
+      .countdown-mini {
+        gap: 15px;
+      }
+
+      .countdown-mini-item {
+        padding: 15px;
+        min-width: 80px;
+      }
+
+      .countdown-mini-number {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .timeline-content {
+        padding: 20px;
+      }
+
+      .edition-title {
+        font-size: 1.5rem;
+      }
+
+      .edition-theme {
+        font-size: 1rem;
+      }
+
+      .upcoming-edition h2 {
+        font-size: 2rem;
+      }
+
+      .upcoming-edition p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- 3D Background -->
+  <div id="three-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="team.html" class="nav-link">Team</a>
+      <a href="past-events.html" class="nav-link active">Past Edi.</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Logos -->
+  <div class="mobile-nav-logo-left">
+    <img src="images/club_logo.png" alt="ECE Department Logo" class="mobile-club-logo" loading="eager">
+  </div>
+  <div class="mobile-nav-logo-right">
+    <img src="images/srm_lgo.webp" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager">
+  </div>
+
+  <!-- Main Content -->
+  <div class="page">
+    <!-- Past Events Header -->
+    <div class="past-events-header">
+      <h1>Past Editions</h1>
+      <p>Journey through the legacy of Abhigyan - celebrating years of innovation, technology, and sustainable development.</p>
+    </div>
+
+    <!-- Upcoming Edition Section -->
+    <section class="section">
+      <div class="upcoming-edition">
+        <h2>Abhigyan '25</h2>
+        <p>The next chapter in our legacy of innovation and sustainability. Join us for the most exciting edition yet!</p>
+        
+        <div class="countdown-mini" id="countdown-mini">
+          <div class="countdown-mini-item">
+            <span class="countdown-mini-number" id="mini-days">00</span>
+            <span class="countdown-mini-label">Days</span>
+          </div>
+          <div class="countdown-mini-item">
+            <span class="countdown-mini-number" id="mini-hours">00</span>
+            <span class="countdown-mini-label">Hours</span>
+          </div>
+          <div class="countdown-mini-item">
+            <span class="countdown-mini-number" id="mini-minutes">00</span>
+            <span class="countdown-mini-label">Minutes</span>
+          </div>
+          <div class="countdown-mini-item">
+            <span class="countdown-mini-number" id="mini-seconds">00</span>
+            <span class="countdown-mini-label">Seconds</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+          <a href="events.html" class="cta-button">View Events</a>
+          <a href="contact.html" class="cta-button">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section">
+      <div class="timeline">
+        
+        <!-- 2024 Edition -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="year-badge">2024</span>
+            <h3 class="edition-title">Abhigyan '24</h3>
+            <p class="edition-theme">"Digital Revolution & Green Innovation"</p>
+            <p class="edition-description">
+              The 2024 edition focused on merging digital transformation with environmental consciousness. 
+              This edition showcased cutting-edge technologies while emphasizing sustainable practices.
+            </p>
+            
+            <div class="edition-stats">
+              <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Participants</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">15</span>
+                <span class="stat-label">Events</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Colleges</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">₹2L+</span>
+                <span class="stat-label">Prizes</span>
+              </div>
+            </div>
+
+            <ul class="highlights-list">
+              <li>🏆 AI/ML Workshop with industry experts</li>
+              <li>🌱 Green Technology Showcase</li>
+              <li>💡 Innovation Challenge with startup mentors</li>
+              <li>🤖 Robotics Competition</li>
+              <li>🎨 Tech Art Exhibition</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2023 Edition -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="year-badge">2023</span>
+            <h3 class="edition-title">Abhigyan '23</h3>
+            <p class="edition-theme">"Tech for Tomorrow"</p>
+            <p class="edition-description">
+              A groundbreaking edition that emphasized future technologies and their impact on society. 
+              Featured emerging technologies like blockchain, IoT, and sustainable engineering solutions.
+            </p>
+            
+            <div class="edition-stats">
+              <div class="stat-item">
+                <span class="stat-number">400+</span>
+                <span class="stat-label">Participants</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Events</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">40+</span>
+                <span class="stat-label">Colleges</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">₹1.5L+</span>
+                <span class="stat-label">Prizes</span>
+              </div>
+            </div>
+
+            <ul class="highlights-list">
+              <li>🔗 Blockchain Workshop & Hackathon</li>
+              <li>🌐 IoT Innovation Challenge</li>
+              <li>📱 Mobile App Development Contest</li>
+              <li>🔬 Research Paper Presentations</li>
+              <li>🎯 Technical Quiz Competition</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2022 Edition -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="year-badge">2022</span>
+            <h3 class="edition-title">Abhigyan '22</h3>
+            <p class="edition-theme">"Innovation Unleashed"</p>
+            <p class="edition-description">
+              The 2022 edition marked a significant milestone with hybrid participation and innovative virtual events. 
+              Despite challenges, it showcased the resilience and creativity of the tech community.
+            </p>
+            
+            <div class="edition-stats">
+              <div class="stat-item">
+                <span class="stat-number">350+</span>
+                <span class="stat-label">Participants</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">10</span>
+                <span class="stat-label">Events</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">35+</span>
+                <span class="stat-label">Colleges</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">₹1L+</span>
+                <span class="stat-label">Prizes</span>
+              </div>
+            </div>
+
+            <ul class="highlights-list">
+              <li>💻 Virtual Coding Competition</li>
+              <li>🎮 Game Development Challenge</li>
+              <li>🔊 Online Tech Talks</li>
+              <li>📊 Data Science Workshop</li>
+              <li>🏅 Digital Innovation Awards</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2021 Edition -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="year-badge">2021</span>
+            <h3 class="edition-title">Abhigyan '21</h3>
+            <p class="edition-theme">"Digital Transformation"</p>
+            <p class="edition-description">
+              The inaugural digital edition that adapted to global changes while maintaining the spirit of innovation. 
+              Pioneered virtual technical events and online collaboration.
+            </p>
+            
+            <div class="edition-stats">
+              <div class="stat-item">
+                <span class="stat-number">250+</span>
+                <span class="stat-label">Participants</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Events</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Colleges</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">₹75K+</span>
+                <span class="stat-label">Prizes</span>
+              </div>
+            </div>
+
+            <ul class="highlights-list">
+              <li>🌐 First Virtual Tech Fest</li>
+              <li>💡 Online Innovation Showcase</li>
+              <li>🔧 Remote Hardware Projects</li>
+              <li>📚 Digital Learning Sessions</li>
+              <li>🤝 Virtual Networking Events</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section">
+      <div style="text-align: center; background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(76, 201, 240, 0.1)); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <h2 style="color: var(--primary); margin-bottom: 20px;">Be Part of the Legacy</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 30px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Join us in creating the next chapter of innovation and sustainability. Abhigyan '25 promises to be our most exciting edition yet!
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+          <a href="events.html" class="cta-button">Explore Events</a>
+          <a href="home.html" class="cta-button">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  
+  <script>
+    // Mini Countdown Timer
+    function initMiniCountdown() {
+      const countdownElements = {
+        days: document.getElementById('mini-days'),
+        hours: document.getElementById('mini-hours'),
+        minutes: document.getElementById('mini-minutes'),
+        seconds: document.getElementById('mini-seconds')
+      };
+
+      const eventDate = new Date('September 11, 2025 00:00:00').getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = eventDate - now;
+
+        if (timeLeft > 0) {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          if (countdownElements.days) countdownElements.days.textContent = days.toString().padStart(2, '0');
+          if (countdownElements.hours) countdownElements.hours.textContent = hours.toString().padStart(2, '0');
+          if (countdownElements.minutes) countdownElements.minutes.textContent = minutes.toString().padStart(2, '0');
+          if (countdownElements.seconds) countdownElements.seconds.textContent = seconds.toString().padStart(2, '0');
+        } else {
+          Object.values(countdownElements).forEach(el => {
+            if (el) el.textContent = '00';
+          });
+        }
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+
+    // Initialize mini countdown
+    document.addEventListener('DOMContentLoaded', function() {
+      initMiniCountdown();
+    });
+  </script>
+</body>
+</html>
