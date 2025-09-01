@@ -33,6 +33,21 @@
       margin: 20px;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 80px; /* Add margin to prevent overlap with fixed navbar */
+    }
+
+    /* Main content container */
+    .page {
+      position: relative;
+      z-index: 1;
+      margin-top: 60px; /* Add margin to prevent overlap with fixed navbar */
+    }
+
+    /* Adjust mobile styles */
+    @media (max-width: 768px) {
+      .page {
+        margin-top: 70px; /* Adjust for mobile navbar height */
+      }
     }
 
     .events-header h1 {
@@ -713,7 +728,7 @@
       },
       'poster-pulse': {
         title: 'Poster Pulse',
-        image: 'images/POSTERPULSE.png',
+        image: 'images/poster_pulse.jpg',
         description: 'Create. Present. Win Big! Unleash your imagination and showcase your skills at ABHIGYAN\'25 where your ideas speak louder than words! Poster Pulse is your canvas to blend art with awareness, where colors, concepts, and creativity come together for a cause: SUSTAINABLE ENERGY.',
         rounds: [
           {
@@ -732,7 +747,7 @@
       },
       'ipl-auction': {
         title: 'IPL Auction',
-        image: 'images/IPLAUCTOIN.png',
+        image: 'images/ipl_action.jpg',
         description: 'Bid. Build. Win the Battle! Step into the owner\'s box and build your dream cricket squad at ABHIGYAN\'25! Experience the high-stakes thrill of a real IPL auction where strategy, sports knowledge, and smart bidding collide.',
         rounds: [
           {
@@ -747,11 +762,11 @@
         fee: '₹200 per team (2 or 3 Members)',
         date: 'Thursday, 11th September 2025',
         venue: 'ECE Department SRMIST VDP CAMPUS',
-        registerUrl: 'https://forms.gle/L1zKjMbP3WJN4YaX8'
+        registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScpmVpRUhOP2CljnEQcOOPR_ZqBRQitEeVaepSDroeymKxrRQ/viewform'
       },
       'scrap-battle': {
         title: 'Scrap Battle',
-        image: 'images/SCRAPBATTLE.png',
+        image: 'images/scrap.jpg',
         description: 'Scrap It. Shape It. Show It! Gear up for Scrap Battle, a one-of-a-kind event at Abhigyan\'25 where your creativity, talent, and eco-awareness will be put to the ultimate test! Create something extraordinary from scraps provided, in line with the theme SUSTAINABLE ENERGY.',
         rounds: [
           {
@@ -823,7 +838,7 @@
       },
       'beat-odyssey': {
         title: 'Beat Odyssey',
-        image: 'images/BEACODYSSEY.png',
+        image: 'images/BEATODYSSEY1.png',
         description: 'Feel the Rhythm. Rule the Stage! Step into the ultimate musical battlefield at Abhigyan\'25! Show off your sense of rhythm, lyrical knowledge, and creativity in this electrifying music challenge that tests your tempo, timing, and talent.',
         rounds: [
           {
@@ -842,7 +857,7 @@
         fee: '₹180 per team',
         date: 'Thursday, 11th September 2025',
         venue: 'ECE Department SRMIST VDP CAMPUS',
-        registerUrl: 'https://forms.gle/LqJMN9YsQGNdhW7N6'
+        registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScObMdf86zFOrdVQtm192DrOk1DzIGJnmISyvsUhg_AjwotJg/viewform'
       },
       'vision-quest': {
         title: 'Vision Quest',

@@ -500,6 +500,36 @@
       }
     }
   </style>
+  <script>
+    // Ensure navigation remains visible and functional
+    function goToEvents() {
+      window.location.href = 'events.html';
+    }
+    
+    // Initialize navigation functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Ensure navigation stays visible
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        navbar.style.display = 'block';
+        navbar.style.visibility = 'visible';
+        navbar.style.opacity = '1';
+        navbar.style.position = 'fixed';
+        navbar.style.zIndex = '1000';
+      }
+      
+      // Add click handlers to all navigation links
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href !== '#') {
+            window.location.href = href;
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <!-- Custom Cursor -->
@@ -761,6 +791,7 @@
     setInterval(function() {
       ensureNavigationVisible();
     }, 2000);
+
   </script>
 </body>
 </html>

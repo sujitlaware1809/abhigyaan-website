@@ -338,7 +338,7 @@
     <img src="images/club_logo.png" alt="ECE Department Logo" class="mobile-club-logo" loading="eager">
   </div>
   <div class="mobile-nav-logo-right">
-    <img src="images/srm_lgo.webp" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager">
+    <img src="images/srm_logo.png" alt="SRM Vadapalani Logo" class="mobile-srm-logo" loading="eager">
   </div>
 
   <!-- Main Content -->
@@ -485,8 +485,8 @@
       const loadingSpinner = document.getElementById('loading-spinner');
       const formMessage = document.getElementById('form-message');
 
-      // Initialize EmailJS (replace with your actual keys)
-      // emailjs.init("YOUR_PUBLIC_KEY");
+      // Initialize EmailJS with your public key - correct initialization method
+      emailjs.init("McvnL0Lj2eZJRzpO-");
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -494,43 +494,40 @@
         // Show loading state
         submitBtn.disabled = true;
         loadingSpinner.style.display = 'inline-block';
-        submitBtn.textContent = 'Sending...';
+        submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
         
         // Get form data
         const formData = new FormData(form);
-        const data = {
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone') || 'Not provided',
+        const templateParams = {
+          from_name: formData.get('name'),
+          from_email: formData.get('email'),
+          phone_number: formData.get('phone') || 'Not provided',
           college: formData.get('college') || 'Not provided',
           subject: formData.get('subject'),
           message: formData.get('message')
         };
 
-        // Simulate sending (replace with actual EmailJS implementation)
-        setTimeout(() => {
-          try {
-            // EmailJS send would go here
-            // emailjs.send("SERVICE_ID", "TEMPLATE_ID", data)
-            
-            // For now, simulate success
-            showMessage('Message sent successfully! We\'ll get back to you soon.', 'success');
-            form.reset();
-            
-            // Alternative: Open mailto link as fallback
-            const mailtoLink = `mailto:abhigyan2025@srmist.edu.in?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nCollege: ${data.college}\n\nMessage:\n${data.message}`)}`;
-            // window.open(mailtoLink, '_blank');
-            
-          } catch (error) {
-            console.error('Error sending message:', error);
-            showMessage('Error sending message. Please try again or email us directly.', 'error');
-          } finally {
-            // Reset button state
-            submitBtn.disabled = false;
-            loadingSpinner.style.display = 'none';
-            submitBtn.textContent = 'Send Message';
-          }
-        }, 2000);
+        // Send email using EmailJS - correct service/template parameters
+        emailjs.send("service_89tf8xj", "template_d7k8e0c", templateParams)
+        .then(function(response) {
+          console.log("SUCCESS!", response.status, response.text);
+          showMessage('Message sent successfully! We\'ll get back to you soon.', 'success');
+          form.reset();
+        })
+        .catch(function(error) {
+          console.error('Error sending message:', error);
+          showMessage('Error sending message. Please try again or email us directly.', 'error');
+          
+          // Fallback: Open mailto link if EmailJS fails
+          const mailtoLink = `mailto:abhigyan2025@srmist.edu.in?subject=${encodeURIComponent(templateParams.subject)}&body=${encodeURIComponent(`Name: ${templateParams.from_name}\nEmail: ${templateParams.from_email}\nPhone: ${templateParams.phone_number}\nCollege: ${templateParams.college}\n\nMessage:\n${templateParams.message}`)}`;
+          window.open(mailtoLink, '_blank');
+        })
+        .finally(function() {
+          // Reset button state
+          submitBtn.disabled = false;
+          loadingSpinner.style.display = 'none';
+          submitBtn.textContent = 'Send Message';
+        });
       });
 
       function showMessage(message, type) {
