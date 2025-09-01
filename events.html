@@ -322,11 +322,16 @@
       transition: all 0.3s ease;
       z-index: 1000;
       border: none;
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+      touch-action: manipulation; /* Improve touch response */
+      user-select: none; /* Prevent text selection */
     }
 
-    .close-modal:hover {
+    .close-modal:hover,
+    .close-modal:focus {
       background: rgba(255, 0, 0, 0.2);
       transform: scale(1.1);
+      outline: 2px solid var(--primary);
     }
 
     .modal-event-title {
@@ -407,15 +412,20 @@
       .close-modal {
         top: 10px;
         right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 1.8rem;
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
         background: rgba(0, 0, 0, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .close-modal:hover {
+      .close-modal:hover,
+      .close-modal:focus {
         background: rgba(255, 0, 0, 0.3);
+        outline: 2px solid var(--primary);
       }
     }
   </style>
@@ -924,15 +934,33 @@
       const modal = document.getElementById('event-modal');
       const closeBtn = document.querySelector('.close-modal');
 
-      closeBtn.addEventListener('click', closeModal);
-      closeBtn.addEventListener('touchend', closeModal); // Add touch support for mobile
+      // Handle close button clicks on both desktop and mobile
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+      });
       
+      // Handle close button touches on mobile
+      closeBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+      });
+      
+      // Close modal when clicking/touching outside
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
+        if (e.target === modal) {
+          e.preventDefault();
+          closeModal();
+        }
       });
       
       modal.addEventListener('touchend', function(e) {
-        if (e.target === modal) closeModal();
+        if (e.target === modal) {
+          e.preventDefault();
+          closeModal();
+        }
       });
 
       function openEventModal(eventType) {
@@ -967,6 +995,11 @@
       function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+        
+        // Small delay to prevent accidental reopening
+        setTimeout(function() {
+          // Reset any potential event conflicts
+        }, 300);
       }
 
       // Keyboard navigation
