@@ -584,9 +584,9 @@
         navbar.style.zIndex = '1000';
       }
       
-      // Add click handlers to all navigation links
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
+      // Add click handlers to navigation links in the navbar only
+      const navbarLinks = document.querySelectorAll('.navbar .nav-link');
+      navbarLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
           if (href && href !== '#') {
@@ -656,13 +656,13 @@
 
       <div class="hero-year">2025</div>
       
-      <div style="margin-top: 5px; text-align: center;">
+      <!--<div style="margin-top: 5px; text-align: center;">
         <img src="images/unstop.png" alt="Unstop Platform Logo - Register for Abhigyan 25 Events" width="120" height="40" style="max-width: 120px; height: auto; margin-bottom: 8px; opacity: 0.9; border-radius: 15px;" loading="lazy" onerror="console.warn('Unstop logo failed to load');">
         <div style="margin-top: 15px; text-align: center;">
-          <a href="events.html" class="cta-button">Explore Now</a>
+          <a href="events.html" class="cta-button">View All Events</a>
         </div>
       </div>
-
+    -->
      
     </section> 
 
