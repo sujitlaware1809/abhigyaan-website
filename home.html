@@ -657,13 +657,8 @@
 
       <div class="hero-year">2025</div>
       
-      <!--<div style="margin-top: 5px; text-align: center;">
+      <div style="margin-top: 5px; text-align: center;">
         <img src="images/unstop.png" alt="Unstop Platform Logo - Register for Abhigyan 25 Events" width="120" height="40" style="max-width: 120px; height: auto; margin-bottom: 8px; opacity: 0.9; border-radius: 15px;" loading="lazy" onerror="console.warn('Unstop logo failed to load');">
-        <div style="margin-top: 15px; text-align: center;">
-          <a href="events.html" class="cta-button">View All Events</a>
-        </div>
-      </div>
-    -->
      
     </section> 
 
@@ -773,6 +768,26 @@
   <script src="js/main.js"></script>
   
   <!-- Loader Script -->
+  <script>
+    setTimeout(function() {
+      var loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.display = 'none';
+        loader.parentNode && loader.parentNode.removeChild(loader);
+      }
+    }, 3000);
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var eventBtn = document.querySelector('.cta-button[href="events.html"]');
+      if (eventBtn) {
+        eventBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'events.html';
+        });
+      }
+    });
+  </script>
   <script>
     console.log('Loader script starting...');
     
