@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 100);
     });
   }
+  
+  // Ensure WhatsApp link is correct
+  ensureWhatsAppLink();
 });
 
 // Navigation Active State
@@ -32,6 +35,18 @@ function setActiveNavigation() {
       link.classList.add('active');
     }
   });
+}
+
+// Ensure WhatsApp Link is Correct
+function ensureWhatsAppLink() {
+  const whatsappLink = document.querySelector('.whatsapp-widget');
+  if (whatsappLink) {
+    const correctLink = "https://chat.whatsapp.com/FUgaYrqVFU8HQIMb4WIkjy";
+    if (whatsappLink.href !== correctLink) {
+      console.log('Fixed WhatsApp link');
+      whatsappLink.href = correctLink;
+    }
+  }
 }
 
 // Ensure Navigation Visibility
@@ -263,12 +278,14 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
   setTimeout(function() {
     ensureNavigationVisibility();
+    ensureWhatsAppLink(); // Ensure WhatsApp link is correct after page load
   }, 1000);
 });
 
 // Periodic check to ensure navigation stays visible
 setInterval(function() {
   ensureNavigationVisibility();
+  ensureWhatsAppLink(); // Also periodically check WhatsApp link
 }, 5000);
 
 // Error handling
